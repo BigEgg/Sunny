@@ -1,0 +1,16 @@
+d:\Noodum\Noodum.Wokamon.Sunny\Noodum.Wokamon.Sunny.SensorDataCollector\bin\Noodum.Wokamon.Sunny.SensorDataCollector.dll.config
+d:\Noodum\Noodum.Wokamon.Sunny\Noodum.Wokamon.Sunny.SensorDataCollector\bin\Noodum.Wokamon.Sunny.SensorDataCollector.dll
+d:\Noodum\Noodum.Wokamon.Sunny\Noodum.Wokamon.Sunny.SensorDataCollector\bin\Noodum.Wokamon.Sunny.SensorDataCollector.pdb
+d:\Noodum\Noodum.Wokamon.Sunny\Noodum.Wokamon.Sunny.SensorDataCollector\bin\Newtonsoft.Json.dll
+d:\Noodum\Noodum.Wokamon.Sunny\Noodum.Wokamon.Sunny.SensorDataCollector\bin\Noodum.Wokamon.Sunny.Core.dll
+d:\Noodum\Noodum.Wokamon.Sunny\Noodum.Wokamon.Sunny.SensorDataCollector\bin\System.Net.Http.Formatting.dll
+d:\Noodum\Noodum.Wokamon.Sunny\Noodum.Wokamon.Sunny.SensorDataCollector\bin\System.Web.Http.dll
+d:\Noodum\Noodum.Wokamon.Sunny\Noodum.Wokamon.Sunny.SensorDataCollector\bin\System.Web.Http.WebHost.dll
+d:\Noodum\Noodum.Wokamon.Sunny\Noodum.Wokamon.Sunny.SensorDataCollector\bin\Noodum.Wokamon.Sunny.Core.pdb
+d:\Noodum\Noodum.Wokamon.Sunny\Noodum.Wokamon.Sunny.SensorDataCollector\bin\Newtonsoft.Json.xml
+d:\Noodum\Noodum.Wokamon.Sunny\Noodum.Wokamon.Sunny.SensorDataCollector\bin\System.Net.Http.Formatting.xml
+d:\Noodum\Noodum.Wokamon.Sunny\Noodum.Wokamon.Sunny.SensorDataCollector\bin\System.Web.Http.xml
+d:\Noodum\Noodum.Wokamon.Sunny\Noodum.Wokamon.Sunny.SensorDataCollector\bin\System.Web.Http.WebHost.xml
+d:\Noodum\Noodum.Wokamon.Sunny\Noodum.Wokamon.Sunny.SensorDataCollector\obj\Debug\Noodum.Wokamon.Sunny.SensorDataCollector.csprojResolveAssemblyReference.cache
+d:\Noodum\Noodum.Wokamon.Sunny\Noodum.Wokamon.Sunny.SensorDataCollector\obj\Debug\Noodum.Wokamon.Sunny.SensorDataCollector.dll
+d:\Noodum\Noodum.Wokamon.Sunny\Noodum.Wokamon.Sunny.SensorDataCollector\obj\Debug\Noodum.Wokamon.Sunny.SensorDataCollector.pdb

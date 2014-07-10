@@ -50,9 +50,9 @@ namespace Noodum.Wokamon.Sunny.SensorDataCollector.Tests.Models
 
             var jsonString = Newtonsoft.Json.JsonConvert.SerializeObject(dataPackage);
             Assert.IsFalse(string.IsNullOrWhiteSpace(jsonString));
-            //  {"PhoneData":{"PhoneType":0,"PhoneStats":4,"UpdateInterval":20},"Data":[{"X":0.111,"Y":0.555,"Z":0.666},{"X":0.611,"Y":0.855,"Z":0.766}]}
+            //  {"PhoneData":{"PhoneType":0,"PhoneStats":4,"UpdateInterval":20},"Data":[{"DeltaX":0.111,"DeltaY":0.555,"DeltaZ":0.666},{"DeltaX":0.611,"DeltaY":0.855,"DeltaZ":0.766}]}
 
-            var newDataPackage = Newtonsoft.Json.JsonConvert.DeserializeObject(jsonString, typeof(DataPackage<GyrosensorData>)) as DataPackage<AccelerometerData>;
+            var newDataPackage = Newtonsoft.Json.JsonConvert.DeserializeObject(jsonString, typeof(DataPackage<GyrosensorData>)) as DataPackage<GyrosensorData>;
             Assert.IsNotNull(newDataPackage);
             Assert.AreEqual(dataPackage.PhoneData.PhoneStats, newDataPackage.PhoneData.PhoneStats);
             Assert.AreEqual(dataPackage.PhoneData.PhoneType, newDataPackage.PhoneData.PhoneType);

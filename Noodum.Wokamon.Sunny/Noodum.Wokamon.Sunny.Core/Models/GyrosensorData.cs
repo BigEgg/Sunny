@@ -8,7 +8,7 @@
 
         public override string ToString()
         {
-            return string.Format("%s, %s, %s", DeltaX, DeltaY, DeltaZ);
+            return string.Format("{0}, {1}, {2}", DeltaX, DeltaY, DeltaZ);
         }
     }
 }

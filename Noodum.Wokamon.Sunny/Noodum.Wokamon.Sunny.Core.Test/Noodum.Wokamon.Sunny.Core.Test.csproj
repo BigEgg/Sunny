@@ -51,6 +51,8 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Documents\SensorDataDocumentTypeTest.cs" />
+    <Compile Include="Models\AccelerometerDataTest.cs" />
+    <Compile Include="Models\GyrosensorDataTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

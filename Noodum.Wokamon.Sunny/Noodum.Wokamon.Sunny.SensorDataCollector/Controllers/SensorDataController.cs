@@ -19,7 +19,7 @@ namespace Noodum.Wokamon.Sunny.SensorDataCollector.Controllers
                 document.Data.Add(entry);
             }
 
-            SensorDataDocumentType.Save(document, data.SensorType, data.PhoneData.UpdateInterval, data.PhoneData.PhoneType, data.PhoneData.PhoneStats);
+            SensorDataDocumentType.Save(document, data.PhoneData.UpdateInterval, data.PhoneData.PhoneType, data.PhoneData.PhoneStats);
         }
 
         // POST api/sensordata/gyrosensor
@@ -33,7 +33,7 @@ namespace Noodum.Wokamon.Sunny.SensorDataCollector.Controllers
                 document.Data.Add(entry);
             }
 
-            SensorDataDocumentType.Save(document, data.SensorType, data.PhoneData.UpdateInterval, data.PhoneData.PhoneType, data.PhoneData.PhoneStats);
+            SensorDataDocumentType.Save(document, data.PhoneData.UpdateInterval, data.PhoneData.PhoneType, data.PhoneData.PhoneStats);
         }
     }
 }

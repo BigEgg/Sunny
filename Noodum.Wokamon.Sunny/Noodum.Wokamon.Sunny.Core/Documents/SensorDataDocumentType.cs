@@ -66,16 +66,25 @@ namespace Noodum.Wokamon.Sunny.Core.Documents
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="document">The document.</param>
-        /// <param name="sensorType">Type of the sensor.</param>
         /// <param name="updateInterval">The update interval.</param>
         /// <param name="phoneType">Type of the phone.</param>
         /// <param name="phoneStats">The phone stats.</param>
-        public static void Save<T>(SensorDataDocument<T> document, SensorType sensorType, int updateInterval, PhoneType phoneType, PhoneStats phoneStats)
+        public static void Save<T>(SensorDataDocument<T> document, int updateInterval, PhoneType phoneType, PhoneStats phoneStats)
             where T : ISensorData
         {
+            SensorType sensorType;
+            if (typeof(T) == typeof(GyrosensorData)) { sensorType = SensorType.Gyrosensor; }
+            else if (typeof(T) == typeof(AccelerometerData)) { sensorType = SensorType.Accelerometer; }
+            else { throw new NotSupportedException("Unknown sensor type."); }
+
+            var folderName = GetFolderName(sensorType, updateInterval, phoneType, phoneStats);
+            if (!Directory.Exists(folderName))
+            {
+                Directory.CreateDirectory(folderName);
+            }
+
             using (var fs = new FileStream(
-                Path.Combine(GetFolderName(sensorType, updateInterval, phoneType, phoneStats),
-                             DateTime.Now.ToString("yyyyMMDD") + fileExtension),
+                Path.Combine(folderName, DateTime.Now.ToString("yyyyMMDD") + fileExtension),
                 FileMode.Append,
                 FileAccess.Write))
             {

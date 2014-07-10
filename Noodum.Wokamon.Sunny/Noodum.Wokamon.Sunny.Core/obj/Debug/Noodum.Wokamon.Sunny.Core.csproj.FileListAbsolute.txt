@@ -1,5 +1,0 @@
-d:\Noodum\Noodum.Wokamon.Sunny\Noodum.Wokamon.Sunny.Core\bin\Debug\Noodum.Wokamon.Sunny.Core.dll
-d:\Noodum\Noodum.Wokamon.Sunny\Noodum.Wokamon.Sunny.Core\bin\Debug\Noodum.Wokamon.Sunny.Core.pdb
-d:\Noodum\Noodum.Wokamon.Sunny\Noodum.Wokamon.Sunny.Core\obj\Debug\Noodum.Wokamon.Sunny.Core.csprojResolveAssemblyReference.cache
-d:\Noodum\Noodum.Wokamon.Sunny\Noodum.Wokamon.Sunny.Core\obj\Debug\Noodum.Wokamon.Sunny.Core.dll
-d:\Noodum\Noodum.Wokamon.Sunny\Noodum.Wokamon.Sunny.Core\obj\Debug\Noodum.Wokamon.Sunny.Core.pdb

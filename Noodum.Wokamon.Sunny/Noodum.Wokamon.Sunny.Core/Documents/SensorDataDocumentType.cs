@@ -12,6 +12,9 @@ namespace Noodum.Wokamon.Sunny.Core.Documents
         private static string fileRootPath;
         #endregion
 
+        /// <summary>
+        /// Initializes the <see cref="SensorDataDocumentType"/> class.
+        /// </summary>
         static SensorDataDocumentType()
         {
             fileRootPath = Path.Combine(
@@ -20,10 +23,24 @@ namespace Noodum.Wokamon.Sunny.Core.Documents
         }
 
         #region Properties
+        /// <summary>
+        /// Gets the file root path.
+        /// </summary>
+        /// <value>
+        /// The file root path.
+        /// </value>
         public static string FileRootPath { get { return fileRootPath; } }
         #endregion
 
         #region Methods
+        /// <summary>
+        /// Gets the name of the folder.
+        /// </summary>
+        /// <param name="sensorType">Type of the sensor.</param>
+        /// <param name="updateInterval">The update interval.</param>
+        /// <param name="phoneType">Type of the phone.</param>
+        /// <param name="phoneStats">The phone stats.</param>
+        /// <returns></returns>
         public static string GetFolderName(SensorType sensorType, int updateInterval, PhoneType phoneType, PhoneStats phoneStats)
         {
             return Path.Combine(
@@ -34,11 +51,25 @@ namespace Noodum.Wokamon.Sunny.Core.Documents
                 phoneStats.ToString());
         }
 
+        /// <summary>
+        /// News this instance.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
         public static SensorDataDocument<T> New<T>() where T : ISensorData
         {
             return new SensorDataDocument<T>();
         }
 
+        /// <summary>
+        /// Saves the specified document.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="document">The document.</param>
+        /// <param name="sensorType">Type of the sensor.</param>
+        /// <param name="updateInterval">The update interval.</param>
+        /// <param name="phoneType">Type of the phone.</param>
+        /// <param name="phoneStats">The phone stats.</param>
         public static void Save<T>(SensorDataDocument<T> document, SensorType sensorType, int updateInterval, PhoneType phoneType, PhoneStats phoneStats)
             where T : ISensorData
         {

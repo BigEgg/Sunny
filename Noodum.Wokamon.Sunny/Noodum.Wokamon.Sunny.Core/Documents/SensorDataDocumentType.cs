@@ -20,19 +20,18 @@ namespace Noodum.Wokamon.Sunny.Core.Documents
         }
 
         #region Properties
-        public static string FileRootPaht { get { return fileRootPath; } }
+        public static string FileRootPath { get { return fileRootPath; } }
         #endregion
 
         #region Methods
-        public static string GetFileName(SensorType sensorType, int updateInterval, PhoneType phoneType, PhoneStats phoneStats)
+        public static string GetFolderName(SensorType sensorType, int updateInterval, PhoneType phoneType, PhoneStats phoneStats)
         {
             return Path.Combine(
                 fileRootPath,
                 sensorType.ToString(),
                 updateInterval.ToString(),
                 phoneType.ToString(),
-                phoneStats.ToString(),
-                DateTime.Now.ToString("yyyyMMDD") + fileExtension);
+                phoneStats.ToString());
         }
 
         public static SensorDataDocument<T> New<T>() where T : ISensorData
@@ -44,7 +43,10 @@ namespace Noodum.Wokamon.Sunny.Core.Documents
             where T : ISensorData
         {
             using (var fs = new FileStream(
-                GetFileName(sensorType, updateInterval, phoneType, phoneStats), FileMode.Append, FileAccess.Write))
+                Path.Combine(GetFolderName(sensorType, updateInterval, phoneType, phoneStats),
+                             DateTime.Now.ToString("yyyyMMDD") + fileExtension),
+                FileMode.Append,
+                FileAccess.Write))
             {
                 using (var sw = new StreamWriter(fs))
                 {

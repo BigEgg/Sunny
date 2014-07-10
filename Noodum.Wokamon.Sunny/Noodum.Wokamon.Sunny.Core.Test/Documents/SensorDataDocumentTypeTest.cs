@@ -28,11 +28,6 @@ namespace Noodum.Wokamon.Sunny.Core.Test.Documents
             }
         }
 
-        private void TestCleanup_Accelerometer()
-        {
-
-        }
-
 
         [TestMethod]
         public void GeneralTest()
@@ -81,7 +76,7 @@ namespace Noodum.Wokamon.Sunny.Core.Test.Documents
         }
 
         [TestMethod]
-        public void SaveTest_Gyrometer()
+        public void SaveTest_Gyrosensor()
         {
             TestCleanup(SensorType.Gyrosensor);
 

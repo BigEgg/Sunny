@@ -32,8 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -48,10 +48,14 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="Models\DataPackageTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Noodum.Wokamon.Sunny.Core\Noodum.Wokamon.Sunny.Core.csproj">
+      <Project>{163340c5-ab68-4ee4-bdf7-8e541cb64ddc}</Project>
+      <Name>Noodum.Wokamon.Sunny.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Noodum.Wokamon.Sunny.SensorDataCollector\Noodum.Wokamon.Sunny.SensorDataCollector.csproj">
       <Project>{56C17202-6B45-4A48-847D-F689639E832B}</Project>
       <Name>Noodum.Wokamon.Sunny.SensorDataCollector</Name>

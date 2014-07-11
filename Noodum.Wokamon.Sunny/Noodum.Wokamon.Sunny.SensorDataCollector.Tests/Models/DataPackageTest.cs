@@ -14,7 +14,7 @@ namespace Noodum.Wokamon.Sunny.SensorDataCollector.Tests.Models
             var dataPackage = new DataPackage<AccelerometerData>();
             dataPackage.PhoneData = new PhoneData()
             {
-                PhoneStats = PhoneStatus.Handheld & PhoneStatus.Left & PhoneStatus.Walk,
+                PhoneStats = PhoneStatus.Handheld | PhoneStatus.Left | PhoneStatus.Walk,
                 PhoneType = PhoneType.iPhone4,
                 UpdateInterval = 20
             };
@@ -40,7 +40,7 @@ namespace Noodum.Wokamon.Sunny.SensorDataCollector.Tests.Models
             var dataPackage = new DataPackage<GyrosensorData>();
             dataPackage.PhoneData = new PhoneData()
             {
-                PhoneStats = PhoneStatus.Handheld & PhoneStatus.Left & PhoneStatus.Walk,
+                PhoneStats = PhoneStatus.Handheld | PhoneStatus.Left | PhoneStatus.Walk,
                 PhoneType = PhoneType.iPhone4,
                 UpdateInterval = 20
             };

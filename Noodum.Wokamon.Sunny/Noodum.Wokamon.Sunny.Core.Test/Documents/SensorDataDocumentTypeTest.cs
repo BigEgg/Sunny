@@ -40,9 +40,9 @@ namespace Noodum.Wokamon.Sunny.Core.Test.Documents
         [TestMethod]
         public void GetFolderNameTest()
         {
-            var phoneStatus = PhoneStatus.Handheld & PhoneStatus.Left & PhoneStatus.Walk;
+            var phoneStatus = PhoneStatus.Handheld | PhoneStatus.Left | PhoneStatus.Walk;
             var folderName = SensorDataDocumentType.GetFolderName(SensorType.Accelerometer, 20, PhoneType.iPhone4, phoneStatus);
-            var expected = Path.Combine(SensorDataDocumentType.FileRootPath, "Accelerometer", "20", "iPhone4", "HandheldWalk");
+            var expected = Path.Combine(SensorDataDocumentType.FileRootPath, "Accelerometer", "20", "iPhone4", phoneStatus.ToString());
 
             Assert.AreEqual(expected, folderName);
         }
@@ -65,7 +65,7 @@ namespace Noodum.Wokamon.Sunny.Core.Test.Documents
         public void SaveTest_Accelerometer()
         {
             TestCleanup(SensorType.Accelerometer);
-            var phoneStatus = PhoneStatus.Handheld & PhoneStatus.Left & PhoneStatus.Walk;
+            var phoneStatus = PhoneStatus.Handheld | PhoneStatus.Left | PhoneStatus.Walk;
 
             var document = SensorDataDocumentType.New<AccelerometerData>();
             SensorDataDocumentType.Save(document, 20, PhoneType.iPhone4, phoneStatus);
@@ -81,7 +81,7 @@ namespace Noodum.Wokamon.Sunny.Core.Test.Documents
         public void SaveTest_Gyrosensor()
         {
             TestCleanup(SensorType.Gyrosensor);
-            var phoneStatus = PhoneStatus.Handheld & PhoneStatus.Left & PhoneStatus.Walk;
+            var phoneStatus = PhoneStatus.Handheld | PhoneStatus.Left | PhoneStatus.Walk;
 
             var document = SensorDataDocumentType.New<GyrosensorData>();
             SensorDataDocumentType.Save(document, 20, PhoneType.iPhone4, phoneStatus);

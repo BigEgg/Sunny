@@ -38,7 +38,18 @@ namespace Noodum.Wokamon.Sunny.Core.Test.Documents
         }
 
         [TestMethod]
-        public void GetFolderNameTest()
+        public void GetFolderNameTest_Stop()
+        {
+            var phoneStatus = PhoneStatus.Handheld | PhoneStatus.Left | PhoneStatus.Stop;
+            var folderName = SensorDataDocumentType.GetFolderName(SensorType.Accelerometer, 20, PhoneType.iPhone4, phoneStatus);
+            var expected = Path.Combine(SensorDataDocumentType.FileRootPath, "Accelerometer", "20", "iPhone4", PhoneStatus.Stop.ToString());
+
+            Assert.AreEqual(expected, folderName);
+
+        }
+
+        [TestMethod]
+        public void GetFolderNameTest_General()
         {
             var phoneStatus = PhoneStatus.Handheld | PhoneStatus.Left | PhoneStatus.Walk;
             var folderName = SensorDataDocumentType.GetFolderName(SensorType.Accelerometer, 20, PhoneType.iPhone4, phoneStatus);

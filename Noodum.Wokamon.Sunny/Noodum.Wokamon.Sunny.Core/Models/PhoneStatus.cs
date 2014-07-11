@@ -5,11 +5,12 @@ namespace Noodum.Wokamon.Sunny.Core.Models
     [Flags]
     public enum PhoneStatus
     {
-        Stop = 0x0,
+        None = 0x0,
 
-        Shake = 0x1,
-        Run = 0x2,
-        Walk = 0x4,
+        Stop = 0x1,
+        Shake = 0x2,
+        Run = 0x4,
+        Walk = 0x8,
 
         Left = 0x10,
         Right = 0x20,

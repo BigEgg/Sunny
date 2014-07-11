@@ -43,6 +43,11 @@ namespace Noodum.Wokamon.Sunny.Core.Documents
         /// <returns></returns>
         public static string GetFolderName(SensorType sensorType, int updateInterval, PhoneType phoneType, PhoneStatus phoneStats)
         {
+            if ((phoneStats & PhoneStatus.Stop) == PhoneStatus.Stop)
+            {
+                phoneStats = PhoneStatus.Stop;
+            }
+
             return Path.Combine(
                 fileRootPath,
                 sensorType.ToString(),

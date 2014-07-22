@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 jianming.xiao. All rights reserved.
 //
 
-#import "GyrometerData.h"
+#import "GyroscopeData.h"
 
-@implementation GyrometerData
+@implementation GyroscopeData
 @synthesize deltaX, deltaY, deltaZ;
 
 - (instancetype)init

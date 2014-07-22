@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "ISensorData.h"
 
-@interface GyrometerData : NSObject <ISensorData>
+@interface GyroscopeData : NSObject <ISensorData>
 
 @property float deltaX, deltaY, deltaZ;
 

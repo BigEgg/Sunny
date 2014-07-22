@@ -7,12 +7,25 @@
 //
 
 #import "AppDelegate.h"
+#import "SensorDataViewController.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    self.window.backgroundColor = [UIColor orangeColor];
+    
+    SensorDataViewController *sensorDataViewController = [[SensorDataViewController alloc] initWithNibName:@"SensorDataViewController" bundle:nil];
+    sensorDataViewController.title = @"Sensor Data";
+    
+    self.tabBarController = [[UITabBarController alloc] init];
+    self.tabBarController.viewControllers = [NSArray arrayWithObjects:sensorDataViewController, nil];
+    
+    self.window.rootViewController = self.tabBarController;
+    
+    [self.window makeKeyAndVisible];
     return YES;
 }
 							

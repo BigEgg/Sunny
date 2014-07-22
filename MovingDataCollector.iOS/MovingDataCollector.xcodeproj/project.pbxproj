@@ -21,7 +21,9 @@
 		10474A5A1945E51A0069A92E /* MovingDataCollectorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 10474A591945E51A0069A92E /* MovingDataCollectorTests.m */; };
 		10474A641945E5250069A92E /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10474A631945E5250069A92E /* CoreMotion.framework */; };
 		10A98FCB197E8B250078F445 /* AccelerometerData.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A98FCA197E8B250078F445 /* AccelerometerData.m */; };
-		10A98FCE197E8D570078F445 /* GyrometerData.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A98FCD197E8D570078F445 /* GyrometerData.m */; };
+		10A98FCE197E8D570078F445 /* GyroscopeData.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A98FCD197E8D570078F445 /* GyroscopeData.m */; };
+		10A98FD6197E91790078F445 /* SensorDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A98FD4197E91790078F445 /* SensorDataViewController.m */; };
+		10A98FD7197E91790078F445 /* SensorDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10A98FD5197E91790078F445 /* SensorDataViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,8 +58,11 @@
 		10A98FC8197E89BF0078F445 /* Base */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Base; path = Base.lproj/Enums.h; sourceTree = "<group>"; };
 		10A98FC9197E8B250078F445 /* AccelerometerData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccelerometerData.h; sourceTree = "<group>"; };
 		10A98FCA197E8B250078F445 /* AccelerometerData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccelerometerData.m; sourceTree = "<group>"; };
-		10A98FCC197E8D570078F445 /* GyrometerData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GyrometerData.h; sourceTree = "<group>"; };
-		10A98FCD197E8D570078F445 /* GyrometerData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GyrometerData.m; sourceTree = "<group>"; };
+		10A98FCC197E8D570078F445 /* GyroscopeData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GyroscopeData.h; sourceTree = "<group>"; };
+		10A98FCD197E8D570078F445 /* GyroscopeData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GyroscopeData.m; sourceTree = "<group>"; };
+		10A98FD3197E91790078F445 /* SensorDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorDataViewController.h; sourceTree = "<group>"; };
+		10A98FD4197E91790078F445 /* SensorDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorDataViewController.m; sourceTree = "<group>"; };
+		10A98FD5197E91790078F445 /* SensorDataViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SensorDataViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,8 +170,8 @@
 				10A98FC7197E89BF0078F445 /* Enums.h */,
 				10A98FC9197E8B250078F445 /* AccelerometerData.h */,
 				10A98FCA197E8B250078F445 /* AccelerometerData.m */,
-				10A98FCC197E8D570078F445 /* GyrometerData.h */,
-				10A98FCD197E8D570078F445 /* GyrometerData.m */,
+				10A98FCC197E8D570078F445 /* GyroscopeData.h */,
+				10A98FCD197E8D570078F445 /* GyroscopeData.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -174,6 +179,9 @@
 		10A98FCF197E8FB60078F445 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				10A98FD3197E91790078F445 /* SensorDataViewController.h */,
+				10A98FD4197E91790078F445 /* SensorDataViewController.m */,
+				10A98FD5197E91790078F445 /* SensorDataViewController.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -256,6 +264,7 @@
 			files = (
 				10474A471945E51A0069A92E /* Images.xcassets in Resources */,
 				10474A391945E51A0069A92E /* InfoPlist.strings in Resources */,
+				10A98FD7197E91790078F445 /* SensorDataViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,7 +285,8 @@
 			files = (
 				10474A3F1945E51A0069A92E /* AppDelegate.m in Sources */,
 				10474A3B1945E51A0069A92E /* main.m in Sources */,
-				10A98FCE197E8D570078F445 /* GyrometerData.m in Sources */,
+				10A98FCE197E8D570078F445 /* GyroscopeData.m in Sources */,
+				10A98FD6197E91790078F445 /* SensorDataViewController.m in Sources */,
 				10A98FCB197E8B250078F445 /* AccelerometerData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

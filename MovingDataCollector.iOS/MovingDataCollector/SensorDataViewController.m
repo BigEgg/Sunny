@@ -22,8 +22,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        accelerometerHandlerSelector = @selector(accelerometerHandler:);
-        gyroscopeHandlerSelector = @selector(gyroscopeHandler:);
+
     }
     return self;
 }

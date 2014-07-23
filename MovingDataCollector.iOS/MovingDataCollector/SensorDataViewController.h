@@ -9,12 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "AccelerometerData.h"
 #import "GyroscopeData.h"
+#import "ISensorDataHandler.h"
 
-@interface SensorDataViewController : UIViewController
+@interface SensorDataViewController : UIViewController <ISensorDataHandler>
 {
-@public
-    SEL accelerometerHandlerSelector;
-    SEL gyroscopeHandlerSelector;
 }
 
 @property (strong, nonatomic) IBOutlet UIView *sectionView;
@@ -37,5 +35,8 @@
 
 
 - (IBAction)sectionChanged:(id)sender;
+
+- (void)accelerometerHandler:(AccelerometerData *)data;
+- (void)gyroscopeHandler:(GyroscopeData *)data;
 
 @end

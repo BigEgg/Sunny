@@ -63,7 +63,6 @@
 #pragma mark - Private Methods
 - (void)initMotionService:(SensorDataViewController *)sensorDataViewController {
     motionService = [[MotionService alloc] init];
-    [motionService addAccelerometerHandler:sensorDataViewController -> accelerometerHandlerSelector];
-    [motionService addGyroscopeHandler:sensorDataViewController -> gyroscopeHandlerSelector];
+    [motionService addHandler:(id<ISensorDataHandler>)sensorDataViewController];
 }
 @end

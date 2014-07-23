@@ -16,22 +16,14 @@
 {
     self = [super init];
     if (self) {
-        accelerometerHandlers = [[NSMutableArray alloc] init];
-        gyroscopeHandlers = [[NSMutableArray alloc] init];
+        handlers = [[NSMutableArray alloc] init];
     }
     return self;
 }
 
-- (void)addAccelerometerHandler:(SEL)selector
+- (void)addHandler:(id<ISensorDataHandler>)handler
 {
-    NSString *selectorString = NSStringFromSelector(selector);
-    [accelerometerHandlers addObject:selectorString];
-}
-
-- (void)addGyroscopeHandler:(SEL)selector
-{
-    NSString *selectorString = NSStringFromSelector(selector);
-    [gyroscopeHandlers addObject:selectorString];
+    [handlers addObject:handler];
 }
 
 - (void)initializeMotionManager
@@ -51,9 +43,8 @@
                                                                        andY:acceleration.y
                                                                        andZ:acceleration.z];
              
-             for (NSString *selectorString in accelerometerHandlers) {
-                 SEL handler = NSSelectorFromString(selectorString);
-                 [self performSelector:handler withObject:data];
+             for (id<ISensorDataHandler> handler in handlers) {
+                 [handler accelerometerHandler:data];
              }
          }];
     }
@@ -69,9 +60,8 @@
                                                                andDeltaY:rotate.y
                                                                andDeltaZ:rotate.z];
              
-             for (NSString *selectorString in gyroscopeHandlers) {
-                 SEL handler = NSSelectorFromString(selectorString);
-                 [self performSelector:handler withObject:data];
+             for (id<ISensorDataHandler> handler in handlers) {
+                 [handler gyroscopeHandler:data];
              }
          }];
     }

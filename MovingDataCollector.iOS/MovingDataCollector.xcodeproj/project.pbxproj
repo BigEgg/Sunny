@@ -57,6 +57,7 @@
 		10474A631945E5250069A92E /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		107751FF197F6173009697B1 /* MotionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MotionService.h; sourceTree = "<group>"; };
 		10775200197F6173009697B1 /* MotionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MotionService.m; sourceTree = "<group>"; };
+		10775203197FA2AE009697B1 /* ISensorDataHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISensorDataHandler.h; sourceTree = "<group>"; };
 		10A98FC6197E898B0078F445 /* ISensorData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISensorData.h; sourceTree = "<group>"; };
 		10A98FC8197E89BF0078F445 /* Base */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Base; path = Base.lproj/Enums.h; sourceTree = "<group>"; };
 		10A98FC9197E8B250078F445 /* AccelerometerData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccelerometerData.h; sourceTree = "<group>"; };
@@ -127,6 +128,7 @@
 		10474A341945E51A0069A92E /* MovingDataCollector */ = {
 			isa = PBXGroup;
 			children = (
+				10775202197FA28C009697B1 /* Common */,
 				107751FE197F614A009697B1 /* Services */,
 				10A98FCF197E8FB60078F445 /* ViewControllers */,
 				10A98FC5197E894F0078F445 /* Models */,
@@ -174,6 +176,14 @@
 				10775200197F6173009697B1 /* MotionService.m */,
 			);
 			name = Services;
+			sourceTree = "<group>";
+		};
+		10775202197FA28C009697B1 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				10775203197FA2AE009697B1 /* ISensorDataHandler.h */,
+			);
+			name = Common;
 			sourceTree = "<group>";
 		};
 		10A98FC5197E894F0078F445 /* Models */ = {

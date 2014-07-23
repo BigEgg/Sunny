@@ -8,19 +8,20 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreMotion/CoreMotion.h>
+#import "ISensorDataHandler.h"
 
 @interface MotionService : NSObject
 {
-    NSMutableArray *accelerometerHandlers;
-    NSMutableArray *gyroscopeHandlers;
+    NSMutableArray *handlers;
     
     CMMotionManager *motionManager;
     NSOperationQueue *accelerometerQueue;
     NSOperationQueue *gyroscopeQueue;
+    
+    
 }
 
-- (void)addAccelerometerHandler:(SEL)selector;
-- (void)addGyroscopeHandler:(SEL)selector;
+- (void)addHandler:(id<ISensorDataHandler>)handler;
 
 - (void)initializeMotionManager;
 

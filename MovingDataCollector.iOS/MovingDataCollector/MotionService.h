@@ -17,9 +17,10 @@
     CMMotionManager *motionManager;
     NSOperationQueue *accelerometerQueue;
     NSOperationQueue *gyroscopeQueue;
-    
-    
 }
+
+extern float const ACCELEROMETER_UPDATE_TIMES;
+extern float const GYROSCOPE_UPDATE_TIMES;
 
 - (void)addHandler:(id<ISensorDataHandler>)handler;
 

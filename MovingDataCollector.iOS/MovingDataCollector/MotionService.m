@@ -12,6 +12,9 @@
 
 @implementation MotionService
 
+float const ACCELEROMETER_UPDATE_TIMES = 5.0;       //  Update at 5Hz
+float const GYROSCOPE_UPDATE_TIMES = 5.0;           //  Update at 5Hz
+
 - (instancetype)init
 {
     self = [super init];
@@ -29,8 +32,8 @@
 - (void)initializeMotionManager
 {
     motionManager = [[CMMotionManager alloc] init];
-    motionManager.accelerometerUpdateInterval = 1.0 / 5.0; //  Update at 5Hz
-    motionManager.gyroUpdateInterval = 1.0 / 5.0; //  Update at 5Hz
+    motionManager.accelerometerUpdateInterval = 1.0 / ACCELEROMETER_UPDATE_TIMES;
+    motionManager.gyroUpdateInterval = 1.0 / GYROSCOPE_UPDATE_TIMES;
     
     if (motionManager.accelerometerAvailable)
     {

@@ -22,7 +22,7 @@
     return self;
 }
 
-- (instancetype)initWithX:(float)theX andY:(float)theY andZ:(float)theZ
+- (id)initWithX:(float)theX andY:(float)theY andZ:(float)theZ
 {
     self = [super init];
     if (self) {

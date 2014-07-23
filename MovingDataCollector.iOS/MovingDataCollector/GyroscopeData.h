@@ -13,6 +13,8 @@
 
 @property float deltaX, deltaY, deltaZ;
 
+- (id)initWithDeltaX:(float)theDeltaX andDeltaY:(float)theDeltaY andDeltaZ:(float)theDeltaZ;
+
 - (NSString *)toString;
 
 @end

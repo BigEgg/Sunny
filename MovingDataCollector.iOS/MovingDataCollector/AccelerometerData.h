@@ -13,6 +13,8 @@
 
 @property float x, y, z;
 
--(NSString *)toString;
+- (id)initWithX:(float)theX andY:(float)theY andZ:(float)theZ;
+
+- (NSString *)toString;
 
 @end

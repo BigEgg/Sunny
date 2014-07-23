@@ -22,7 +22,7 @@
     return self;
 }
 
-- (instancetype)initWithDeltaX:(float)theDeltaX andDeltaY:(float)theDeltaY andDeltaZ:(float)theDeltaZ
+- (id)initWithDeltaX:(float)theDeltaX andDeltaY:(float)theDeltaY andDeltaZ:(float)theDeltaZ
 {
     self = [super init];
     if (self) {

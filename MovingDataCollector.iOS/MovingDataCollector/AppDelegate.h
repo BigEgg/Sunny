@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MotionService.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
+{
+    MotionService *motionService;
+}
 
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, retain) UITabBarController *tabBarController;

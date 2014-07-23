@@ -11,6 +11,7 @@
 
 @implementation AppDelegate
 
+#pragma mark - Application Lifecycle
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -20,12 +21,15 @@
     SensorDataViewController *sensorDataViewController = [[SensorDataViewController alloc] initWithNibName:@"SensorDataViewController" bundle:nil];
     sensorDataViewController.title = @"Sensor Data";
     
+    [self initMotionService:sensorDataViewController];
+    
     self.tabBarController = [[UITabBarController alloc] init];
     self.tabBarController.viewControllers = [NSArray arrayWithObjects:sensorDataViewController, nil];
     
     self.window.rootViewController = self.tabBarController;
-    
     [self.window makeKeyAndVisible];
+
+    [motionService initializeMotionManager];
     return YES;
 }
 							
@@ -56,4 +60,10 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+#pragma mark - Private Methods
+- (void)initMotionService:(SensorDataViewController *)sensorDataViewController {
+    motionService = [[MotionService alloc] init];
+    [motionService addAccelerometerHandler:sensorDataViewController -> accelerometerHandlerSelector];
+    [motionService addGyroscopeHandler:sensorDataViewController -> gyroscopeHandlerSelector];
+}
 @end

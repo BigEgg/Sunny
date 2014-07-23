@@ -22,11 +22,12 @@
 		10474A641945E5250069A92E /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10474A631945E5250069A92E /* CoreMotion.framework */; };
 		1077520F197FED28009697B1 /* AccelerometerData.m in Sources */ = {isa = PBXBuildFile; fileRef = 1077520A197FED28009697B1 /* AccelerometerData.m */; };
 		10775210197FED28009697B1 /* GyroscopeData.m in Sources */ = {isa = PBXBuildFile; fileRef = 1077520D197FED28009697B1 /* GyroscopeData.m */; };
-		10775217197FED3F009697B1 /* RecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10775212197FED3F009697B1 /* RecordViewController.m */; };
-		10775218197FED3F009697B1 /* RecordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10775213197FED3F009697B1 /* RecordViewController.xib */; };
 		10775219197FED3F009697B1 /* SensorDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10775215197FED3F009697B1 /* SensorDataViewController.m */; };
 		1077521A197FED3F009697B1 /* SensorDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10775216197FED3F009697B1 /* SensorDataViewController.xib */; };
 		1077521D197FED4A009697B1 /* MotionService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1077521C197FED4A009697B1 /* MotionService.m */; };
+		10775222197FEF9B009697B1 /* RecordTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10775220197FEF9B009697B1 /* RecordTableViewController.m */; };
+		10775223197FEF9B009697B1 /* RecordTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10775221197FEF9B009697B1 /* RecordTableViewController.xib */; };
+		10775227197FF19F009697B1 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 10775226197FF19F009697B1 /* Utils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,15 +64,17 @@
 		1077520C197FED28009697B1 /* GyroscopeData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GyroscopeData.h; path = Models/GyroscopeData.h; sourceTree = "<group>"; };
 		1077520D197FED28009697B1 /* GyroscopeData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GyroscopeData.m; path = Models/GyroscopeData.m; sourceTree = "<group>"; };
 		1077520E197FED28009697B1 /* ISensorData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISensorData.h; path = Models/ISensorData.h; sourceTree = "<group>"; };
-		10775211197FED3F009697B1 /* RecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecordViewController.h; path = ViewControllers/RecordViewController.h; sourceTree = "<group>"; };
-		10775212197FED3F009697B1 /* RecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecordViewController.m; path = ViewControllers/RecordViewController.m; sourceTree = "<group>"; };
-		10775213197FED3F009697B1 /* RecordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RecordViewController.xib; path = ViewControllers/RecordViewController.xib; sourceTree = "<group>"; };
 		10775214197FED3F009697B1 /* SensorDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SensorDataViewController.h; path = ViewControllers/SensorDataViewController.h; sourceTree = "<group>"; };
 		10775215197FED3F009697B1 /* SensorDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SensorDataViewController.m; path = ViewControllers/SensorDataViewController.m; sourceTree = "<group>"; };
 		10775216197FED3F009697B1 /* SensorDataViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SensorDataViewController.xib; path = ViewControllers/SensorDataViewController.xib; sourceTree = "<group>"; };
 		1077521B197FED4A009697B1 /* MotionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MotionService.h; path = Services/MotionService.h; sourceTree = "<group>"; };
 		1077521C197FED4A009697B1 /* MotionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MotionService.m; path = Services/MotionService.m; sourceTree = "<group>"; };
 		1077521E197FED54009697B1 /* ISensorDataHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISensorDataHandler.h; path = Common/ISensorDataHandler.h; sourceTree = "<group>"; };
+		1077521F197FEF9B009697B1 /* RecordTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecordTableViewController.h; path = ViewControllers/RecordTableViewController.h; sourceTree = "<group>"; };
+		10775220197FEF9B009697B1 /* RecordTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecordTableViewController.m; path = ViewControllers/RecordTableViewController.m; sourceTree = "<group>"; };
+		10775221197FEF9B009697B1 /* RecordTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RecordTableViewController.xib; path = ViewControllers/RecordTableViewController.xib; sourceTree = "<group>"; };
+		10775225197FF19F009697B1 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = Utils/Utils.h; sourceTree = "<group>"; };
+		10775226197FF19F009697B1 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Utils.m; path = Utils/Utils.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +136,7 @@
 		10474A341945E51A0069A92E /* MovingDataCollector */ = {
 			isa = PBXGroup;
 			children = (
+				10775224197FF173009697B1 /* Utils */,
 				10775202197FA28C009697B1 /* Common */,
 				107751FE197F614A009697B1 /* Services */,
 				10A98FCF197E8FB60078F445 /* ViewControllers */,
@@ -191,6 +195,15 @@
 			name = Common;
 			sourceTree = "<group>";
 		};
+		10775224197FF173009697B1 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				10775225197FF19F009697B1 /* Utils.h */,
+				10775226197FF19F009697B1 /* Utils.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 		10A98FC5197E894F0078F445 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -207,12 +220,12 @@
 		10A98FCF197E8FB60078F445 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				10775211197FED3F009697B1 /* RecordViewController.h */,
-				10775212197FED3F009697B1 /* RecordViewController.m */,
-				10775213197FED3F009697B1 /* RecordViewController.xib */,
 				10775214197FED3F009697B1 /* SensorDataViewController.h */,
 				10775215197FED3F009697B1 /* SensorDataViewController.m */,
 				10775216197FED3F009697B1 /* SensorDataViewController.xib */,
+				1077521F197FEF9B009697B1 /* RecordTableViewController.h */,
+				10775220197FEF9B009697B1 /* RecordTableViewController.m */,
+				10775221197FEF9B009697B1 /* RecordTableViewController.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -296,10 +309,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10775223197FEF9B009697B1 /* RecordTableViewController.xib in Resources */,
 				1077521A197FED3F009697B1 /* SensorDataViewController.xib in Resources */,
 				10474A471945E51A0069A92E /* Images.xcassets in Resources */,
 				10474A391945E51A0069A92E /* InfoPlist.strings in Resources */,
-				10775218197FED3F009697B1 /* RecordViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,11 +332,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				10474A3F1945E51A0069A92E /* AppDelegate.m in Sources */,
+				10775222197FEF9B009697B1 /* RecordTableViewController.m in Sources */,
 				10474A3B1945E51A0069A92E /* main.m in Sources */,
+				10775227197FF19F009697B1 /* Utils.m in Sources */,
 				1077520F197FED28009697B1 /* AccelerometerData.m in Sources */,
 				10775219197FED3F009697B1 /* SensorDataViewController.m in Sources */,
 				1077521D197FED4A009697B1 /* MotionService.m in Sources */,
-				10775217197FED3F009697B1 /* RecordViewController.m in Sources */,
 				10775210197FED28009697B1 /* GyroscopeData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

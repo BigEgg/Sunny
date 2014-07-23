@@ -8,11 +8,10 @@
 
 #import "AccelerometerData.h"
 
-@implementation AccelerometerData 
+@implementation AccelerometerData
 @synthesize x, y, z;
 
-- (instancetype)init
-{
+- (instancetype)init {
     self = [super init];
     if (self) {
         x = 0.0;
@@ -22,8 +21,7 @@
     return self;
 }
 
-- (id)initWithX:(float)theX andY:(float)theY andZ:(float)theZ
-{
+- (id)initWithX:(float)theX andY:(float)theY andZ:(float)theZ {
     self = [super init];
     if (self) {
         x = theX;
@@ -33,14 +31,13 @@
     return self;
 }
 
-- (NSString *)toString
-{
+- (NSString *)toString {
     NSString *xString = [[NSString alloc] initWithFormat:@"%.4f", x];
     NSString *yString = [[NSString alloc] initWithFormat:@"%.4f", y];
     NSString *zString = [[NSString alloc] initWithFormat:@"%.4f", z];
-    
+
     NSString *result = [[NSString alloc] initWithFormat:@"%@, %@, %@", xString, yString, zString];
-    
+
     return result;
 }
 

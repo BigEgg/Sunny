@@ -11,8 +11,7 @@
 @implementation GyroscopeData
 @synthesize deltaX, deltaY, deltaZ;
 
-- (instancetype)init
-{
+- (instancetype)init {
     self = [super init];
     if (self) {
         deltaX = 0.0;
@@ -22,8 +21,7 @@
     return self;
 }
 
-- (id)initWithDeltaX:(float)theDeltaX andDeltaY:(float)theDeltaY andDeltaZ:(float)theDeltaZ
-{
+- (id)initWithDeltaX:(float)theDeltaX andDeltaY:(float)theDeltaY andDeltaZ:(float)theDeltaZ {
     self = [super init];
     if (self) {
         deltaX = theDeltaX;
@@ -33,14 +31,13 @@
     return self;
 }
 
-- (NSString *)toString
-{
+- (NSString *)toString {
     NSString *deltaXString = [[NSString alloc] initWithFormat:@"%.4f", deltaX];
     NSString *deltaYString = [[NSString alloc] initWithFormat:@"%.4f", deltaY];
     NSString *deltaZString = [[NSString alloc] initWithFormat:@"%.4f", deltaZ];
-    
+
     NSString *result = [[NSString alloc] initWithFormat:@"%@, %@, %@", deltaXString, deltaYString, deltaZString];
-    
+
     return result;
 }
 

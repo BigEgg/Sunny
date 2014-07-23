@@ -10,10 +10,9 @@
 #import <CoreMotion/CoreMotion.h>
 #import "ISensorDataHandler.h"
 
-@interface MotionService : NSObject
-{
+@interface MotionService : NSObject {
     NSMutableArray *handlers;
-    
+
     CMMotionManager *motionManager;
     NSOperationQueue *accelerometerQueue;
     NSOperationQueue *gyroscopeQueue;
@@ -22,7 +21,7 @@
 extern float const ACCELEROMETER_UPDATE_TIMES;
 extern float const GYROSCOPE_UPDATE_TIMES;
 
-- (void)addHandler:(id<ISensorDataHandler>)handler;
+- (void)addHandler:(id <ISensorDataHandler>)handler;
 
 - (void)initializeMotionManager;
 

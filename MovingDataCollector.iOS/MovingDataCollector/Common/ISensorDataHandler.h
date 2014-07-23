@@ -13,6 +13,7 @@
 @protocol ISensorDataHandler <NSObject>
 
 - (void)accelerometerHandler:(AccelerometerData *)data;
+
 - (void)gyroscopeHandler:(GyroscopeData *)data;
 
 @end

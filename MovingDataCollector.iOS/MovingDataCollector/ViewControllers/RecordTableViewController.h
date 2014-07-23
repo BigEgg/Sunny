@@ -10,6 +10,6 @@
 
 @interface RecordTableViewController : UITableViewController
 
-@property (strong, nonatomic) NSDictionary *tableViewData;
+@property(strong, nonatomic) NSDictionary *tableViewData;
 
 @end

@@ -17,11 +17,13 @@
 @implementation SensorDataViewController
 
 #pragma mark - View Controller Lifecycle
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        accelerometerHandlerSelector = @selector(accelerometerHandler:);
+        gyroscopeHandlerSelector = @selector(gyroscopeHandler:);
     }
     return self;
 }

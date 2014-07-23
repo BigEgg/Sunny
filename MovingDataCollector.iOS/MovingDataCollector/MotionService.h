@@ -22,4 +22,6 @@
 - (void)addAccelerometerHandler:(SEL)selector;
 - (void)addGyroscopeHandler:(SEL)selector;
 
+- (void)initializeMotionManager;
+
 @end

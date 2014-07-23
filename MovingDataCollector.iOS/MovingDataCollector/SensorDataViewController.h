@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "AccelerometerData.h"
+#import "GyroscopeData.h"
 
 @interface SensorDataViewController : UIViewController
 {
-
+@public
+    SEL accelerometerHandlerSelector;
+    SEL gyroscopeHandlerSelector;
 }
 
 @property (strong, nonatomic) IBOutlet UIView *sectionView;

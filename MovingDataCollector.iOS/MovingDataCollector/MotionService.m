@@ -16,8 +16,8 @@
 {
     self = [super init];
     if (self) {
-        accelerometerHandlers = [NSMutableArray init];
-        gyroscopeHandlers = [NSMutableArray init];
+        accelerometerHandlers = [[NSMutableArray alloc] init];
+        gyroscopeHandlers = [[NSMutableArray alloc] init];
     }
     return self;
 }

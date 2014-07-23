@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "SensorDataViewController.h"
+#import "RecordViewController.h"
 
 @implementation AppDelegate
 
@@ -18,13 +19,16 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor orangeColor];
     
-    SensorDataViewController *sensorDataViewController = [[SensorDataViewController alloc] initWithNibName:@"SensorDataViewController" bundle:nil];
-    sensorDataViewController.title = @"Sensor Data";
+    SensorDataViewController *sensorDataVC = [[SensorDataViewController alloc] initWithNibName:@"SensorDataViewController" bundle:nil];
+    sensorDataVC.title = @"Sensor Data";
+    RecordViewController *recordVC = [[RecordViewController alloc] init];
+    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:recordVC];
+    navVC.title = @"Record Data";
     
-    [self initMotionService:sensorDataViewController];
+    [self initMotionServiceWithSensorDataVC:sensorDataVC];
     
     self.tabBarController = [[UITabBarController alloc] init];
-    self.tabBarController.viewControllers = [NSArray arrayWithObjects:sensorDataViewController, nil];
+    self.tabBarController.viewControllers = [NSArray arrayWithObjects:sensorDataVC, navVC, nil];
     
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
@@ -61,7 +65,7 @@
 }
 
 #pragma mark - Private Methods
-- (void)initMotionService:(SensorDataViewController *)sensorDataViewController {
+- (void)initMotionServiceWithSensorDataVC:(SensorDataViewController *)sensorDataViewController {
     motionService = [[MotionService alloc] init];
     [motionService addHandler:(id<ISensorDataHandler>)sensorDataViewController];
 }

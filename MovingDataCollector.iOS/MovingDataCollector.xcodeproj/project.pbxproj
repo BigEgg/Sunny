@@ -20,6 +20,7 @@
 		10474A581945E51A0069A92E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 10474A561945E51A0069A92E /* InfoPlist.strings */; };
 		10474A5A1945E51A0069A92E /* MovingDataCollectorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 10474A591945E51A0069A92E /* MovingDataCollectorTests.m */; };
 		10474A641945E5250069A92E /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10474A631945E5250069A92E /* CoreMotion.framework */; };
+		10775201197F6173009697B1 /* MotionService.m in Sources */ = {isa = PBXBuildFile; fileRef = 10775200197F6173009697B1 /* MotionService.m */; };
 		10A98FCB197E8B250078F445 /* AccelerometerData.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A98FCA197E8B250078F445 /* AccelerometerData.m */; };
 		10A98FCE197E8D570078F445 /* GyroscopeData.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A98FCD197E8D570078F445 /* GyroscopeData.m */; };
 		10A98FD6197E91790078F445 /* SensorDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A98FD4197E91790078F445 /* SensorDataViewController.m */; };
@@ -54,6 +55,8 @@
 		10474A571945E51A0069A92E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		10474A591945E51A0069A92E /* MovingDataCollectorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MovingDataCollectorTests.m; sourceTree = "<group>"; };
 		10474A631945E5250069A92E /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		107751FF197F6173009697B1 /* MotionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MotionService.h; sourceTree = "<group>"; };
+		10775200197F6173009697B1 /* MotionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MotionService.m; sourceTree = "<group>"; };
 		10A98FC6197E898B0078F445 /* ISensorData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISensorData.h; sourceTree = "<group>"; };
 		10A98FC8197E89BF0078F445 /* Base */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Base; path = Base.lproj/Enums.h; sourceTree = "<group>"; };
 		10A98FC9197E8B250078F445 /* AccelerometerData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccelerometerData.h; sourceTree = "<group>"; };
@@ -124,6 +127,7 @@
 		10474A341945E51A0069A92E /* MovingDataCollector */ = {
 			isa = PBXGroup;
 			children = (
+				107751FE197F614A009697B1 /* Services */,
 				10A98FCF197E8FB60078F445 /* ViewControllers */,
 				10A98FC5197E894F0078F445 /* Models */,
 				10474A3D1945E51A0069A92E /* AppDelegate.h */,
@@ -161,6 +165,15 @@
 				10474A561945E51A0069A92E /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		107751FE197F614A009697B1 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				107751FF197F6173009697B1 /* MotionService.h */,
+				10775200197F6173009697B1 /* MotionService.m */,
+			);
+			name = Services;
 			sourceTree = "<group>";
 		};
 		10A98FC5197E894F0078F445 /* Models */ = {
@@ -233,6 +246,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = jianming.xiao;
 				TargetAttributes = {
+					10474A2A1945E51A0069A92E = {
+						DevelopmentTeam = JF5BGQ8PBC;
+					};
 					10474A4B1945E51A0069A92E = {
 						TestTargetID = 10474A2A1945E51A0069A92E;
 					};
@@ -288,6 +304,7 @@
 				10A98FCE197E8D570078F445 /* GyroscopeData.m in Sources */,
 				10A98FD6197E91790078F445 /* SensorDataViewController.m in Sources */,
 				10A98FCB197E8B250078F445 /* AccelerometerData.m in Sources */,
+				10775201197F6173009697B1 /* MotionService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,10 +429,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MovingDataCollector/MovingDataCollector-Prefix.pch";
 				INFOPLIST_FILE = "MovingDataCollector/MovingDataCollector-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -425,10 +445,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MovingDataCollector/MovingDataCollector-Prefix.pch";
 				INFOPLIST_FILE = "MovingDataCollector/MovingDataCollector-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

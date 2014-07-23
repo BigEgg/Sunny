@@ -7,13 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CoreMotion/CoreMotion.h>
+
 
 @interface SensorDataViewController : UIViewController
 {
-    CMMotionManager *motionManager;
-    NSOperationQueue *accelerometerQueue;
-    NSOperationQueue *gyroscopeQueue;
+
 }
 
 @property (strong, nonatomic) IBOutlet UIView *sectionView;

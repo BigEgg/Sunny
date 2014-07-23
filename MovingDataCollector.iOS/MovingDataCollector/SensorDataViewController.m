@@ -7,6 +7,8 @@
 //
 
 #import "SensorDataViewController.h"
+#import "AccelerometerData.h"
+#import "GyroscopeData.h"
 
 @interface SensorDataViewController ()
 
@@ -30,7 +32,6 @@
     // Do any additional setup after loading the view from its nib.
     
     [self.sectionView addSubview:self.accelerometerView];
-    [self initializeMotionManager];
 }
 
 - (void)didReceiveMemoryWarning
@@ -49,50 +50,31 @@
         [self.sectionView addSubview:self.gyroscopeView];
 }
 
-#pragma mark - Private Methods
-- (void)initializeMotionManager
+#pragma mark - Handlers
+
+- (void)accelerometerHandler:(AccelerometerData *)data
 {
-    motionManager = [[CMMotionManager alloc] init];
-    motionManager.accelerometerUpdateInterval = 1.0 / 5.0; //  Update at 5Hz
-    motionManager.gyroUpdateInterval = 1.0 / 5.0; //  Update at 5Hz
+    _xAccelerometerLabel.text = [NSString stringWithFormat:@"%f", data.x];
+    _xAccelerometerBar.progress = ABS(data.x);
     
-    if (motionManager.accelerometerAvailable)
-    {
-        accelerometerQueue = [NSOperationQueue currentQueue];
-        [motionManager startAccelerometerUpdatesToQueue: accelerometerQueue
-                                            withHandler:^(CMAccelerometerData *accelerometerData, NSError *error)
-         {
-             CMAcceleration acceleration = accelerometerData.acceleration;
-             
-             _xAccelerometerLabel.text = [NSString stringWithFormat:@"%f", acceleration.x];
-             _xAccelerometerBar.progress = ABS(acceleration.x);
-             
-             _yAccelerometerLable.text = [NSString stringWithFormat:@"%f", acceleration.y];
-             _yAccelerometerBar.progress = ABS(acceleration.y);
-             
-             _zAccelerometerLable.text = [NSString stringWithFormat:@"%f", acceleration.z];
-             _zAccelerometerBar.progress = ABS(acceleration.z);
-         }];
-    }
-    if (motionManager.gyroAvailable)
-    {
-        NSLog(@"Gyroscope avaliable.");
-        gyroscopeQueue = [NSOperationQueue currentQueue];
-        [motionManager startGyroUpdatesToQueue: gyroscopeQueue
-                                   withHandler:^(CMGyroData *gyroData, NSError *error)
-         {
-             CMRotationRate rotate = gyroData.rotationRate;
-             
-             _xGyroscopeLable.text = [NSString stringWithFormat:@"%f", rotate.x];
-             _xGyroscopeBar.progress = ABS(rotate.x);
-             
-             _yGyroscopeLable.text = [NSString stringWithFormat:@"%f", rotate.y];
-             _yGyroscopeBar.progress = ABS(rotate.y);
-             
-             _zGyroscopeLable.text = [NSString stringWithFormat:@"%f", rotate.z];
-             _zGyroscopeBar.progress = ABS(rotate.z);
-         }];
-    }
+    _yAccelerometerLable.text = [NSString stringWithFormat:@"%f", data.y];
+    _yAccelerometerBar.progress = ABS(data.y);
     
+    _zAccelerometerLable.text = [NSString stringWithFormat:@"%f", data.z];
+    _zAccelerometerBar.progress = ABS(data.z);
 }
+
+
+- (void)gyroscopeHandler:(GyroscopeData *)data
+{
+    _xGyroscopeLable.text = [NSString stringWithFormat:@"%f", data.deltaX];
+    _xGyroscopeBar.progress = ABS(data.deltaX);
+    
+    _yGyroscopeLable.text = [NSString stringWithFormat:@"%f", data.deltaY];
+    _yGyroscopeBar.progress = ABS(data.deltaY);
+    
+    _zGyroscopeLable.text = [NSString stringWithFormat:@"%f", data.deltaZ];
+    _zGyroscopeBar.progress = ABS(data.deltaZ);
+}
+
 @end

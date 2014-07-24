@@ -1,5 +1,5 @@
 //
-//  RecordTableViewController.h
+//  RecordsTableViewController.h
 //  MovingDataCollector
 //
 //  Created by Jianming Xiao on 7/23/14.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RecordTableViewController : UITableViewController
+@interface RecordsTableViewController : UITableViewController
 
 @property(strong, nonatomic) NSArray *tableViewData;
 

@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "SensorDataViewController.h"
-#import "RecordTableViewController.h"
+#import "RecordsTableViewController.h"
 
 @implementation AppDelegate
 
@@ -21,7 +21,7 @@
 
     SensorDataViewController *sensorDataVC = [[SensorDataViewController alloc] initWithNibName:@"SensorDataViewController" bundle:nil];
     sensorDataVC.title = @"Sensor Data";
-    RecordTableViewController *recordVC = [[RecordTableViewController alloc] init];
+    RecordsTableViewController *recordVC = [[RecordsTableViewController alloc] init];
     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:recordVC];
     navVC.title = @"Record Data";
 

@@ -25,7 +25,7 @@
 		10775219197FED3F009697B1 /* SensorDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10775215197FED3F009697B1 /* SensorDataViewController.m */; };
 		1077521A197FED3F009697B1 /* SensorDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10775216197FED3F009697B1 /* SensorDataViewController.xib */; };
 		1077521D197FED4A009697B1 /* MotionService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1077521C197FED4A009697B1 /* MotionService.m */; };
-		10775222197FEF9B009697B1 /* RecordTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10775220197FEF9B009697B1 /* RecordTableViewController.m */; };
+		10775222197FEF9B009697B1 /* RecordsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10775220197FEF9B009697B1 /* RecordsTableViewController.m */; };
 		10775223197FEF9B009697B1 /* RecordTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10775221197FEF9B009697B1 /* RecordTableViewController.xib */; };
 		10775227197FF19F009697B1 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 10775226197FF19F009697B1 /* Utils.m */; };
 /* End PBXBuildFile section */
@@ -70,8 +70,8 @@
 		1077521B197FED4A009697B1 /* MotionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MotionService.h; path = Services/MotionService.h; sourceTree = "<group>"; };
 		1077521C197FED4A009697B1 /* MotionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MotionService.m; path = Services/MotionService.m; sourceTree = "<group>"; };
 		1077521E197FED54009697B1 /* ISensorDataHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISensorDataHandler.h; path = Common/ISensorDataHandler.h; sourceTree = "<group>"; };
-		1077521F197FEF9B009697B1 /* RecordTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecordTableViewController.h; path = ViewControllers/RecordTableViewController.h; sourceTree = "<group>"; };
-		10775220197FEF9B009697B1 /* RecordTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecordTableViewController.m; path = ViewControllers/RecordTableViewController.m; sourceTree = "<group>"; };
+		1077521F197FEF9B009697B1 /* RecordsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecordsTableViewController.h; path = ViewControllers/RecordsTableViewController.h; sourceTree = "<group>"; };
+		10775220197FEF9B009697B1 /* RecordsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecordsTableViewController.m; path = ViewControllers/RecordsTableViewController.m; sourceTree = "<group>"; };
 		10775221197FEF9B009697B1 /* RecordTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RecordTableViewController.xib; path = ViewControllers/RecordTableViewController.xib; sourceTree = "<group>"; };
 		10775225197FF19F009697B1 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = Utils/Utils.h; sourceTree = "<group>"; };
 		10775226197FF19F009697B1 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Utils.m; path = Utils/Utils.m; sourceTree = "<group>"; };
@@ -223,8 +223,8 @@
 				10775214197FED3F009697B1 /* SensorDataViewController.h */,
 				10775215197FED3F009697B1 /* SensorDataViewController.m */,
 				10775216197FED3F009697B1 /* SensorDataViewController.xib */,
-				1077521F197FEF9B009697B1 /* RecordTableViewController.h */,
-				10775220197FEF9B009697B1 /* RecordTableViewController.m */,
+				1077521F197FEF9B009697B1 /* RecordsTableViewController.h */,
+				10775220197FEF9B009697B1 /* RecordsTableViewController.m */,
 				10775221197FEF9B009697B1 /* RecordTableViewController.xib */,
 			);
 			name = ViewControllers;
@@ -332,7 +332,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				10474A3F1945E51A0069A92E /* AppDelegate.m in Sources */,
-				10775222197FEF9B009697B1 /* RecordTableViewController.m in Sources */,
+				10775222197FEF9B009697B1 /* RecordsTableViewController.m in Sources */,
 				10474A3B1945E51A0069A92E /* main.m in Sources */,
 				10775227197FF19F009697B1 /* Utils.m in Sources */,
 				1077520F197FED28009697B1 /* AccelerometerData.m in Sources */,

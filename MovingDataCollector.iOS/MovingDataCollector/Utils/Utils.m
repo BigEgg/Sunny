@@ -13,42 +13,44 @@
 + (NSString *)phoneStatusToString:(PhoneStatus)phoneStatus {
     NSMutableString *result = [NSMutableString stringWithCapacity:32];
 
-    if ((phoneStatus & Stop) == Stop) {
+    if (phoneStatus == Stop) {
         [result setString:@"Stop"];
+        return result;
     }
-    else if ((phoneStatus & Shake) == Shake) {
+    
+    if (phoneStatus & Shake) {
         [result setString:@"Shake"];
     }
-    else if ((phoneStatus & Run) == Run) {
+    else if (phoneStatus & Run) {
         [result setString:@"Run"];
     }
-    else if ((phoneStatus & Walk) == Walk) {
+    else if (phoneStatus & Walk) {
         [result setString:@"Walk"];
     }
 
-    if ((phoneStatus & Left) == Left) {
+    if (phoneStatus & Left) {
         [result appendString:@"_Left"];
     }
-    else if ((phoneStatus & Right) == Right) {
+    else if (phoneStatus & Right) {
         [result appendString:@"_Right"];
     }
 
-    if ((phoneStatus & Handheld) == Handheld) {
+    if (phoneStatus & Handheld) {
         [result appendString:@"_Handheld"];
     }
-    else if ((phoneStatus & HandheldUsing) == HandheldUsing) {
+    else if (phoneStatus & HandheldUsing) {
         [result appendString:@"_HandheldUsing"];
     }
-    else if ((phoneStatus & BackPocket) == BackPocket) {
+    else if (phoneStatus & BackPocket) {
         [result appendString:@"_BackPocket"];
     }
-    else if ((phoneStatus & Handbag) == Handbag) {
+    else if (phoneStatus & Handbag) {
         [result appendString:@"_Handbag"];
     }
-    else if ((phoneStatus & TrousersFrontPocket) == TrousersFrontPocket) {
+    else if (phoneStatus & TrousersFrontPocket) {
         [result appendString:@"_TrousersFrontPocket"];
     }
-    else if ((phoneStatus & TrousersBackPocket) == TrousersBackPocket) {
+    else if (phoneStatus & TrousersBackPocket) {
         [result appendString:@"_TrousersBackPocket"];
     }
 

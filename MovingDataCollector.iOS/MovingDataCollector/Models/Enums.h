@@ -21,18 +21,18 @@ typedef NS_ENUM(NSUInteger, SensorData) {
 };
 
 typedef NS_ENUM(NSUInteger, PhoneStatus) {
-    Stop = 0x000,
-    Shake = 0x001,
-    Run = 0x010,
-    Walk = 0x011,
+    Stop = 0x0,
+    Shake = 0x1,
+    Run = 0x2,
+    Walk = 0x4,
 
-    Left = 0x0000,
-    Right = 0x1000,
+    Left = 0x10,
+    Right = 0x20,
 
-    Handheld = 0x00000000,
-    HandheldUsing = 0x00010000,
-    BackPocket = 0x00100000,
-    Handbag = 0x00110000,
-    TrousersFrontPocket = 0x01000000,
-    TrousersBackPocket = 0x01010000
+    Handheld = 0x0100,
+    HandheldUsing = 0x0200,
+    BackPocket = 0x0400,
+    Handbag = 0x0800,
+    TrousersFrontPocket = 0x1000,
+    TrousersBackPocket = 0x1100
 };

@@ -11,45 +11,45 @@
 @implementation Utils
 
 + (NSString *)phoneStatusToString:(PhoneStatus)phoneStatus {
-    NSString *result = nil;
+    NSMutableString *result = [NSMutableString stringWithCapacity:32];
 
     if ((phoneStatus & Stop) == Stop) {
-        result = @"Stop";
+        [result setString:@"Stop"];
     }
     else if ((phoneStatus & Shake) == Shake) {
-        result = @"Shake";
+        [result setString:@"Shake"];
     }
     else if ((phoneStatus & Run) == Run) {
-        result = @"Run";
+        [result setString:@"Run"];
     }
     else if ((phoneStatus & Walk) == Walk) {
-        result = @"Walk";
+        [result setString:@"Walk"];
     }
 
     if ((phoneStatus & Left) == Left) {
-        result = [result initWithFormat:@"%@_%@", result, @"Left"];
+        [result appendString:@"_Left"];
     }
     else if ((phoneStatus & Right) == Right) {
-        result = [result initWithFormat:@"%@_%@", result, @"Right"];
+        [result appendString:@"_Right"];
     }
 
     if ((phoneStatus & Handheld) == Handheld) {
-        result = [result initWithFormat:@"%@_%@", result, @"Handheld"];
+        [result appendString:@"_Handheld"];
     }
     else if ((phoneStatus & HandheldUsing) == HandheldUsing) {
-        result = [result initWithFormat:@"%@_%@", result, @"HandheldUsing"];
+        [result appendString:@"_HandheldUsing"];
     }
     else if ((phoneStatus & BackPocket) == BackPocket) {
-        result = [result initWithFormat:@"%@_%@", result, @"BackPocket"];
+        [result appendString:@"_BackPocket"];
     }
     else if ((phoneStatus & Handbag) == Handbag) {
-        result = [result initWithFormat:@"%@_%@", result, @"Handbag"];
+        [result appendString:@"_Handbag"];
     }
     else if ((phoneStatus & TrousersFrontPocket) == TrousersFrontPocket) {
-        result = [result initWithFormat:@"%@_%@", result, @"TrousersFrontPocket"];
+        [result appendString:@"_TrousersFrontPocket"];
     }
     else if ((phoneStatus & TrousersBackPocket) == TrousersBackPocket) {
-        result = [result initWithFormat:@"%@_%@", result, @"TrousersBackPocket"];
+        [result appendString:@"_TrousersBackPocket"];
     }
 
     return result;

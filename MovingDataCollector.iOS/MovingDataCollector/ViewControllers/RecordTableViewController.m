@@ -7,7 +7,6 @@
 //
 
 #import "RecordTableViewController.h"
-#import "Utils.h"
 
 @interface RecordTableViewController ()
 
@@ -41,30 +40,42 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    id sectionInfo = [self.tableViewData objectForKey:[NSString stringWithFormat:@"Section%@", [Utils phoneStatusToString:section]]];
+    id sectionInfo = [self.tableViewData objectForKey:[self sectionToSectionName:section]];
     return [(NSArray *) sectionInfo count];
 }
 
-#pragma Private Methods
-
-- (void)initData {
-    NSArray *sectionStop = [NSArray arrayWithObjects:@"Straight Lines", @"Curves", @"Shapes", nil];
-    NSArray *sectionShake = [NSArray arrayWithObjects:@"Solid Fills", @"Gradient Fills", @"Image & Pattern Fills", nil];
-    NSArray *sectionWalk = [NSArray arrayWithObjects:@"Simple Animations", @"Bounce", @"Other Options", nil];
-    NSArray *sectionRun = [NSArray arrayWithObjects:@"Simple Animations", @"Bounce", @"Other Options", nil];
-    self.tableViewData = [NSDictionary dictionaryWithObjectsAndKeys:sectionStop, @"sectionStop", sectionShake, @"sectionShake", sectionWalk, @"sectionWalk", sectionRun, @"sectionRun", nil];
-}
-
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    static NSString *CellIdentifier = @"Cell";
     
-    // Configure the cell...
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        // Common to all cells
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    // Configure individual cells
+    id section = [self.tableViewData objectForKey:[self sectionToSectionName:indexPath.section]];
+    NSString *rowLabel = [section objectAtIndex:indexPath.row];
+    cell.textLabel.text = rowLabel;
     
     return cell;
 }
-*/
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    switch (section) {
+        case 0:
+            return @"Stop Records";
+        case 1:
+            return @"Shake Records";
+        case 2:
+            return @"Walk Records";
+        case 3:
+            return @"Run Records";
+        default:
+            return nil;
+    }
+}
 
 /*
 // Override to support conditional editing of the table view.
@@ -104,7 +115,7 @@
 }
 */
 
-/*
+
 #pragma mark - Table view delegate
 
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
@@ -112,13 +123,45 @@
 {
     // Navigation logic may go here, for example:
     // Create the next view controller.
-    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];
+    //<#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];
     
     // Pass the selected object to the new view controller.
     
     // Push the view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
+    //[self.navigationController pushViewController:detailViewController animated:YES];
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-*/
+
+
+#pragma Private Methods
+
+- (void)initData {
+    NSArray *sectionStop = [NSArray arrayWithObjects:@"Straight Lines", @"Curves", @"Shapes", nil];
+    NSArray *sectionShake = [NSArray arrayWithObjects:@"Solid Fills", @"Gradient Fills", @"Image & Pattern Fills", nil];
+    NSArray *sectionWalk = [NSArray arrayWithObjects:@"Simple Animations", @"Bounce", @"Other Options", nil];
+    NSArray *sectionRun = [NSArray arrayWithObjects:@"Simple Animations", @"Bounce", @"Other Options", nil];
+    self.tableViewData = [NSDictionary dictionaryWithObjectsAndKeys:
+                          sectionStop, [self sectionToSectionName:0],
+                          sectionShake, [self sectionToSectionName:1],
+                          sectionWalk, [self sectionToSectionName:2],
+                          sectionRun, [self sectionToSectionName:3],
+                          nil];
+}
+
+- (NSString *)sectionToSectionName:(NSInteger)sectionId {
+    switch (sectionId) {
+        case 0:
+            return @"sectionStop";
+        case 1:
+            return @"sectionShake";
+        case 2:
+            return @"sectionWalk";
+        case 3:
+            return @"sectionRun";
+        default:
+            return nil;
+    }
+}
 
 @end

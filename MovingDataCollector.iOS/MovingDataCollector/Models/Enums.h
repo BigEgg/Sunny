@@ -31,7 +31,7 @@ typedef NS_ENUM(NSUInteger, PhoneStatus) {
 
     Handheld = 0x0100,
     HandheldUsing = 0x0200,
-    BackPocket = 0x0400,
+    Pocket = 0x0400,
     Handbag = 0x0800,
     TrousersFrontPocket = 0x1000,
     TrousersBackPocket = 0x1100

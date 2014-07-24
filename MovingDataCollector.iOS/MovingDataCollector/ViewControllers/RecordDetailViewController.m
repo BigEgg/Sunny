@@ -35,4 +35,20 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)phoneTypeMovingChanged:(id)sender {
+}
+
+- (IBAction)phoneTypeSideChanged:(id)sender {
+}
+- (IBAction)phoneStatusChanged:(id)sender {
+}
+
+- (IBAction)stopRecord:(id)sender {
+}
+
+- (IBAction)startRecord:(id)sender {
+}
+
+- (IBAction)cancelRecord:(id)sender {
+}
 @end

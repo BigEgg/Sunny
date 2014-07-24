@@ -10,4 +10,16 @@
 
 @interface RecordDetailViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UISegmentedControl *phoneMovingSegment;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *phoneSideSegment;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *phonePositionSegment;
+
+@property (strong, nonatomic) IBOutlet UILabel *recordTimeLable;
+
+- (IBAction)phoneStatusChanged:(id)sender;
+
+- (IBAction)stopRecord:(id)sender;
+- (IBAction)startRecord:(id)sender;
+- (IBAction)cancelRecord:(id)sender;
+
 @end

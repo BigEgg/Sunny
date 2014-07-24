@@ -38,11 +38,11 @@
     if (phoneStatus & Handheld) {
         [result appendString:@"_Handheld"];
     }
-    else if (phoneStatus & HandheldUsing) {
-        [result appendString:@"_HandheldUsing"];
+    else if (phoneStatus & Using) {
+        [result appendString:@"_Using"];
     }
-    else if (phoneStatus & BackPocket) {
-        [result appendString:@"_BackPocket"];
+    else if (phoneStatus & Pocket) {
+        [result appendString:@"_Pocket"];
     }
     else if (phoneStatus & Handbag) {
         [result appendString:@"_Handbag"];

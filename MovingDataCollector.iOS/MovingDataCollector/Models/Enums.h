@@ -17,7 +17,7 @@ typedef NS_ENUM(NSUInteger, PhoneType) {
 
 typedef NS_ENUM(NSUInteger, SensorData) {
     Accelerometer = 1,
-    Gyrometer = 2
+    Gyroscope = 2
 };
 
 typedef NS_ENUM(NSUInteger, PhoneStatus) {
@@ -30,7 +30,7 @@ typedef NS_ENUM(NSUInteger, PhoneStatus) {
     Right = 0x20,
 
     Handheld = 0x0100,
-    HandheldUsing = 0x0200,
+    Using = 0x0200,
     Pocket = 0x0400,
     Handbag = 0x0800,
     TrousersFrontPocket = 0x1000,

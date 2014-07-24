@@ -28,6 +28,8 @@
 		10775222197FEF9B009697B1 /* RecordsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10775220197FEF9B009697B1 /* RecordsTableViewController.m */; };
 		10775223197FEF9B009697B1 /* RecordTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10775221197FEF9B009697B1 /* RecordTableViewController.xib */; };
 		10775227197FF19F009697B1 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 10775226197FF19F009697B1 /* Utils.m */; };
+		1077522B1980FD3C009697B1 /* RecordDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 107752291980FD3C009697B1 /* RecordDetailViewController.m */; };
+		1077522C1980FD3C009697B1 /* RecordDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1077522A1980FD3C009697B1 /* RecordDetailViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +77,9 @@
 		10775221197FEF9B009697B1 /* RecordTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RecordTableViewController.xib; path = ViewControllers/RecordTableViewController.xib; sourceTree = "<group>"; };
 		10775225197FF19F009697B1 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = Utils/Utils.h; sourceTree = "<group>"; };
 		10775226197FF19F009697B1 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Utils.m; path = Utils/Utils.m; sourceTree = "<group>"; };
+		107752281980FD3C009697B1 /* RecordDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecordDetailViewController.h; path = ViewControllers/RecordDetailViewController.h; sourceTree = "<group>"; };
+		107752291980FD3C009697B1 /* RecordDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecordDetailViewController.m; path = ViewControllers/RecordDetailViewController.m; sourceTree = "<group>"; };
+		1077522A1980FD3C009697B1 /* RecordDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RecordDetailViewController.xib; path = ViewControllers/RecordDetailViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +231,9 @@
 				1077521F197FEF9B009697B1 /* RecordsTableViewController.h */,
 				10775220197FEF9B009697B1 /* RecordsTableViewController.m */,
 				10775221197FEF9B009697B1 /* RecordTableViewController.xib */,
+				107752281980FD3C009697B1 /* RecordDetailViewController.h */,
+				107752291980FD3C009697B1 /* RecordDetailViewController.m */,
+				1077522A1980FD3C009697B1 /* RecordDetailViewController.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -309,6 +317,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1077522C1980FD3C009697B1 /* RecordDetailViewController.xib in Resources */,
 				10775223197FEF9B009697B1 /* RecordTableViewController.xib in Resources */,
 				1077521A197FED3F009697B1 /* SensorDataViewController.xib in Resources */,
 				10474A471945E51A0069A92E /* Images.xcassets in Resources */,
@@ -333,6 +342,7 @@
 			files = (
 				10474A3F1945E51A0069A92E /* AppDelegate.m in Sources */,
 				10775222197FEF9B009697B1 /* RecordsTableViewController.m in Sources */,
+				1077522B1980FD3C009697B1 /* RecordDetailViewController.m in Sources */,
 				10474A3B1945E51A0069A92E /* main.m in Sources */,
 				10775227197FF19F009697B1 /* Utils.m in Sources */,
 				1077520F197FED28009697B1 /* AccelerometerData.m in Sources */,

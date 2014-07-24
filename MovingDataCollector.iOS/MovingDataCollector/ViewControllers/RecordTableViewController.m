@@ -39,12 +39,11 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [self.tableViewData count];
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    id sectionInfo = [self.tableViewData objectForKey:[self sectionToSectionName:section]];
-    return [(NSArray *) sectionInfo count];
+    return [_tableViewData count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -54,31 +53,17 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         // Common to all cells
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
     // Configure individual cells
-    id section = [self.tableViewData objectForKey:[self sectionToSectionName:indexPath.section]];
-    NSString *rowLabel = [section objectAtIndex:indexPath.row];
+    NSString *rowLabel = [self.tableViewData objectAtIndex:indexPath.row];
     cell.textLabel.text = rowLabel;
+    cell.detailTextLabel.text = @"sometype";
     
     return cell;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    switch (section) {
-        case 0:
-            return @"Stop Records";
-        case 1:
-            return @"Shake Records";
-        case 2:
-            return @"Walk Records";
-        case 3:
-            return @"Run Records";
-        default:
-            return nil;
-    }
-}
 
 /*
 // Override to support conditional editing of the table view.
@@ -139,31 +124,7 @@
 #pragma Private Methods
 
 - (void)initData {
-    NSArray *sectionStop = [NSArray arrayWithObjects:@"Straight Lines", @"Curves", @"Shapes", nil];
-    NSArray *sectionShake = [NSArray arrayWithObjects:@"Solid Fills", @"Gradient Fills", @"Image & Pattern Fills", nil];
-    NSArray *sectionWalk = [NSArray arrayWithObjects:@"Simple Animations", @"Bounce", @"Other Options", nil];
-    NSArray *sectionRun = [NSArray arrayWithObjects:@"Simple Animations", @"Bounce", @"Other Options", nil];
-    self.tableViewData = [NSDictionary dictionaryWithObjectsAndKeys:
-                          sectionStop, [self sectionToSectionName:0],
-                          sectionShake, [self sectionToSectionName:1],
-                          sectionWalk, [self sectionToSectionName:2],
-                          sectionRun, [self sectionToSectionName:3],
-                          nil];
-}
-
-- (NSString *)sectionToSectionName:(NSInteger)sectionId {
-    switch (sectionId) {
-        case 0:
-            return @"sectionStop";
-        case 1:
-            return @"sectionShake";
-        case 2:
-            return @"sectionWalk";
-        case 3:
-            return @"sectionRun";
-        default:
-            return nil;
-    }
+    self.tableViewData = [NSArray arrayWithObjects:@"abc", @"bcd"];
 }
 
 - (void)startNewRecord {

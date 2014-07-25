@@ -13,6 +13,7 @@ namespace Noodum.Wokamon.Sunny.SensorDataCollector.Controllers
     public class SensorDataController : ApiController
     {
         // POST api/sensordata/accelerometer
+        [HttpPost]
         public HttpResponseMessage Accelerometer([FromBody]DataPackage<AccelerometerData> data)
         {
             if (data == null) { throw new ArgumentNullException("data cannot be null"); }
@@ -28,6 +29,7 @@ namespace Noodum.Wokamon.Sunny.SensorDataCollector.Controllers
         }
 
         // POST api/sensordata/gyrosensor
+        [HttpPost]
         public HttpResponseMessage Gyrosensor([FromBody] DataPackage<GyrosensorData> data)
         {
             if (data == null) { throw new ArgumentNullException("data cannot be null"); }

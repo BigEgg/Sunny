@@ -21,10 +21,12 @@ typedef NS_ENUM(NSUInteger, SensorData) {
 };
 
 typedef NS_ENUM(NSUInteger, PhoneStatus) {
-    Stop = 0x0,
-    Shake = 0x1,
-    Run = 0x2,
-    Walk = 0x4,
+    None = 0x0,
+    
+    Stop = 0x1,
+    Shake = 0x2,
+    Run = 0x4,
+    Walk = 0x8,
 
     Left = 0x10,
     Right = 0x20,

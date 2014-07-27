@@ -14,20 +14,22 @@
 
 @implementation RecordDetailViewController
 
+@synthesize accelerometerDataPackage, gyroscopeDataPackage;
+
 #pragma mark - View LifeCycle
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self->accelerometerDataPackage = [[DataPackage alloc] init];
-        accelerometerDataPackage.phoneData = [[PhoneData alloc] init];
-        accelerometerDataPackage.data = (NSMutableArray <ISensorData> *) [[NSMutableArray alloc] init];
-        accelerometerDataPackage.phoneData.phoneStats = Stop;
+        self.accelerometerDataPackage = [[DataPackage alloc] init];
+        self.accelerometerDataPackage.phoneData = [[PhoneData alloc] init];
+        self.accelerometerDataPackage.data = (NSMutableArray <ISensorData> *) [[NSMutableArray alloc] init];
+        self.accelerometerDataPackage.phoneData.phoneStats = Stop;
 
-        self->gyroscopeDataPackage = [[DataPackage alloc] init];
-        gyroscopeDataPackage.phoneData = [[PhoneData alloc] init];
-        gyroscopeDataPackage.data = (NSMutableArray <ISensorData> *) [[NSMutableArray alloc] init];
-        gyroscopeDataPackage.phoneData.phoneStats = Stop;
+        self.gyroscopeDataPackage = [[DataPackage alloc] init];
+        self.gyroscopeDataPackage.phoneData = [[PhoneData alloc] init];
+        self.gyroscopeDataPackage.data = (NSMutableArray <ISensorData> *) [[NSMutableArray alloc] init];
+        self.gyroscopeDataPackage.phoneData.phoneStats = Stop;
 
         self.isSentRecord = NO;
         self.isStartRecord = YES;
@@ -115,8 +117,8 @@
 
     }
 
-    accelerometerDataPackage.phoneData.phoneStats = phoneStatus;
-    gyroscopeDataPackage.phoneData.phoneStats = phoneStatus;
+    self.accelerometerDataPackage.phoneData.phoneStats = phoneStatus;
+    self.gyroscopeDataPackage.phoneData.phoneStats = phoneStatus;
 }
 
 - (IBAction)stopRecord:(id)sender {
@@ -133,8 +135,8 @@
 
 - (IBAction)cancelRecord:(id)sender {
     self.isStartRecord = NO;
-    [self -> accelerometerDataPackage.data removeAllObjects];
-    [self -> gyroscopeDataPackage.data removeAllObjects];
+    [self.accelerometerDataPackage.data removeAllObjects];
+    [self.gyroscopeDataPackage.data removeAllObjects];
     
     [self setButtonsStats];
 }
@@ -148,7 +150,7 @@
 #pragma mark - Private Methods
 - (void)setButtonsStats
 {
-    bool haveData = [self -> accelerometerDataPackage.data count];
+    bool haveData = [self.accelerometerDataPackage.data count];
     
     self.startButton.enabled = NO;
     self.stopButton.enabled = NO;

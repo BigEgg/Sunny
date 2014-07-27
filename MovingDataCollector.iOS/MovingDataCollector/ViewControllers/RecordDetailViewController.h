@@ -10,11 +10,12 @@
 #import "DataPackage.h"
 
 @interface RecordDetailViewController : UIViewController {
-    DataPackage *accelerometerDataPackage;
-    DataPackage *gyroscopeDataPackage;
 }
 
-@property NSString viewTitle;
+@property DataPackage *accelerometerDataPackage;
+@property DataPackage *gyroscopeDataPackage;
+
+@property NSString *viewTitle;
 
 @property bool isStartRecord;
 @property bool isSentRecord;
@@ -25,11 +26,10 @@
 
 @property(strong, nonatomic) IBOutlet UILabel *recordTimeLable;
 
-@property (strong, nonatomic) IBOutlet UIButton *stopButton;
-@property (strong, nonatomic) IBOutlet UIButton *startButton;
-@property (strong, nonatomic) IBOutlet UIButton *cancelButton;
-@property (strong, nonatomic) IBOutlet UIButton *sendButton;
-
+@property(strong, nonatomic) IBOutlet UIButton *stopButton;
+@property(strong, nonatomic) IBOutlet UIButton *startButton;
+@property(strong, nonatomic) IBOutlet UIButton *cancelButton;
+@property(strong, nonatomic) IBOutlet UIButton *sendButton;
 
 
 - (IBAction)phoneStatusChanged:(id)sender;

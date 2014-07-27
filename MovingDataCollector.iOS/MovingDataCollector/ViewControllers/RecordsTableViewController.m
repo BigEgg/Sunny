@@ -7,6 +7,7 @@
 //
 
 #import "RecordsTableViewController.h"
+#import "RecordDetailViewController.h"
 
 @interface RecordsTableViewController ()
 
@@ -117,14 +118,17 @@
     // Push the view controller.
     //[self.navigationController pushViewController:detailViewController animated:YES];
     
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    RecordDetailViewController *recordDetailVC = [[RecordDetailViewController alloc] init];
+    recordDetailVC.viewTitle = [[tableView cellForRowAtIndexPath:indexPath] textLabel].text;
+    
+    [self.navigationController pushViewController:recordDetailVC animated:YES];
 }
 
 
 #pragma Private Methods
 
 - (void)initData {
-    self.tableViewData = [NSArray arrayWithObjects:@"abc", @"bcd"];
+    self.tableViewData = [NSArray arrayWithObjects:@"abc", @"bcd", nil];
 }
 
 - (void)startNewRecord {

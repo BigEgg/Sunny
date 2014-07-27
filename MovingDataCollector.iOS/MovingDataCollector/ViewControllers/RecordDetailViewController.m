@@ -29,8 +29,10 @@
         gyroscopeDataPackage.data = (NSMutableArray <ISensorData> *) [[NSMutableArray alloc] init];
         gyroscopeDataPackage.phoneData.phoneStats = Stop;
 
-        self.canEdit = NO;
+        self.isSentRecord = NO;
         self.isStartRecord = YES;
+        
+        [self setButtonsStats];
     }
     return self;
 }
@@ -38,6 +40,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    if (!self.viewTitle) {
+        self.title = @"New Record";
+    } else {
+        self.title = self.viewTitle;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -114,15 +122,58 @@
 - (IBAction)stopRecord:(id)sender {
     self.isStartRecord = NO;
 
+    [self setButtonsStats];
 }
 
 - (IBAction)startRecord:(id)sender {
     self.isStartRecord = YES;
-
+    
+    [self setButtonsStats];
 }
 
 - (IBAction)cancelRecord:(id)sender {
     self.isStartRecord = NO;
-
+    [self -> accelerometerDataPackage.data removeAllObjects];
+    [self -> gyroscopeDataPackage.data removeAllObjects];
+    
+    [self setButtonsStats];
 }
+
+- (IBAction)sendRecord:(id)sender {
+    self.isSentRecord = YES;
+    
+    [self setButtonsStats];
+}
+
+#pragma mark - Private Methods
+- (void)setButtonsStats
+{
+    bool haveData = [self -> accelerometerDataPackage.data count];
+    
+    self.startButton.enabled = NO;
+    self.stopButton.enabled = NO;
+    self.cancelButton.enabled = NO;
+    self.sendButton.enabled = NO;
+    
+    if (!haveData) {
+        self.startButton.enabled = YES;
+        return;
+    }
+    
+    if (self.isStartRecord) {
+        self.stopButton.enabled = YES;
+        self.cancelButton.enabled = YES;
+        return;
+    }
+    
+    if (haveData && !self.isStartRecord && !self.isSentRecord) {
+        self.sendButton.enabled = YES;
+        return;
+    } else {
+        self.sendButton.enabled = NO;
+        self.sendButton.titleLabel.text = @"Sent";
+    }
+}
+
+
 @end

@@ -6,10 +6,14 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RecordDetailViewController">
             <connections>
+                <outlet property="cancelButton" destination="Jh3-0b-JpJ" id="vkI-za-jFg"/>
                 <outlet property="phoneMovingSegment" destination="59d-wc-1kM" id="dEe-tr-K3q"/>
                 <outlet property="phonePositionSegment" destination="2Xc-A0-lzq" id="koJ-WS-XsR"/>
                 <outlet property="phoneSideSegment" destination="2NW-zt-f0X" id="aJr-57-zwB"/>
                 <outlet property="recordTimeLable" destination="pXB-Tl-9e3" id="PYZ-Xt-u1Q"/>
+                <outlet property="sendButton" destination="jWu-cu-4gi" id="RGQ-Hl-BMg"/>
+                <outlet property="startButton" destination="9D0-ck-03C" id="5Tg-SC-8XN"/>
+                <outlet property="stopButton" destination="FGe-l5-O1R" id="NrG-B9-os4"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -68,7 +72,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jh3-0b-JpJ">
-                    <rect key="frame" x="240" y="317" width="60" height="30"/>
+                    <rect key="frame" x="156" y="317" width="60" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Cancel">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -78,7 +82,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9D0-ck-03C">
-                    <rect key="frame" x="130" y="317" width="60" height="30"/>
+                    <rect key="frame" x="88" y="317" width="60" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Start">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -100,6 +104,16 @@
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jWu-cu-4gi">
+                    <rect key="frame" x="224" y="317" width="60" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Send">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="sendRecord:" destination="-1" eventType="touchUpInside" id="oI8-Ky-cxY"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>

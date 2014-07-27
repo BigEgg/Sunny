@@ -14,14 +14,23 @@
     DataPackage *gyroscopeDataPackage;
 }
 
+@property NSString viewTitle;
+
 @property bool isStartRecord;
-@property bool canEdit;
+@property bool isSentRecord;
 
 @property(strong, nonatomic) IBOutlet UISegmentedControl *phoneMovingSegment;
 @property(strong, nonatomic) IBOutlet UISegmentedControl *phoneSideSegment;
 @property(strong, nonatomic) IBOutlet UISegmentedControl *phonePositionSegment;
 
 @property(strong, nonatomic) IBOutlet UILabel *recordTimeLable;
+
+@property (strong, nonatomic) IBOutlet UIButton *stopButton;
+@property (strong, nonatomic) IBOutlet UIButton *startButton;
+@property (strong, nonatomic) IBOutlet UIButton *cancelButton;
+@property (strong, nonatomic) IBOutlet UIButton *sendButton;
+
+
 
 - (IBAction)phoneStatusChanged:(id)sender;
 
@@ -30,5 +39,7 @@
 - (IBAction)startRecord:(id)sender;
 
 - (IBAction)cancelRecord:(id)sender;
+
+- (IBAction)sendRecord:(id)sender;
 
 @end

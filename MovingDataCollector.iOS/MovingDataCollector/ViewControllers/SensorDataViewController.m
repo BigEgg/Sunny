@@ -46,7 +46,7 @@
         [self.sectionView addSubview:self.gyroscopeView];
 }
 
-#pragma mark - Handlers
+#pragma mark - Sensor Data Handlers
 
 - (void)accelerometerHandler:(AccelerometerData *)data {
     _xAccelerometerLabel.text = [NSString stringWithFormat:@"%f", data.x];

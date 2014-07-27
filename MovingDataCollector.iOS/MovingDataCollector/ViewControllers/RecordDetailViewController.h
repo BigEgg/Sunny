@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "DataPackage.h"
+#import "ISensorDataHandler.h"
 
-@interface RecordDetailViewController : UIViewController {
+@interface RecordDetailViewController : UIViewController <ISensorDataHandler> {
 }
 
 @property DataPackage *accelerometerDataPackage;

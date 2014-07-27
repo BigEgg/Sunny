@@ -40,14 +40,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
+
     if (!self.fileName) {
         self.title = @"New Record";
     } else {
         self.title = self.fileName;
     }
-    
-    
+
+
     [self SetUIControls];
 }
 
@@ -130,7 +130,7 @@
 
 - (IBAction)startRecord:(id)sender {
     self.isStartRecord = YES;
-    
+
     [self SetUIControls];
 }
 
@@ -138,17 +138,18 @@
     self.isStartRecord = NO;
     [self.accelerometerDataPackage.data removeAllObjects];
     [self.gyroscopeDataPackage.data removeAllObjects];
-    
+
     [self SetUIControls];
 }
 
 - (IBAction)sendRecord:(id)sender {
     self.isSentRecord = YES;
-    
+
     [self SetUIControls];
 }
 
 #pragma mark - Private Methods
+
 - (void)SetUIControls {
     [self setButtonsStats];
     [self setSegmentStats];
@@ -156,24 +157,24 @@
 
 
 - (void)setButtonsStats {
-    bool haveData = [self.accelerometerDataPackage.data count];
-    
+    bool haveData = [self.accelerometerDataPackage.data count] > 0;
+
     self.startButton.enabled = NO;
     self.stopButton.enabled = NO;
     self.cancelButton.enabled = NO;
     self.sendButton.enabled = NO;
-    
+
     if (!haveData && !self.isStartRecord) {
         self.startButton.enabled = YES;
         return;
     }
-    
+
     if (self.isStartRecord) {
         self.stopButton.enabled = YES;
         self.cancelButton.enabled = YES;
         return;
     }
-    
+
     if (haveData && !self.isStartRecord && !self.isSentRecord) {
         self.sendButton.enabled = YES;
         return;
@@ -184,17 +185,68 @@
 }
 
 - (void)setSegmentStats {
-    bool haveData = [self.accelerometerDataPackage.data count];
-    
+    bool haveData = [self.accelerometerDataPackage.data count] > 0;
+
     self.phoneMovingSegment.enabled = NO;
     self.phonePositionSegment.enabled = NO;
     self.phoneSideSegment.enabled = NO;
-    
+
     if (!haveData && !self.isStartRecord) {
         self.phoneMovingSegment.enabled = YES;
         self.phonePositionSegment.enabled = YES;
         self.phoneSideSegment.enabled = YES;
+        return;
+    } else {
+        PhoneStatus phoneStatus = self.accelerometerDataPackage.phoneData.phoneStats;
+        NSInteger selectIndex = 0;
+
+        if (phoneStatus & Stop) {
+            selectIndex = 0;
+        } else if (phoneStatus & Shake) {
+            selectIndex = 1;
+        } else if (phoneStatus & Run) {
+            selectIndex = 2;
+        } else if (phoneStatus & Walk) {
+            selectIndex = 3;
+        }
+        self.phoneMovingSegment.selectedSegmentIndex = selectIndex;
+
+        selectIndex = 0;
+        if (phoneStatus & Left) {
+            selectIndex = 0;
+        } else if (phoneStatus & Right) {
+            selectIndex = 1;
+        }
+        self.phoneSideSegment.selectedSegmentIndex = selectIndex;
+
+        selectIndex = 0;
+        if (phoneStatus & Handheld) {
+            selectIndex = 0;
+        } else if (phoneStatus & Using) {
+            selectIndex = 1;
+        } else if (phoneStatus & Pocket) {
+            selectIndex = 2;
+        } else if (phoneStatus & Handbag) {
+            selectIndex = 3;
+        } else if (phoneStatus & TrousersFrontPocket) {
+            selectIndex = 4;
+        } else if (phoneStatus & TrousersBackPocket) {
+            selectIndex = 5;
+        }
+        self.phonePositionSegment.selectedSegmentIndex = selectIndex;
     }
+}
+
+
+#pragma mark - Sensor Data Handlers
+
+- (void)accelerometerHandler:(AccelerometerData *)data {
+    [self.accelerometerDataPackage.data addObject:data];
+}
+
+
+- (void)gyroscopeHandler:(GyroscopeData *)data {
+    [self.gyroscopeDataPackage.data addObject:data];
 }
 
 @end

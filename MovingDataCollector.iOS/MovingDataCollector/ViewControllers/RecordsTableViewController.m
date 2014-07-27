@@ -119,7 +119,7 @@
     //[self.navigationController pushViewController:detailViewController animated:YES];
     
     RecordDetailViewController *recordDetailVC = [[RecordDetailViewController alloc] init];
-    recordDetailVC.viewTitle = [[tableView cellForRowAtIndexPath:indexPath] textLabel].text;
+    recordDetailVC.fileName = [[tableView cellForRowAtIndexPath:indexPath] textLabel].text;
     
     [self.navigationController pushViewController:recordDetailVC animated:YES];
 }

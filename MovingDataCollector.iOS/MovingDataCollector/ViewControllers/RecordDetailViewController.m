@@ -32,9 +32,7 @@
         self.gyroscopeDataPackage.phoneData.phoneStats = Stop;
 
         self.isSentRecord = NO;
-        self.isStartRecord = YES;
-        
-        [self setButtonsStats];
+        self.isStartRecord = NO;
     }
     return self;
 }
@@ -43,11 +41,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    if (!self.viewTitle) {
+    if (!self.fileName) {
         self.title = @"New Record";
     } else {
-        self.title = self.viewTitle;
+        self.title = self.fileName;
     }
+    
+    
+    [self SetUIControls];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -124,13 +125,13 @@
 - (IBAction)stopRecord:(id)sender {
     self.isStartRecord = NO;
 
-    [self setButtonsStats];
+    [self SetUIControls];
 }
 
 - (IBAction)startRecord:(id)sender {
     self.isStartRecord = YES;
     
-    [self setButtonsStats];
+    [self SetUIControls];
 }
 
 - (IBAction)cancelRecord:(id)sender {
@@ -138,18 +139,23 @@
     [self.accelerometerDataPackage.data removeAllObjects];
     [self.gyroscopeDataPackage.data removeAllObjects];
     
-    [self setButtonsStats];
+    [self SetUIControls];
 }
 
 - (IBAction)sendRecord:(id)sender {
     self.isSentRecord = YES;
     
-    [self setButtonsStats];
+    [self SetUIControls];
 }
 
 #pragma mark - Private Methods
-- (void)setButtonsStats
-{
+- (void)SetUIControls {
+    [self setButtonsStats];
+    [self setSegmentStats];
+}
+
+
+- (void)setButtonsStats {
     bool haveData = [self.accelerometerDataPackage.data count];
     
     self.startButton.enabled = NO;
@@ -157,7 +163,7 @@
     self.cancelButton.enabled = NO;
     self.sendButton.enabled = NO;
     
-    if (!haveData) {
+    if (!haveData && !self.isStartRecord) {
         self.startButton.enabled = YES;
         return;
     }
@@ -177,5 +183,18 @@
     }
 }
 
+- (void)setSegmentStats {
+    bool haveData = [self.accelerometerDataPackage.data count];
+    
+    self.phoneMovingSegment.enabled = NO;
+    self.phonePositionSegment.enabled = NO;
+    self.phoneSideSegment.enabled = NO;
+    
+    if (!haveData && !self.isStartRecord) {
+        self.phoneMovingSegment.enabled = YES;
+        self.phonePositionSegment.enabled = YES;
+        self.phoneSideSegment.enabled = YES;
+    }
+}
 
 @end

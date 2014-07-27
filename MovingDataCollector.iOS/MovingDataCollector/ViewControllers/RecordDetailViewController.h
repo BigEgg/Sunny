@@ -15,7 +15,7 @@
 @property DataPackage *accelerometerDataPackage;
 @property DataPackage *gyroscopeDataPackage;
 
-@property NSString *viewTitle;
+@property NSString *fileName;
 
 @property bool isStartRecord;
 @property bool isSentRecord;

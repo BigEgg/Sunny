@@ -132,7 +132,10 @@
 }
 
 - (void)startNewRecord {
+    RecordDetailViewController *recordDetailVC = [[RecordDetailViewController alloc] init];
+    recordDetailVC.fileName = @"New Record";
     
+    [self.navigationController pushViewController:recordDetailVC animated:YES];
 }
 
 @end

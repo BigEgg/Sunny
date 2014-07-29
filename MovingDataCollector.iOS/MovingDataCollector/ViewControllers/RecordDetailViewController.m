@@ -7,6 +7,7 @@
 //
 
 #import "RecordDetailViewController.h"
+#import "MotionService.h"
 
 @interface RecordDetailViewController ()
 
@@ -15,6 +16,9 @@
 @implementation RecordDetailViewController
 
 @synthesize accelerometerDataPackage, gyroscopeDataPackage;
+
+int const firstSkipSeconds = 10;
+int const lastSkipSeconds = 10;
 
 #pragma mark - View LifeCycle
 
@@ -126,6 +130,12 @@
     self.isStartRecord = NO;
 
     [self SetUIControls];
+    
+    
+    [self.accelerometerDataPackage.data removeObjectsInRange:NSMakeRange(0, (int)ACCELEROMETER_UPDATE_TIMES * firstSkipSeconds)];
+    [self.gyroscopeDataPackage.data removeObjectsInRange:NSMakeRange(0, (int)GYROSCOPE_UPDATE_TIMES * firstSkipSeconds)];
+    
+    
 }
 
 - (IBAction)startRecord:(id)sender {

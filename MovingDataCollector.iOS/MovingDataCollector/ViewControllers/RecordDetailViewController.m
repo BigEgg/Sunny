@@ -17,7 +17,7 @@
 
 @synthesize accelerometerDataPackage, gyroscopeDataPackage;
 
-int const firstSkipSeconds = 10;
+int const firstSkipSeconds = 7;
 int const lastSkipSeconds = 10;
 
 #pragma mark - View LifeCycle
@@ -68,6 +68,13 @@ int const lastSkipSeconds = 10;
 
     [self SetUIControls];
     [self.sectionView addSubview:self.recordInfoView];
+    
+    self.noticeLable.text = [[NSString alloc] initWithFormat:@"%@ %d %@ %d %@",
+                             @"Notice: The records will skip first",
+                             firstSkipSeconds,
+                             @"seconds and last",
+                             lastSkipSeconds,
+                             @"seconds data."];
 }
 
 - (void)didReceiveMemoryWarning {

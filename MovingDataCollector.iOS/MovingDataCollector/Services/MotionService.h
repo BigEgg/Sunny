@@ -23,6 +23,8 @@ extern float const GYROSCOPE_UPDATE_TIMES;
 
 - (void)addHandler:(id <ISensorDataHandler>)handler;
 
+- (void)removeRecordDetailhandlers;
+
 - (void)initializeMotionManager;
 
 @end

@@ -22,6 +22,7 @@
     SensorDataViewController *sensorDataVC = [[SensorDataViewController alloc] initWithNibName:@"SensorDataViewController" bundle:nil];
     sensorDataVC.title = @"Sensor Data";
     RecordsTableViewController *recordVC = [[RecordsTableViewController alloc] init];
+    recordVC.motionService = motionService;
     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:recordVC];
     navVC.title = @"Record Data";
 

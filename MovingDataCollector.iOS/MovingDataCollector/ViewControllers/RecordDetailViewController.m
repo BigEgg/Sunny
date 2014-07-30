@@ -43,8 +43,8 @@ int const lastSkipSeconds = 10;
     return self;
 }
 
-- (id)iniWithNibNameAndData:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil accelerometerDataPackage:(DataPackage *)accelerometerData gyroscopeDataPackage:(DataPackage *)gyroscopeData {
-    [self initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+- (id)initWithNibNameAndData:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil accelerometerDataPackage:(DataPackage *)accelerometerData gyroscopeDataPackage:(DataPackage *)gyroscopeData {
+    self = [self initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         isInit = YES;
         

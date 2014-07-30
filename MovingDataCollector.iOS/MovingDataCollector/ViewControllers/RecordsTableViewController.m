@@ -121,21 +121,29 @@
     RecordDetailViewController *recordDetailVC = [[RecordDetailViewController alloc] init];
     recordDetailVC.fileName = [[tableView cellForRowAtIndexPath:indexPath] textLabel].text;
     
+    [self.motionService removeRecordDetailhandlers];
+    [self.motionService addHandler:recordDetailVC];
+    
     [self.navigationController pushViewController:recordDetailVC animated:YES];
 }
 
-
-#pragma Private Methods
-
-- (void)initData {
-    self.tableViewData = [NSArray arrayWithObjects:@"abc", @"bcd", nil];
-}
+#pragma mark - Actions
 
 - (void)startNewRecord {
     RecordDetailViewController *recordDetailVC = [[RecordDetailViewController alloc] init];
     recordDetailVC.fileName = @"New Record";
     
+    [self.motionService removeRecordDetailhandlers];
+    [self.motionService addHandler:recordDetailVC];
+    
     [self.navigationController pushViewController:recordDetailVC animated:YES];
+}
+
+
+#pragma mark - Private Methods
+
+- (void)initData {
+    self.tableViewData = [NSArray arrayWithObjects:@"abc", @"bcd", nil];
 }
 
 @end

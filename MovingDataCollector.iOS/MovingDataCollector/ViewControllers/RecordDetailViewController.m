@@ -25,6 +25,8 @@ int const lastSkipSeconds = 10;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        isInit = NO;
+        
         self.accelerometerDataPackage = [[DataPackage alloc] init];
         self.accelerometerDataPackage.phoneData = [[PhoneData alloc] init];
         self.accelerometerDataPackage.data = (NSMutableArray <ISensorData> *) [[NSMutableArray alloc] init];
@@ -41,6 +43,19 @@ int const lastSkipSeconds = 10;
     return self;
 }
 
+- (id)iniWithNibNameAndData:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil accelerometerDataPackage:(DataPackage *)accelerometerData gyroscopeDataPackage:(DataPackage *)gyroscopeData {
+    [self initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        isInit = YES;
+        
+        self.accelerometerDataPackage = accelerometerData;
+        self.gyroscopeDataPackage = gyroscopeData;
+
+        isInit = NO;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -51,8 +66,8 @@ int const lastSkipSeconds = 10;
         self.title = self.fileName;
     }
 
-
     [self SetUIControls];
+    [self.sectionView addSubview:self.recordInfoView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -63,6 +78,10 @@ int const lastSkipSeconds = 10;
 #pragma mark - Actions
 
 - (IBAction)phoneStatusChanged:(id)sender {
+    if (isInit) {
+        return;
+    }
+    
     PhoneStatus phoneStatus;
     switch (self.phoneMovingSegment.selectedSegmentIndex) {
         case 0:
@@ -128,14 +147,28 @@ int const lastSkipSeconds = 10;
 
 - (IBAction)stopRecord:(id)sender {
     self.isStartRecord = NO;
+    
+    if ([self.accelerometerDataPackage.data count] >
+            (int)ACCELEROMETER_UPDATE_TIMES * firstSkipSeconds + (int)ACCELEROMETER_UPDATE_TIMES * lastSkipSeconds) {
+        self.accelerometerDataPackage.data = (NSMutableArray <ISensorData> *)
+                [self.accelerometerDataPackage.data subarrayWithRange:NSMakeRange(
+                                        (NSUInteger) ACCELEROMETER_UPDATE_TIMES * lastSkipSeconds,
+                                        [self.accelerometerDataPackage.data count] - (int) ACCELEROMETER_UPDATE_TIMES * firstSkipSeconds - (int) ACCELEROMETER_UPDATE_TIMES * lastSkipSeconds)];
+    } else {
+        [self.accelerometerDataPackage.data removeAllObjects];
+    }
 
+    if ([self.gyroscopeDataPackage.data count] >
+            (int)GYROSCOPE_UPDATE_TIMES * firstSkipSeconds + (int)GYROSCOPE_UPDATE_TIMES * lastSkipSeconds) {
+        self.gyroscopeDataPackage.data = (NSMutableArray <ISensorData> *)
+                [self.gyroscopeDataPackage.data subarrayWithRange:NSMakeRange(
+                        (NSUInteger) GYROSCOPE_UPDATE_TIMES * lastSkipSeconds,
+                        [self.gyroscopeDataPackage.data count] - (int) GYROSCOPE_UPDATE_TIMES * firstSkipSeconds - (int) GYROSCOPE_UPDATE_TIMES * lastSkipSeconds)];
+    } else {
+        [self.accelerometerDataPackage.data removeAllObjects];
+    }
+    
     [self SetUIControls];
-    
-    
-    [self.accelerometerDataPackage.data removeObjectsInRange:NSMakeRange(0, (int)ACCELEROMETER_UPDATE_TIMES * firstSkipSeconds)];
-    [self.gyroscopeDataPackage.data removeObjectsInRange:NSMakeRange(0, (int)GYROSCOPE_UPDATE_TIMES * firstSkipSeconds)];
-    
-    
 }
 
 - (IBAction)startRecord:(id)sender {
@@ -156,6 +189,17 @@ int const lastSkipSeconds = 10;
     self.isSentRecord = YES;
 
     [self SetUIControls];
+}
+
+- (IBAction)sectionChanged:(id)sender {
+    UISegmentedControl *sectionControl = (UISegmentedControl *) sender;
+    switch (sectionControl.selectedSegmentIndex) {
+        case 0:
+            [self.sectionView addSubview:self.recordInfoView];
+            break;
+        default:
+            break;
+    }
 }
 
 #pragma mark - Private Methods
@@ -246,7 +290,6 @@ int const lastSkipSeconds = 10;
         self.phonePositionSegment.selectedSegmentIndex = selectIndex;
     }
 }
-
 
 #pragma mark - Sensor Data Handlers
 

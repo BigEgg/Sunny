@@ -40,10 +40,15 @@
 
 - (IBAction)sectionChanged:(id)sender {
     UISegmentedControl *sectionControl = (UISegmentedControl *) sender;
-    if (sectionControl.selectedSegmentIndex == 0)       // Colors section
-        [self.sectionView addSubview:self.accelerometerView];
-    else if (sectionControl.selectedSegmentIndex == 1)  // Progress section
-        [self.sectionView addSubview:self.gyroscopeView];
+    switch (sectionControl.selectedSegmentIndex) {
+        case 0:
+            [self.sectionView addSubview:self.accelerometerView];
+            break;
+        case 1:
+            [self.sectionView addSubview:self.gyroscopeView];
+        default:
+            break;
+    }
 }
 
 #pragma mark - Sensor Data Handlers

@@ -11,6 +11,7 @@
 #import "ISensorDataHandler.h"
 
 @interface RecordDetailViewController : UIViewController <ISensorDataHandler> {
+    bool isInit;
 }
 
 @property DataPackage *accelerometerDataPackage;
@@ -25,12 +26,16 @@
 @property(strong, nonatomic) IBOutlet UISegmentedControl *phoneSideSegment;
 @property(strong, nonatomic) IBOutlet UISegmentedControl *phonePositionSegment;
 
-@property(strong, nonatomic) IBOutlet UILabel *recordTimeLable;
-
 @property(strong, nonatomic) IBOutlet UIButton *stopButton;
 @property(strong, nonatomic) IBOutlet UIButton *startButton;
 @property(strong, nonatomic) IBOutlet UIButton *cancelButton;
 @property(strong, nonatomic) IBOutlet UIButton *sendButton;
+
+@property (strong, nonatomic) IBOutlet UIView *sectionView;
+
+@property (strong, nonatomic) IBOutlet UIView *recordInfoView;
+@property (strong, nonatomic) IBOutlet UILabel *recordSecondsLable;
+@property (strong, nonatomic) IBOutlet UITextView *noticeLable;
 
 
 - (IBAction)phoneStatusChanged:(id)sender;
@@ -42,5 +47,7 @@
 - (IBAction)cancelRecord:(id)sender;
 
 - (IBAction)sendRecord:(id)sender;
+
+- (IBAction)sectionChanged:(id)sender;
 
 @end

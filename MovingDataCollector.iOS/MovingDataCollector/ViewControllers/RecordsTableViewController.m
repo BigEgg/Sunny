@@ -117,8 +117,8 @@
     // Push the view controller.
     //[self.navigationController pushViewController:detailViewController animated:YES];
 
-    RecordDetailViewController *recordDetailVC = [[RecordDetailViewController alloc] init];
-    recordDetailVC.fileName = [[tableView cellForRowAtIndexPath:indexPath] textLabel].text;
+    RecordDetailViewController *recordDetailVC = [[RecordDetailViewController alloc] initWithFileName:
+            [[tableView cellForRowAtIndexPath:indexPath] textLabel].text];
 
     [self.motionService removeRecordDetailhandlers];
     [self.motionService addHandler:recordDetailVC];
@@ -130,7 +130,6 @@
 
 - (void)startNewRecord {
     RecordDetailViewController *recordDetailVC = [[RecordDetailViewController alloc] init];
-    recordDetailVC.fileName = @"New Record";
 
     [self.motionService removeRecordDetailhandlers];
     [self.motionService addHandler:recordDetailVC];

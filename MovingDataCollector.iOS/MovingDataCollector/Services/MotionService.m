@@ -27,11 +27,13 @@ float const GYROSCOPE_UPDATE_TIMES = 5.0;           //  Update at 5Hz
 }
 
 - (void)removeRecordDetailhandlers {
+    NSLog(@"Handler have %d items. Start removing.", [handlers count]);
     for (id <ISensorDataHandler> handler in handlers) {
         if ([handler isKindOfClass:[RecordDetailViewController class]]) {
             [handlers removeObject:handler];
         }
     }
+    NSLog(@"Handler have %d items. Complete removing", [handlers count]);
 }
 
 - (void)initializeMotionManager {
@@ -55,7 +57,6 @@ float const GYROSCOPE_UPDATE_TIMES = 5.0;           //  Update at 5Hz
                 }];
     }
     if (motionManager.gyroAvailable) {
-        NSLog(@"Gyroscope avaliable.");
         gyroscopeQueue = [NSOperationQueue currentQueue];
         [motionManager startGyroUpdatesToQueue:gyroscopeQueue
                                    withHandler:^(CMGyroData *gyroData, NSError *error)

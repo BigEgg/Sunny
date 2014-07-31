@@ -16,14 +16,6 @@
 
 #pragma mark - View Controller Lifecycle
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-
-    }
-    return self;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -46,6 +38,7 @@
             break;
         case 1:
             [self.sectionView addSubview:self.gyroscopeView];
+            break;
         default:
             [NSException raise:@"Invalid Segment Selection"
                         format:@"Section View Segment is invalid, index: %d",

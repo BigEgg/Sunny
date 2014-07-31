@@ -20,8 +20,8 @@ int const lastSkipSeconds = 10;
 
 #pragma mark - View LifeCycle
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+- (id)init {
+    self = [super init];
     if (self) {
         isInit = NO;
 
@@ -41,15 +41,17 @@ int const lastSkipSeconds = 10;
     return self;
 }
 
-- (id)initWithNibNameAndFile:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil fileName:(NSString *)fileName {
-    self = [self initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+- (id)initWithFileName:(NSString *)fileName {
+    self = [self init];
     if (self) {
         isInit = YES;
 
 //        accelerometerDataPackage = accelerometerData;
 //        gyroscopeDataPackage = gyroscopeData;
 
-        recordFileName = fileName;
+        self.isSentRecord = NO;
+        self.isStartRecord = NO;
+        viewTitle = fileName;
 
         isInit = NO;
     }
@@ -60,10 +62,10 @@ int const lastSkipSeconds = 10;
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 
-    if (!recordFileName) {
+    if (!viewTitle) {
         self.title = @"New Record";
     } else {
-        self.title = recordFileName;
+        self.title = viewTitle;
     }
 
     [self setUIControls];
@@ -75,6 +77,7 @@ int const lastSkipSeconds = 10;
                                                              @"seconds and last",
                                                              lastSkipSeconds,
                                                              @"seconds data."];
+    self.recordSecondsLable.text = [self getRecordTime:recordCount];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -179,6 +182,9 @@ int const lastSkipSeconds = 10;
 }
 
 - (IBAction)startRecord:(id)sender {
+    recordCount = 0;
+    self.recordSecondsLable.text = [self getRecordTime:recordCount];
+
     self.isStartRecord = YES;
 
     [self setUIControls];
@@ -190,6 +196,8 @@ int const lastSkipSeconds = 10;
     [gyroscopeDataPackage.data removeAllObjects];
 
     [self setUIControls];
+    recordCount = 0;
+    self.recordSecondsLable.text = [self getRecordTime:recordCount];
 }
 
 - (IBAction)sendRecord:(id)sender {
@@ -214,14 +222,17 @@ int const lastSkipSeconds = 10;
 #pragma mark - Sensor Data Handlers
 
 - (void)accelerometerHandler:(AccelerometerData *)data {
-    [accelerometerDataPackage.data addObject:data];
-
-    self.recordSecondsLable.text = [self getRecordTime:++recordCount];
+    if (self.isStartRecord) {
+        [accelerometerDataPackage.data addObject:data];
+        self.recordSecondsLable.text = [self getRecordTime:++recordCount];
+    }
 }
 
 
 - (void)gyroscopeHandler:(GyroscopeData *)data {
-    [gyroscopeDataPackage.data addObject:data];
+    if (self.isStartRecord) {
+        [gyroscopeDataPackage.data addObject:data];
+    }
 }
 
 #pragma mark - Private Methods

@@ -14,7 +14,7 @@
     bool isInit;
     int recordCount;
 
-    NSString *recordFileName;
+    NSString *viewTitle;
 
     DataPackage *accelerometerDataPackage;
     DataPackage *gyroscopeDataPackage;
@@ -50,5 +50,8 @@
 - (IBAction)sendRecord:(id)sender;
 
 - (IBAction)sectionChanged:(id)sender;
+
+
+- (id)initWithFileName:(NSString *)fileName;
 
 @end

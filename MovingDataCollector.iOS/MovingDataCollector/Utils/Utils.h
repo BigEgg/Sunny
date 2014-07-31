@@ -11,6 +11,12 @@
 
 @interface Utils : NSObject
 
+extern NSString * const RecordFileExtension;
+
 + (NSString *)phoneStatusToString:(PhoneStatus)phoneStatus;
+
++ (NSString *)getFilePath:(NSString *)fileName;
+
++ (NSArray *)getAllFilesName;
 
 @end

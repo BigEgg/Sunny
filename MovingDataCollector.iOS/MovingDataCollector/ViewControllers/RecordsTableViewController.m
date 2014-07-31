@@ -8,6 +8,7 @@
 
 #import "RecordsTableViewController.h"
 #import "RecordDetailViewController.h"
+#import "Utils.h"
 
 @interface RecordsTableViewController ()
 
@@ -141,7 +142,7 @@
 #pragma mark - Private Methods
 
 - (void)initData {
-    self.tableViewData = [NSArray arrayWithObjects:@"abc", @"bcd", nil];
+    self.tableViewData = [[NSArray alloc] initWithArray:[Utils getAllFilesName]];
 }
 
 @end

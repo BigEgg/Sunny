@@ -7,7 +7,7 @@
 //
 
 #import "MotionService.h"
-#import "RecordDetailViewController.h"
+#import "RecordViewController.h"
 
 @implementation MotionService
 
@@ -24,16 +24,6 @@ float const GYROSCOPE_UPDATE_TIMES = 5.0;           //  Update at 5Hz
 
 - (void)addHandler:(id <ISensorDataHandler>)handler {
     [handlers addObject:handler];
-}
-
-- (void)removeRecordDetailhandlers {
-    NSLog(@"Handler have %d items. Start removing.", [handlers count]);
-    for (id <ISensorDataHandler> handler in handlers) {
-        if ([handler isKindOfClass:[RecordDetailViewController class]]) {
-            [handlers removeObject:handler];
-        }
-    }
-    NSLog(@"Handler have %d items. Complete removing", [handlers count]);
 }
 
 - (void)initializeMotionManager {

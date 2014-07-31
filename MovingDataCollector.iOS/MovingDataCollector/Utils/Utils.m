@@ -10,9 +10,6 @@
 
 @implementation Utils
 
-static NSString *defaultFolderName = @"";
-NSString *const RecordFileExtension = @"record";       //  Update at 5Hz
-
 #pragma mark - Enum
 
 + (NSString *)phoneStatusToString:(PhoneStatus)phoneStatus {
@@ -60,41 +57,6 @@ NSString *const RecordFileExtension = @"record";       //  Update at 5Hz
     }
 
     return result;
-}
-
-#pragma mark - Document
-
-+ (NSString *)getFilePath:(NSString *)fileName {
-    if ([fileName substringFromIndex:fileName.length - RecordFileExtension.length - 1] != RecordFileExtension) {
-        fileName = [fileName stringByAppendingString:RecordFileExtension];
-    }
-
-    NSString *documentsDirectoryPath = [self getDirectoryPath];
-    return [documentsDirectoryPath stringByAppendingPathComponent:fileName];
-}
-
-+ (NSArray *)getAllFilesName {
-    NSArray *dirs = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:[self getDirectoryPath]
-                                                                        error:NULL];
-    NSMutableArray *filesName = [[NSMutableArray alloc] init];
-    [dirs enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        NSString *filename = (NSString *) obj;
-        NSString *extension = [[filename pathExtension] lowercaseString];
-        if ([extension isEqualToString:RecordFileExtension]) {
-            [filesName addObject:filename];
-        }
-    }];
-    return filesName;
-}
-
-+ (NSString *)getDirectoryPath {
-    if ([defaultFolderName length] == 0) {
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        if ([paths count] > 0) {
-            defaultFolderName = paths[0];
-        }
-    }
-    return defaultFolderName;
 }
 
 @end

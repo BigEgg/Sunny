@@ -10,18 +10,14 @@
 #import "DataPackage.h"
 #import "ISensorDataHandler.h"
 
-@interface RecordDetailViewController : UIViewController <ISensorDataHandler> {
+@interface RecordViewController : UIViewController <ISensorDataHandler> {
     bool isInit;
     int recordCount;
-
-    NSString *viewTitle;
+    bool isStartRecord;
 
     DataPackage *accelerometerDataPackage;
     DataPackage *gyroscopeDataPackage;
 }
-
-@property bool isStartRecord;
-@property bool isSentRecord;
 
 @property(strong, nonatomic) IBOutlet UISegmentedControl *phoneMovingSegment;
 @property(strong, nonatomic) IBOutlet UISegmentedControl *phoneSideSegment;
@@ -50,8 +46,5 @@
 - (IBAction)sendRecord:(id)sender;
 
 - (IBAction)sectionChanged:(id)sender;
-
-
-- (id)initWithFileName:(NSString *)fileName;
 
 @end

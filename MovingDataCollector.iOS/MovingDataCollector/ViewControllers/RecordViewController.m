@@ -6,14 +6,14 @@
 //  Copyright (c) 2014 jianming.xiao. All rights reserved.
 //
 
-#import "RecordDetailViewController.h"
+#import "RecordViewController.h"
 #import "MotionService.h"
 
-@interface RecordDetailViewController ()
+@interface RecordViewController ()
 
 @end
 
-@implementation RecordDetailViewController
+@implementation RecordViewController
 
 int const firstSkipSeconds = 7;
 int const lastSkipSeconds = 10;
@@ -35,25 +35,7 @@ int const lastSkipSeconds = 10;
         gyroscopeDataPackage.data = (NSMutableArray <ISensorData> *) [[NSMutableArray alloc] init];
         gyroscopeDataPackage.phoneData.phoneStats = Stop;
 
-        self.isSentRecord = NO;
-        self.isStartRecord = NO;
-    }
-    return self;
-}
-
-- (id)initWithFileName:(NSString *)fileName {
-    self = [self init];
-    if (self) {
-        isInit = YES;
-
-//        accelerometerDataPackage = accelerometerData;
-//        gyroscopeDataPackage = gyroscopeData;
-
-        self.isSentRecord = NO;
-        self.isStartRecord = NO;
-        viewTitle = fileName;
-
-        isInit = NO;
+        isStartRecord = NO;
     }
     return self;
 }
@@ -62,11 +44,6 @@ int const lastSkipSeconds = 10;
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 
-    if (!viewTitle) {
-        self.title = @"New Record";
-    } else {
-        self.title = viewTitle;
-    }
 
     [self setUIControls];
     [self.sectionView addSubview:self.recordInfoView];
@@ -156,7 +133,7 @@ int const lastSkipSeconds = 10;
 }
 
 - (IBAction)stopRecord:(id)sender {
-    self.isStartRecord = NO;
+    isStartRecord = NO;
 
     if ([accelerometerDataPackage.data count] >
             (int) ACCELEROMETER_UPDATE_TIMES * firstSkipSeconds + (int) ACCELEROMETER_UPDATE_TIMES * lastSkipSeconds) {
@@ -185,13 +162,13 @@ int const lastSkipSeconds = 10;
     recordCount = 0;
     self.recordSecondsLable.text = [self getRecordTime:recordCount];
 
-    self.isStartRecord = YES;
+    isStartRecord = YES;
 
     [self setUIControls];
 }
 
 - (IBAction)cancelRecord:(id)sender {
-    self.isStartRecord = NO;
+    isStartRecord = NO;
     [accelerometerDataPackage.data removeAllObjects];
     [gyroscopeDataPackage.data removeAllObjects];
 
@@ -201,8 +178,9 @@ int const lastSkipSeconds = 10;
 }
 
 - (IBAction)sendRecord:(id)sender {
-    self.isSentRecord = YES;
-
+    
+    [accelerometerDataPackage.data removeAllObjects];
+    [gyroscopeDataPackage.data removeAllObjects];
     [self setUIControls];
 }
 
@@ -222,7 +200,7 @@ int const lastSkipSeconds = 10;
 #pragma mark - Sensor Data Handlers
 
 - (void)accelerometerHandler:(AccelerometerData *)data {
-    if (self.isStartRecord) {
+    if (isStartRecord) {
         [accelerometerDataPackage.data addObject:data];
         self.recordSecondsLable.text = [self getRecordTime:++recordCount];
     }
@@ -230,7 +208,7 @@ int const lastSkipSeconds = 10;
 
 
 - (void)gyroscopeHandler:(GyroscopeData *)data {
-    if (self.isStartRecord) {
+    if (isStartRecord) {
         [gyroscopeDataPackage.data addObject:data];
     }
 }
@@ -251,23 +229,20 @@ int const lastSkipSeconds = 10;
     self.cancelButton.enabled = NO;
     self.sendButton.enabled = NO;
 
-    if (!haveData && !self.isStartRecord) {
+    if (!haveData && !isStartRecord) {
         self.startButton.enabled = YES;
         return;
     }
 
-    if (self.isStartRecord) {
+    if (isStartRecord) {
         self.stopButton.enabled = YES;
         self.cancelButton.enabled = YES;
         return;
     }
 
-    if (haveData && !self.isStartRecord && !self.isSentRecord) {
+    if (haveData && !isStartRecord) {
         self.sendButton.enabled = YES;
         return;
-    } else {
-        self.sendButton.enabled = NO;
-        self.sendButton.titleLabel.text = @"Sent";
     }
 }
 
@@ -278,7 +253,7 @@ int const lastSkipSeconds = 10;
     self.phonePositionSegment.enabled = NO;
     self.phoneSideSegment.enabled = NO;
 
-    if (!haveData && !self.isStartRecord) {
+    if (!haveData && !isStartRecord) {
         self.phoneMovingSegment.enabled = YES;
         self.phonePositionSegment.enabled = YES;
         self.phoneSideSegment.enabled = YES;

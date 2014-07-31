@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "SensorDataViewController.h"
-#import "RecordsTableViewController.h"
+#import "RecordViewController.h"
 
 @implementation AppDelegate
 
@@ -21,20 +21,18 @@
 
     SensorDataViewController *sensorDataVC = [[SensorDataViewController alloc] initWithNibName:@"SensorDataViewController" bundle:nil];
     sensorDataVC.title = @"Sensor Data";
-    RecordsTableViewController *recordVC = [[RecordsTableViewController alloc] init];
-    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:recordVC];
-    navVC.title = @"Record Data";
+    RecordViewController *recordVC = [[RecordViewController alloc] init];
+    recordVC.title = @"Record Data";
 
-    [self initMotionServiceWithSensorDataVC:sensorDataVC];
+    [self initMotionServiceWithSensorDataVC:sensorDataVC recordViewController:recordVC];
 
     self.tabBarController = [[UITabBarController alloc] init];
-    self.tabBarController.viewControllers = [NSArray arrayWithObjects:sensorDataVC, navVC, nil];
+    self.tabBarController.viewControllers = [NSArray arrayWithObjects:sensorDataVC, recordVC, nil];
 
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
 
     [motionService initializeMotionManager];
-    recordVC.motionService = motionService;
     return YES;
 }
 
@@ -62,8 +60,9 @@
 
 #pragma mark - Private Methods
 
-- (void)initMotionServiceWithSensorDataVC:(SensorDataViewController *)sensorDataViewController {
+- (void)initMotionServiceWithSensorDataVC:(SensorDataViewController *)sensorDataViewController recordViewController:(RecordViewController *)recordViewController {
     motionService = [[MotionService alloc] init];
     [motionService addHandler:(id <ISensorDataHandler>) sensorDataViewController];
+    [motionService addHandler:(id <ISensorDataHandler>) recordViewController];
 }
 @end

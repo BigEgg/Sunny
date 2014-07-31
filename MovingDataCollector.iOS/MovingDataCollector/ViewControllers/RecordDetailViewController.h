@@ -13,12 +13,12 @@
 @interface RecordDetailViewController : UIViewController <ISensorDataHandler> {
     bool isInit;
     int recordCount;
+
+    NSString *recordFileName;
+
+    DataPackage *accelerometerDataPackage;
+    DataPackage *gyroscopeDataPackage;
 }
-
-@property DataPackage *accelerometerDataPackage;
-@property DataPackage *gyroscopeDataPackage;
-
-@property NSString *fileName;
 
 @property bool isStartRecord;
 @property bool isSentRecord;

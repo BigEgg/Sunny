@@ -47,7 +47,9 @@
         case 1:
             [self.sectionView addSubview:self.gyroscopeView];
         default:
-            break;
+            [NSException raise:@"Invalid Segment Selection"
+                        format:@"Section View Segment is invalid, index: %d",
+                               sectionControl.selectedSegmentIndex];
     }
 }
 

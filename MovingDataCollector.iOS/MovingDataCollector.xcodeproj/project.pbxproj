@@ -160,6 +160,7 @@
 				10775224197FF173009697B1 /* Utils */,
 				10A98FCF197E8FB60078F445 /* ViewControllers */,
 				764385E914C743E05FB8F80E /* Clients */,
+				764383567292772A45879E28 /* Documents */,
 			);
 			path = MovingDataCollector;
 			sourceTree = "<group>";
@@ -250,6 +251,13 @@
 				10775216197FED3F009697B1 /* SensorDataViewController.xib */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		764383567292772A45879E28 /* Documents */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Documents;
 			sourceTree = "<group>";
 		};
 		764385E914C743E05FB8F80E /* Clients */ = {

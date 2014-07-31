@@ -15,8 +15,6 @@
 
 @implementation RecordDetailViewController
 
-@synthesize accelerometerDataPackage, gyroscopeDataPackage;
-
 int const firstSkipSeconds = 7;
 int const lastSkipSeconds = 10;
 
@@ -27,15 +25,15 @@ int const lastSkipSeconds = 10;
     if (self) {
         isInit = NO;
 
-        self.accelerometerDataPackage = [[DataPackage alloc] init];
-        self.accelerometerDataPackage.phoneData = [[PhoneData alloc] init];
-        self.accelerometerDataPackage.data = (NSMutableArray <ISensorData> *) [[NSMutableArray alloc] init];
-        self.accelerometerDataPackage.phoneData.phoneStats = Stop;
+        accelerometerDataPackage = [[DataPackage alloc] init];
+        accelerometerDataPackage.phoneData = [[PhoneData alloc] init];
+        accelerometerDataPackage.data = (NSMutableArray <ISensorData> *) [[NSMutableArray alloc] init];
+        accelerometerDataPackage.phoneData.phoneStats = Stop;
 
-        self.gyroscopeDataPackage = [[DataPackage alloc] init];
-        self.gyroscopeDataPackage.phoneData = [[PhoneData alloc] init];
-        self.gyroscopeDataPackage.data = (NSMutableArray <ISensorData> *) [[NSMutableArray alloc] init];
-        self.gyroscopeDataPackage.phoneData.phoneStats = Stop;
+        gyroscopeDataPackage = [[DataPackage alloc] init];
+        gyroscopeDataPackage.phoneData = [[PhoneData alloc] init];
+        gyroscopeDataPackage.data = (NSMutableArray <ISensorData> *) [[NSMutableArray alloc] init];
+        gyroscopeDataPackage.phoneData.phoneStats = Stop;
 
         self.isSentRecord = NO;
         self.isStartRecord = NO;
@@ -43,13 +41,15 @@ int const lastSkipSeconds = 10;
     return self;
 }
 
-- (id)initWithNibNameAndData:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil accelerometerDataPackage:(DataPackage *)accelerometerData gyroscopeDataPackage:(DataPackage *)gyroscopeData {
+- (id)initWithNibNameAndFile:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil fileName:(NSString *)fileName {
     self = [self initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         isInit = YES;
 
-        self.accelerometerDataPackage = accelerometerData;
-        self.gyroscopeDataPackage = gyroscopeData;
+//        accelerometerDataPackage = accelerometerData;
+//        gyroscopeDataPackage = gyroscopeData;
+
+        recordFileName = fileName;
 
         isInit = NO;
     }
@@ -60,13 +60,13 @@ int const lastSkipSeconds = 10;
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 
-    if (!self.fileName) {
+    if (!recordFileName) {
         self.title = @"New Record";
     } else {
-        self.title = self.fileName;
+        self.title = recordFileName;
     }
 
-    [self SetUIControls];
+    [self setUIControls];
     [self.sectionView addSubview:self.recordInfoView];
 
     self.noticeLable.text = [[NSString alloc] initWithFormat:@"%@ %d %@ %d %@",
@@ -148,54 +148,54 @@ int const lastSkipSeconds = 10;
 
     }
 
-    self.accelerometerDataPackage.phoneData.phoneStats = phoneStatus;
-    self.gyroscopeDataPackage.phoneData.phoneStats = phoneStatus;
+    accelerometerDataPackage.phoneData.phoneStats = phoneStatus;
+    gyroscopeDataPackage.phoneData.phoneStats = phoneStatus;
 }
 
 - (IBAction)stopRecord:(id)sender {
     self.isStartRecord = NO;
 
-    if ([self.accelerometerDataPackage.data count] >
+    if ([accelerometerDataPackage.data count] >
             (int) ACCELEROMETER_UPDATE_TIMES * firstSkipSeconds + (int) ACCELEROMETER_UPDATE_TIMES * lastSkipSeconds) {
-        self.accelerometerDataPackage.data = (NSMutableArray <ISensorData> *)
-                [self.accelerometerDataPackage.data subarrayWithRange:NSMakeRange(
+        accelerometerDataPackage.data = (NSMutableArray <ISensorData> *)
+                [accelerometerDataPackage.data subarrayWithRange:NSMakeRange(
                         (NSUInteger) ACCELEROMETER_UPDATE_TIMES * lastSkipSeconds,
-                        [self.accelerometerDataPackage.data count] - (int) ACCELEROMETER_UPDATE_TIMES * firstSkipSeconds - (int) ACCELEROMETER_UPDATE_TIMES * lastSkipSeconds)];
+                        [accelerometerDataPackage.data count] - (int) ACCELEROMETER_UPDATE_TIMES * firstSkipSeconds - (int) ACCELEROMETER_UPDATE_TIMES * lastSkipSeconds)];
     } else {
-        [self.accelerometerDataPackage.data removeAllObjects];
+        [accelerometerDataPackage.data removeAllObjects];
     }
 
-    if ([self.gyroscopeDataPackage.data count] >
+    if ([gyroscopeDataPackage.data count] >
             (int) GYROSCOPE_UPDATE_TIMES * firstSkipSeconds + (int) GYROSCOPE_UPDATE_TIMES * lastSkipSeconds) {
-        self.gyroscopeDataPackage.data = (NSMutableArray <ISensorData> *)
-                [self.gyroscopeDataPackage.data subarrayWithRange:NSMakeRange(
+        gyroscopeDataPackage.data = (NSMutableArray <ISensorData> *)
+                [gyroscopeDataPackage.data subarrayWithRange:NSMakeRange(
                         (NSUInteger) GYROSCOPE_UPDATE_TIMES * lastSkipSeconds,
-                        [self.gyroscopeDataPackage.data count] - (int) GYROSCOPE_UPDATE_TIMES * firstSkipSeconds - (int) GYROSCOPE_UPDATE_TIMES * lastSkipSeconds)];
+                        [gyroscopeDataPackage.data count] - (int) GYROSCOPE_UPDATE_TIMES * firstSkipSeconds - (int) GYROSCOPE_UPDATE_TIMES * lastSkipSeconds)];
     } else {
-        [self.accelerometerDataPackage.data removeAllObjects];
+        [accelerometerDataPackage.data removeAllObjects];
     }
 
-    [self SetUIControls];
+    [self setUIControls];
 }
 
 - (IBAction)startRecord:(id)sender {
     self.isStartRecord = YES;
 
-    [self SetUIControls];
+    [self setUIControls];
 }
 
 - (IBAction)cancelRecord:(id)sender {
     self.isStartRecord = NO;
-    [self.accelerometerDataPackage.data removeAllObjects];
-    [self.gyroscopeDataPackage.data removeAllObjects];
+    [accelerometerDataPackage.data removeAllObjects];
+    [gyroscopeDataPackage.data removeAllObjects];
 
-    [self SetUIControls];
+    [self setUIControls];
 }
 
 - (IBAction)sendRecord:(id)sender {
     self.isSentRecord = YES;
 
-    [self SetUIControls];
+    [self setUIControls];
 }
 
 - (IBAction)sectionChanged:(id)sender {
@@ -205,33 +205,35 @@ int const lastSkipSeconds = 10;
             [self.sectionView addSubview:self.recordInfoView];
             break;
         default:
-            break;
+            [NSException raise:@"Invalid Segment Selection"
+                        format:@"Section View Segement is invalid, index: %d",
+                               sectionControl.selectedSegmentIndex];
     }
 }
 
 #pragma mark - Sensor Data Handlers
 
 - (void)accelerometerHandler:(AccelerometerData *)data {
-    [self.accelerometerDataPackage.data addObject:data];
-    
+    [accelerometerDataPackage.data addObject:data];
+
     self.recordSecondsLable.text = [self getRecordTime:++recordCount];
 }
 
 
 - (void)gyroscopeHandler:(GyroscopeData *)data {
-    [self.gyroscopeDataPackage.data addObject:data];
+    [gyroscopeDataPackage.data addObject:data];
 }
 
 #pragma mark - Private Methods
 
-- (void)SetUIControls {
+- (void)setUIControls {
     [self setButtonsStats];
     [self setSegmentStats];
 }
 
 
 - (void)setButtonsStats {
-    bool haveData = [self.accelerometerDataPackage.data count] > 0;
+    bool haveData = [accelerometerDataPackage.data count] > 0;
 
     self.startButton.enabled = NO;
     self.stopButton.enabled = NO;
@@ -259,7 +261,7 @@ int const lastSkipSeconds = 10;
 }
 
 - (void)setSegmentStats {
-    bool haveData = [self.accelerometerDataPackage.data count] > 0;
+    bool haveData = [accelerometerDataPackage.data count] > 0;
 
     self.phoneMovingSegment.enabled = NO;
     self.phonePositionSegment.enabled = NO;
@@ -271,7 +273,7 @@ int const lastSkipSeconds = 10;
         self.phoneSideSegment.enabled = YES;
         return;
     } else {
-        PhoneStatus phoneStatus = self.accelerometerDataPackage.phoneData.phoneStats;
+        PhoneStatus phoneStatus = accelerometerDataPackage.phoneData.phoneStats;
         NSInteger selectIndex = 0;
 
         if (phoneStatus & Stop) {
@@ -312,13 +314,13 @@ int const lastSkipSeconds = 10;
 }
 
 - (NSString *)getRecordTime:(int)accelerometerCount {
-    int seconds = accelerometerCount / ACCELEROMETER_UPDATE_TIMES;
-    
-    NSUInteger h = seconds / 3600;
-    NSUInteger m = (seconds / 60) % 60;
-    NSUInteger s = seconds % 60;
-    
-    return [NSString stringWithFormat:@"%u:%02u:%02u", h, m, s];
+    int seconds = (int) (accelerometerCount / ACCELEROMETER_UPDATE_TIMES);
+
+    int h = seconds / 3600;
+    int m = (seconds / 60) % 60;
+    int s = seconds % 60;
+
+    return [NSString stringWithFormat:@"%d:%02d:%02d", h, m, s];
 }
 
 @end

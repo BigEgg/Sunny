@@ -12,6 +12,7 @@
 
 @interface RecordDetailViewController : UIViewController <ISensorDataHandler> {
     bool isInit;
+    int recordCount;
 }
 
 @property DataPackage *accelerometerDataPackage;
@@ -31,11 +32,11 @@
 @property(strong, nonatomic) IBOutlet UIButton *cancelButton;
 @property(strong, nonatomic) IBOutlet UIButton *sendButton;
 
-@property (strong, nonatomic) IBOutlet UIView *sectionView;
+@property(strong, nonatomic) IBOutlet UIView *sectionView;
 
-@property (strong, nonatomic) IBOutlet UIView *recordInfoView;
-@property (strong, nonatomic) IBOutlet UILabel *recordSecondsLable;
-@property (strong, nonatomic) IBOutlet UITextView *noticeLable;
+@property(strong, nonatomic) IBOutlet UIView *recordInfoView;
+@property(strong, nonatomic) IBOutlet UILabel *recordSecondsLable;
+@property(strong, nonatomic) IBOutlet UITextView *noticeLable;
 
 
 - (IBAction)phoneStatusChanged:(id)sender;

@@ -21,7 +21,7 @@
     self.title = @"Records";
 
     [self initData];
-    
+
     UIBarButtonItem *plusButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(startNewRecord)];
     self.navigationItem.rightBarButtonItem = plusButton;
 
@@ -47,21 +47,20 @@
     return [_tableViewData count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";
-    
+
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         // Common to all cells
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
-    
+
     // Configure individual cells
     NSString *rowLabel = [self.tableViewData objectAtIndex:indexPath.row];
     cell.textLabel.text = rowLabel;
     cell.detailTextLabel.text = @"sometype";
-    
+
     return cell;
 }
 
@@ -112,18 +111,18 @@
     // Navigation logic may go here, for example:
     // Create the next view controller.
     //<#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];
-    
+
     // Pass the selected object to the new view controller.
-    
+
     // Push the view controller.
     //[self.navigationController pushViewController:detailViewController animated:YES];
-    
+
     RecordDetailViewController *recordDetailVC = [[RecordDetailViewController alloc] init];
     recordDetailVC.fileName = [[tableView cellForRowAtIndexPath:indexPath] textLabel].text;
-    
+
     [self.motionService removeRecordDetailhandlers];
     [self.motionService addHandler:recordDetailVC];
-    
+
     [self.navigationController pushViewController:recordDetailVC animated:YES];
 }
 
@@ -132,10 +131,10 @@
 - (void)startNewRecord {
     RecordDetailViewController *recordDetailVC = [[RecordDetailViewController alloc] init];
     recordDetailVC.fileName = @"New Record";
-    
+
     [self.motionService removeRecordDetailhandlers];
     [self.motionService addHandler:recordDetailVC];
-    
+
     [self.navigationController pushViewController:recordDetailVC animated:YES];
 }
 

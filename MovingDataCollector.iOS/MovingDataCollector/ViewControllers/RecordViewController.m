@@ -15,8 +15,8 @@
 
 @implementation RecordViewController
 
-int const firstSkipSeconds = 7;
-int const lastSkipSeconds = 10;
+int const firstSkipSeconds = 2;
+int const lastSkipSeconds = 2;
 
 #pragma mark - View LifeCycle
 
@@ -137,20 +137,20 @@ int const lastSkipSeconds = 10;
 
     if ([accelerometerDataPackage.data count] >
             (int) ACCELEROMETER_UPDATE_TIMES * firstSkipSeconds + (int) ACCELEROMETER_UPDATE_TIMES * lastSkipSeconds) {
-        accelerometerDataPackage.data = (NSMutableArray <ISensorData> *)
+        accelerometerDataPackage.data = (NSMutableArray <ISensorData> *) [[NSMutableArray alloc] initWithArray:
                 [accelerometerDataPackage.data subarrayWithRange:NSMakeRange(
                         (NSUInteger) ACCELEROMETER_UPDATE_TIMES * lastSkipSeconds,
-                        [accelerometerDataPackage.data count] - (int) ACCELEROMETER_UPDATE_TIMES * firstSkipSeconds - (int) ACCELEROMETER_UPDATE_TIMES * lastSkipSeconds)];
+                        [accelerometerDataPackage.data count] - (int) ACCELEROMETER_UPDATE_TIMES * firstSkipSeconds - (int) ACCELEROMETER_UPDATE_TIMES * lastSkipSeconds)]];
     } else {
         [accelerometerDataPackage.data removeAllObjects];
     }
 
     if ([gyroscopeDataPackage.data count] >
             (int) GYROSCOPE_UPDATE_TIMES * firstSkipSeconds + (int) GYROSCOPE_UPDATE_TIMES * lastSkipSeconds) {
-        gyroscopeDataPackage.data = (NSMutableArray <ISensorData> *)
+        gyroscopeDataPackage.data = (NSMutableArray <ISensorData> *) [[NSMutableArray alloc] initWithArray:
                 [gyroscopeDataPackage.data subarrayWithRange:NSMakeRange(
                         (NSUInteger) GYROSCOPE_UPDATE_TIMES * lastSkipSeconds,
-                        [gyroscopeDataPackage.data count] - (int) GYROSCOPE_UPDATE_TIMES * firstSkipSeconds - (int) GYROSCOPE_UPDATE_TIMES * lastSkipSeconds)];
+                        [gyroscopeDataPackage.data count] - (int) GYROSCOPE_UPDATE_TIMES * firstSkipSeconds - (int) GYROSCOPE_UPDATE_TIMES * lastSkipSeconds)]];
     } else {
         [accelerometerDataPackage.data removeAllObjects];
     }
@@ -178,10 +178,12 @@ int const lastSkipSeconds = 10;
 }
 
 - (IBAction)sendRecord:(id)sender {
-    
     [accelerometerDataPackage.data removeAllObjects];
     [gyroscopeDataPackage.data removeAllObjects];
+    
     [self setUIControls];
+    recordCount = 0;
+    self.recordSecondsLable.text = [self getRecordTime:recordCount];
 }
 
 - (IBAction)sectionChanged:(id)sender {

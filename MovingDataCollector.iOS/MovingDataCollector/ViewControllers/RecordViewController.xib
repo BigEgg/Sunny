@@ -101,7 +101,7 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="sendRecord:" destination="-1" eventType="touchUpInside" id="oI8-Ky-cxY"/>
+                        <action selector="sendRecord:" destination="-1" eventType="touchUpInside" id="1G0-bI-aXF"/>
                     </connections>
                 </button>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="lKy-ah-u7Y">

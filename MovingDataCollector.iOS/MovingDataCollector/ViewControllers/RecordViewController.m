@@ -17,8 +17,8 @@
 
 @implementation RecordViewController
 
-int const firstSkipSeconds = 2;
-int const lastSkipSeconds = 2;
+int const firstSkipSeconds = 10;
+int const lastSkipSeconds = 10;
 PhoneType const phoneType = iPhone4;
 
 #pragma mark - View LifeCycle

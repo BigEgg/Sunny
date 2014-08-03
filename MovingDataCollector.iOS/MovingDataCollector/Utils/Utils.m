@@ -65,11 +65,21 @@
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:object options:NSJSONWritingPrettyPrinted error:&writeError];
     NSString *result = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
 
+    result = [result stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    result = [result stringByReplacingOccurrencesOfString:@" " withString:@""];
     return result;
 }
 
-+ (bool)postCall:(NSString *)urlPath withJSON:(NSString *)jsonData {
-    return false;
++ (NSData *)postCall:(NSString *)urlPath withJSON:(NSString *)jsonData {
+    NSData *postDatas = [NSData dataWithBytes:[jsonData UTF8String] length:[jsonData length]];
+    NSURL *url = [NSURL URLWithString:urlPath];
+
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:postDatas];
+    
+    return [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
 }
 
 + (NSData *)getCall:(NSString *)urlPath {

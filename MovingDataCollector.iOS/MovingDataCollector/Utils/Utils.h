@@ -15,7 +15,7 @@
 
 + (NSString *)convertObjectToJson:(NSObject *)object;
 
-+ (bool)postCall:(NSString *)urlPath withJSON:(NSString *)jsonData;
++ (NSData *)postCall:(NSString *)urlPath withJSON:(NSString *)jsonData;
 
 + (NSData *)getCall:(NSString *)urlPath;
 

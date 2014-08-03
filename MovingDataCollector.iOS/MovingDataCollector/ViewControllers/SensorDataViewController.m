@@ -49,7 +49,7 @@
 }
 
 - (IBAction)testConnection:(id)sender {
-    NSString *urlPath = [[NSString alloc] initWithFormat:@"%s%s", SUNNY_SERVER, SUNNY_TEST_CONNECTION];
+    NSString *urlPath = [[NSString alloc] initWithFormat:@"%s%s", SUNNY_SERVER, SUNNY_API_TEST_CONNECTION];
 
     NSData *respond = nil;
     @try {
@@ -58,11 +58,16 @@
     @catch (NSException *exception) {
     }
 
-    if (respond == nil) {
-        self.connectionResultLable.text = @"Cannot";
-    } else {
-        self.connectionResultLable.text = @"Success";
+    if (respond != nil) {
+        NSString *sespondString = [[NSString alloc] initWithData:respond encoding:NSUTF8StringEncoding];
+        NSLog(@"%@", sespondString);
+        if ([sespondString isEqual:@"\"Can connect.\""]) {
+            self.connectionResultLable.text = @"Success";
+            return;
+        }
     }
+    
+    self.connectionResultLable.text = @"Cannot";
 }
 
 #pragma mark - Sensor Data Handlers

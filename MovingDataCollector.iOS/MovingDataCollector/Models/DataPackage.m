@@ -12,14 +12,13 @@
 @implementation DataPackage
 
 - (NSDictionary *)dictionary {
-    NSString *phoneDataJSON = [Utils convertObjectToJson:[self.phoneData dictionary]];
     NSMutableArray *dataJSON = [[NSMutableArray alloc] init];
 
     for (id <ISensorData> entity in self.data) {
-        [dataJSON addObject:[Utils convertObjectToJson:[entity dictionary]]];
+        [dataJSON addObject:[entity dictionary]];
     }
 
-    return @{@"PhoneData" : phoneDataJSON,
+    return @{@"PhoneData" : [self.phoneData dictionary],
             @"Data" : dataJSON};
 }
 

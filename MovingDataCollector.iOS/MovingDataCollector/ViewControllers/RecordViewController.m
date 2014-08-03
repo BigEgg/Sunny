@@ -9,6 +9,7 @@
 #import "RecordViewController.h"
 #import "MotionService.h"
 #import "Utils.h"
+#import "Constants.h"
 
 @interface RecordViewController ()
 
@@ -75,10 +76,15 @@ PhoneType const phoneType = iPhone4;
         return;
     }
 
+    self.phonePositionSegment.enabled = YES;
+    self.phoneSideSegment.enabled = YES;
+
     PhoneStatus phoneStatus;
     switch (self.phoneMovingSegment.selectedSegmentIndex) {
         case 0:
             phoneStatus = Stop;
+            self.phonePositionSegment.enabled = NO;
+            self.phoneSideSegment.enabled = NO;
             break;
         case 1:
             phoneStatus = Shake;
@@ -184,11 +190,12 @@ PhoneType const phoneType = iPhone4;
 }
 
 - (IBAction)sendRecord:(id)sender {
-    
-    [self sendDataPackage:accelerometerDataPackage];
-    [self sendDataPackage:gyroscopeDataPackage];
-    
-    
+    NSString *accelerometerUrlPath = [[NSString alloc] initWithFormat:@"%s%s", SUNNY_SERVER, SUNNY_API_ACCELEROMETER];
+    NSString *gyroscopeUrlPath = [[NSString alloc] initWithFormat:@"%s%s", SUNNY_SERVER, SUNNY_API_GYROSCOPE];
+
+    [self sendDataPackage:accelerometerDataPackage to:accelerometerUrlPath];
+    [self sendDataPackage:gyroscopeDataPackage to:gyroscopeUrlPath];
+
     [accelerometerDataPackage.data removeAllObjects];
     [gyroscopeDataPackage.data removeAllObjects];
 
@@ -219,7 +226,6 @@ PhoneType const phoneType = iPhone4;
     }
 }
 
-
 - (void)gyroscopeHandler:(GyroscopeData *)data {
     if (isStartRecord) {
         [gyroscopeDataPackage.data addObject:data];
@@ -232,7 +238,6 @@ PhoneType const phoneType = iPhone4;
     [self setButtonsStats];
     [self setSegmentStats];
 }
-
 
 - (void)setButtonsStats {
     bool haveData = [accelerometerDataPackage.data count] > 0;
@@ -268,8 +273,6 @@ PhoneType const phoneType = iPhone4;
 
     if (!haveData && !isStartRecord) {
         self.phoneMovingSegment.enabled = YES;
-        self.phonePositionSegment.enabled = YES;
-        self.phoneSideSegment.enabled = YES;
         return;
     } else {
         PhoneStatus phoneStatus = accelerometerDataPackage.phoneData.phoneStats;
@@ -277,6 +280,8 @@ PhoneType const phoneType = iPhone4;
 
         if (phoneStatus & Stop) {
             selectIndex = 0;
+            self.phonePositionSegment.enabled = NO;
+            self.phoneSideSegment.enabled = NO;
         } else if (phoneStatus & Shake) {
             selectIndex = 1;
         } else if (phoneStatus & Run) {
@@ -322,10 +327,18 @@ PhoneType const phoneType = iPhone4;
     return [NSString stringWithFormat:@"%d:%02d:%02d", h, m, s];
 }
 
-- (bool)sendDataPackage:(DataPackage *)dataPackage {
+- (bool)sendDataPackage:(DataPackage *)dataPackage to:(NSString *)urlPath{
     NSString *json = [Utils convertObjectToJson:[dataPackage dictionary]];
 
-    return false;
+    NSData *respond = nil;
+    @try {
+        respond = [Utils postCall:urlPath withJSON:json];
+    }
+    @catch (NSException *exception) {
+    }
+
+    NSString *respondString = [[NSString alloc] initWithData:respond encoding:NSUTF8StringEncoding];
+    return [respondString isEqualToString:@""];
 }
 
 @end

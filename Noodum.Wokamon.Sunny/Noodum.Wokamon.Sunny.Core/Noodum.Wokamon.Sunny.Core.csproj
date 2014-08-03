@@ -45,7 +45,7 @@
     <Compile Include="Models\ANNLogicType.cs" />
     <Compile Include="Models\GyrosensorData.cs" />
     <Compile Include="Models\ISensorData.cs" />
-    <Compile Include="Models\PhoneStats.cs" />
+    <Compile Include="Models\PhoneStatus.cs" />
     <Compile Include="Models\PhoneType.cs" />
     <Compile Include="Models\SensorType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

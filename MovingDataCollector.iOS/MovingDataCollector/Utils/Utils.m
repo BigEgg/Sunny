@@ -1,0 +1,93 @@
+//
+//  Utils.m
+//  MovingDataCollector
+//
+//  Created by Jianming Xiao on 7/23/14.
+//  Copyright (c) 2014 jianming.xiao. All rights reserved.
+//
+
+#import "Utils.h"
+
+@implementation Utils
+
+#pragma mark - Enum
+
++ (NSString *)phoneStatusToString:(PhoneStatus)phoneStatus {
+    NSMutableString *result = [NSMutableString stringWithCapacity:32];
+
+    if (phoneStatus == Stop) {
+        [result setString:@"Stop"];
+        return result;
+    }
+
+    if (phoneStatus & Shake) {
+        [result setString:@"Shake"];
+    }
+    else if (phoneStatus & Run) {
+        [result setString:@"Run"];
+    }
+    else if (phoneStatus & Walk) {
+        [result setString:@"Walk"];
+    }
+
+    if (phoneStatus & Left) {
+        [result appendString:@"_Left"];
+    }
+    else if (phoneStatus & Right) {
+        [result appendString:@"_Right"];
+    }
+
+    if (phoneStatus & Handheld) {
+        [result appendString:@"_Handheld"];
+    }
+    else if (phoneStatus & Using) {
+        [result appendString:@"_Using"];
+    }
+    else if (phoneStatus & Pocket) {
+        [result appendString:@"_Pocket"];
+    }
+    else if (phoneStatus & Handbag) {
+        [result appendString:@"_Handbag"];
+    }
+    else if (phoneStatus & TrousersFrontPocket) {
+        [result appendString:@"_TrousersFrontPocket"];
+    }
+    else if (phoneStatus & TrousersBackPocket) {
+        [result appendString:@"_TrousersBackPocket"];
+    }
+
+    return result;
+}
+
++ (NSString *)convertObjectToJson:(NSObject *)object {
+    NSError *writeError = nil;
+
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:object options:NSJSONWritingPrettyPrinted error:&writeError];
+    NSString *result = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+
+    result = [result stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    result = [result stringByReplacingOccurrencesOfString:@" " withString:@""];
+    return result;
+}
+
++ (NSData *)postCall:(NSString *)urlPath withJSON:(NSString *)jsonData {
+    NSData *postDatas = [NSData dataWithBytes:[jsonData UTF8String] length:[jsonData length]];
+    NSURL *url = [NSURL URLWithString:urlPath];
+
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:postDatas];
+    
+    return [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+}
+
++ (NSData *)getCall:(NSString *)urlPath {
+    NSURL *url = [NSURL URLWithString:urlPath];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setHTTPMethod:@"GET"];
+    
+    return [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+}
+
+@end

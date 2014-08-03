@@ -13,6 +13,6 @@
 @interface DataPackage : NSObject
 
 @property PhoneData *phoneData;
-@property NSMutableArray<ISensorData> *data;
+@property NSMutableArray <ISensorData> *data;
 
 @end

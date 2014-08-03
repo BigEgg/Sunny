@@ -7,7 +7,6 @@
 //
 
 #import "MotionService.h"
-#import "RecordViewController.h"
 
 @implementation MotionService
 
@@ -34,32 +33,30 @@ float const GYROSCOPE_UPDATE_TIMES = 5.0;           //  Update at 5Hz
     if (motionManager.accelerometerAvailable) {
         accelerometerQueue = [NSOperationQueue currentQueue];
         [motionManager startAccelerometerUpdatesToQueue:accelerometerQueue
-                                            withHandler:^(CMAccelerometerData *accelerometerData, NSError *error)
-                {
-                    CMAcceleration acceleration = accelerometerData.acceleration;
-                    AccelerometerData *data = [[AccelerometerData alloc] initWithX:acceleration.x
-                                                                              andY:acceleration.y
-                                                                              andZ:acceleration.z];
+                                            withHandler:^(CMAccelerometerData *accelerometerData, NSError *error) {
+                                                CMAcceleration acceleration = accelerometerData.acceleration;
+                                                AccelerometerData *data = [[AccelerometerData alloc] initWithX:acceleration.x
+                                                                                                          andY:acceleration.y
+                                                                                                          andZ:acceleration.z];
 
-                    for (id <ISensorDataHandler> handler in handlers) {
-                        [handler accelerometerHandler:data];
-                    }
-                }];
+                                                for (id <ISensorDataHandler> handler in handlers) {
+                                                    [handler accelerometerHandler:data];
+                                                }
+                                            }];
     }
     if (motionManager.gyroAvailable) {
         gyroscopeQueue = [NSOperationQueue currentQueue];
         [motionManager startGyroUpdatesToQueue:gyroscopeQueue
-                                   withHandler:^(CMGyroData *gyroData, NSError *error)
-                {
-                    CMRotationRate rotate = gyroData.rotationRate;
-                    GyroscopeData *data = [[GyroscopeData alloc] initWithDeltaX:rotate.x
-                                                                      andDeltaY:rotate.y
-                                                                      andDeltaZ:rotate.z];
+                                   withHandler:^(CMGyroData *gyroData, NSError *error) {
+                                       CMRotationRate rotate = gyroData.rotationRate;
+                                       GyroscopeData *data = [[GyroscopeData alloc] initWithDeltaX:rotate.x
+                                                                                         andDeltaY:rotate.y
+                                                                                         andDeltaZ:rotate.z];
 
-                    for (id <ISensorDataHandler> handler in handlers) {
-                        [handler gyroscopeHandler:data];
-                    }
-                }];
+                                       for (id <ISensorDataHandler> handler in handlers) {
+                                           [handler gyroscopeHandler:data];
+                                       }
+                                   }];
     }
 
 }

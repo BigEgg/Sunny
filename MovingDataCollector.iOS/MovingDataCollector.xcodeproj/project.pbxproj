@@ -30,7 +30,6 @@
 		1077522C1980FD3C009697B1 /* RecordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1077522A1980FD3C009697B1 /* RecordViewController.xib */; };
 		1077523219811406009697B1 /* DataPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1077523119811406009697B1 /* DataPackage.m */; };
 		107752351981141F009697B1 /* PhoneData.m in Sources */ = {isa = PBXBuildFile; fileRef = 107752341981141F009697B1 /* PhoneData.m */; };
-		76438652E04EC4382E39DF0E /* RecordDocumentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 76438220447AE01145C4724D /* RecordDocumentType.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,8 +81,6 @@
 		1077523119811406009697B1 /* DataPackage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataPackage.m; path = Models/DataPackage.m; sourceTree = "<group>"; };
 		107752331981141F009697B1 /* PhoneData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhoneData.h; path = Models/PhoneData.h; sourceTree = "<group>"; };
 		107752341981141F009697B1 /* PhoneData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhoneData.m; path = Models/PhoneData.m; sourceTree = "<group>"; };
-		76438204F6A2730C2E300224 /* RecordDocumentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordDocumentType.h; sourceTree = "<group>"; };
-		76438220447AE01145C4724D /* RecordDocumentType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordDocumentType.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,7 +144,6 @@
 			children = (
 				10474A3D1945E51A0069A92E /* AppDelegate.h */,
 				10474A3E1945E51A0069A92E /* AppDelegate.m */,
-				764385E914C743E05FB8F80E /* Clients */,
 				10775202197FA28C009697B1 /* Common */,
 				10474A461945E51A0069A92E /* Images.xcassets */,
 				10A98FC5197E894F0078F445 /* Models */,
@@ -217,16 +213,16 @@
 		10A98FC5197E894F0078F445 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				107752331981141F009697B1 /* PhoneData.h */,
-				107752341981141F009697B1 /* PhoneData.m */,
 				10775209197FED28009697B1 /* AccelerometerData.h */,
 				1077520A197FED28009697B1 /* AccelerometerData.m */,
+				1077523019811406009697B1 /* DataPackage.h */,
+				1077523119811406009697B1 /* DataPackage.m */,
 				1077520B197FED28009697B1 /* Enums.h */,
 				1077520C197FED28009697B1 /* GyroscopeData.h */,
 				1077520D197FED28009697B1 /* GyroscopeData.m */,
 				1077520E197FED28009697B1 /* ISensorData.h */,
-				1077523019811406009697B1 /* DataPackage.h */,
-				1077523119811406009697B1 /* DataPackage.m */,
+				107752331981141F009697B1 /* PhoneData.h */,
+				107752341981141F009697B1 /* PhoneData.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -242,15 +238,6 @@
 				10775216197FED3F009697B1 /* SensorDataViewController.xib */,
 			);
 			name = ViewControllers;
-			sourceTree = "<group>";
-		};
-		764385E914C743E05FB8F80E /* Clients */ = {
-			isa = PBXGroup;
-			children = (
-				76438220447AE01145C4724D /* RecordDocumentType.m */,
-				76438204F6A2730C2E300224 /* RecordDocumentType.h */,
-			);
-			path = Clients;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -364,7 +351,6 @@
 				1077521D197FED4A009697B1 /* MotionService.m in Sources */,
 				10775210197FED28009697B1 /* GyroscopeData.m in Sources */,
 				107752351981141F009697B1 /* PhoneData.m in Sources */,
-				76438652E04EC4382E39DF0E /* RecordDocumentType.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

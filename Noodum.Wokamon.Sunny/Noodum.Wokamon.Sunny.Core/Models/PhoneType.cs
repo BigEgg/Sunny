@@ -2,9 +2,9 @@
 {
     public enum PhoneType
     {
-        iPhone4,
-        iPhone4S,
-        iPhone5,
-        iPhone5S
+        iPhone4 = 1001,
+        iPhone4S = 1002,
+        iPhone5 = 1011,
+        iPhone5S = 1012
     }
 }

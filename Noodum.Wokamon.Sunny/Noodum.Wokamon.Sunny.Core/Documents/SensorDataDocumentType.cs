@@ -1,7 +1,6 @@
 ﻿using Noodum.Wokamon.Sunny.Core.Models;
 using System;
 using System.IO;
-using System.Reflection;
 
 namespace Noodum.Wokamon.Sunny.Core.Documents
 {
@@ -18,7 +17,7 @@ namespace Noodum.Wokamon.Sunny.Core.Documents
         static SensorDataDocumentType()
         {
             fileRootPath = Path.Combine(
-                Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
+                Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory),
                 "RawData");
         }
 
@@ -41,8 +40,13 @@ namespace Noodum.Wokamon.Sunny.Core.Documents
         /// <param name="phoneType">Type of the phone.</param>
         /// <param name="phoneStats">The phone stats.</param>
         /// <returns></returns>
-        public static string GetFolderName(SensorType sensorType, int updateInterval, PhoneType phoneType, PhoneStats phoneStats)
+        public static string GetFolderName(SensorType sensorType, int updateInterval, PhoneType phoneType, PhoneStatus phoneStats)
         {
+            if ((phoneStats & PhoneStatus.Stop) == PhoneStatus.Stop)
+            {
+                phoneStats = PhoneStatus.Stop;
+            }
+
             return Path.Combine(
                 fileRootPath,
                 sensorType.ToString(),
@@ -69,7 +73,7 @@ namespace Noodum.Wokamon.Sunny.Core.Documents
         /// <param name="updateInterval">The update interval.</param>
         /// <param name="phoneType">Type of the phone.</param>
         /// <param name="phoneStats">The phone stats.</param>
-        public static void Save<T>(SensorDataDocument<T> document, int updateInterval, PhoneType phoneType, PhoneStats phoneStats)
+        public static void Save<T>(SensorDataDocument<T> document, int updateInterval, PhoneType phoneType, PhoneStatus phoneStats)
             where T : ISensorData
         {
             SensorType sensorType;
@@ -84,7 +88,7 @@ namespace Noodum.Wokamon.Sunny.Core.Documents
             }
 
             using (var fs = new FileStream(
-                Path.Combine(folderName, DateTime.Now.ToString("yyyyMMDD") + fileExtension),
+                Path.Combine(folderName, DateTime.Now.ToString("yyyyMMdd-HHmmss") + fileExtension),
                 FileMode.Append,
                 FileAccess.Write))
             {

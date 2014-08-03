@@ -59,4 +59,13 @@
     return result;
 }
 
++ (NSString *)convertObjectToJson:(NSObject *)object {
+    NSError *writeError = nil;
+
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:object options:NSJSONWritingPrettyPrinted error:&writeError];
+    NSString *result = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+
+    return result;
+}
+
 @end

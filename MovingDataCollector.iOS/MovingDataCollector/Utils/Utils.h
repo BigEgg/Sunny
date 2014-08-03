@@ -13,4 +13,6 @@
 
 + (NSString *)phoneStatusToString:(PhoneStatus)phoneStatus;
 
++ (NSString *)convertObjectToJson:(NSObject *)object;
+
 @end

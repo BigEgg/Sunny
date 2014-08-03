@@ -8,6 +8,7 @@
 
 #import "RecordViewController.h"
 #import "MotionService.h"
+#import "Utils.h"
 
 @interface RecordViewController ()
 
@@ -17,6 +18,7 @@
 
 int const firstSkipSeconds = 2;
 int const lastSkipSeconds = 2;
+PhoneType const phoneType = iPhone4;
 
 #pragma mark - View LifeCycle
 
@@ -29,11 +31,15 @@ int const lastSkipSeconds = 2;
         accelerometerDataPackage.phoneData = [[PhoneData alloc] init];
         accelerometerDataPackage.data = (NSMutableArray <ISensorData> *) [[NSMutableArray alloc] init];
         accelerometerDataPackage.phoneData.phoneStats = Stop;
+        accelerometerDataPackage.phoneData.phoneType = phoneType;
+        accelerometerDataPackage.phoneData.updateInterval = ACCELEROMETER_UPDATE_TIMES;
 
         gyroscopeDataPackage = [[DataPackage alloc] init];
         gyroscopeDataPackage.phoneData = [[PhoneData alloc] init];
         gyroscopeDataPackage.data = (NSMutableArray <ISensorData> *) [[NSMutableArray alloc] init];
         gyroscopeDataPackage.phoneData.phoneStats = Stop;
+        gyroscopeDataPackage.phoneData.phoneType = phoneType;
+        gyroscopeDataPackage.phoneData.updateInterval = GYROSCOPE_UPDATE_TIMES;
 
         isStartRecord = NO;
     }
@@ -85,8 +91,8 @@ int const lastSkipSeconds = 2;
             break;
         default:
             [NSException raise:@"Invalid Segment Selection"
-                        format:@"Moving Segment is invalid, index: %d",
-                               self.phoneMovingSegment.selectedSegmentIndex];
+                        format:@"Moving Segment is invalid, index: %ld",
+                               (long) self.phoneMovingSegment.selectedSegmentIndex];
     }
 
     switch (self.phoneSideSegment.selectedSegmentIndex) {
@@ -98,8 +104,8 @@ int const lastSkipSeconds = 2;
             break;
         default:
             [NSException raise:@"Invalid Segment Selection"
-                        format:@"Side Segment is invalid, index: %d",
-                               self.phoneSideSegment.selectedSegmentIndex];
+                        format:@"Side Segment is invalid, index: %ld",
+                               (long) self.phoneSideSegment.selectedSegmentIndex];
     }
 
     switch (self.phonePositionSegment.selectedSegmentIndex) {
@@ -123,8 +129,8 @@ int const lastSkipSeconds = 2;
             break;
         default:
             [NSException raise:@"Invalid Segment Selection"
-                        format:@"Position Segment is invalid, index: %d",
-                               self.phonePositionSegment.selectedSegmentIndex];
+                        format:@"Position Segment is invalid, index: %ld",
+                               (long) self.phonePositionSegment.selectedSegmentIndex];
 
     }
 
@@ -180,10 +186,13 @@ int const lastSkipSeconds = 2;
 - (IBAction)sendRecord:(id)sender {
     [accelerometerDataPackage.data removeAllObjects];
     [gyroscopeDataPackage.data removeAllObjects];
-    
+
     [self setUIControls];
     recordCount = 0;
     self.recordSecondsLable.text = [self getRecordTime:recordCount];
+    
+    [self sendDataPackage:accelerometerDataPackage];
+    [self sendDataPackage:gyroscopeDataPackage];
 }
 
 - (IBAction)sectionChanged:(id)sender {
@@ -194,8 +203,8 @@ int const lastSkipSeconds = 2;
             break;
         default:
             [NSException raise:@"Invalid Segment Selection"
-                        format:@"Section View Segement is invalid, index: %d",
-                               sectionControl.selectedSegmentIndex];
+                        format:@"Section View Segement is invalid, index: %ld",
+                               (long) sectionControl.selectedSegmentIndex];
     }
 }
 
@@ -309,6 +318,12 @@ int const lastSkipSeconds = 2;
     int s = seconds % 60;
 
     return [NSString stringWithFormat:@"%d:%02d:%02d", h, m, s];
+}
+
+- (bool)sendDataPackage:(DataPackage *)dataPackage {
+    NSString *json = [Utils convertObjectToJson:dataPackage];
+
+    return false;
 }
 
 @end

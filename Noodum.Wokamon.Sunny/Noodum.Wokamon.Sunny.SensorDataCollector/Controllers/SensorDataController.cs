@@ -28,9 +28,9 @@ namespace Noodum.Wokamon.Sunny.SensorDataCollector.Controllers
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
-        // POST api/sensordata/gyrosensor
+        // POST api/sensordata/gyroscope
         [HttpPost]
-        public HttpResponseMessage Gyrosensor([FromBody] DataPackage<GyrosensorData> data)
+        public HttpResponseMessage Gyroscope([FromBody] DataPackage<GyrosensorData> data)
         {
             if (data == null) { throw new ArgumentNullException("data cannot be null"); }
 

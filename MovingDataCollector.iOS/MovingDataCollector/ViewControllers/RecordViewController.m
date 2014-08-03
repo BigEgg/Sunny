@@ -184,15 +184,17 @@ PhoneType const phoneType = iPhone4;
 }
 
 - (IBAction)sendRecord:(id)sender {
+    
+    [self sendDataPackage:accelerometerDataPackage];
+    [self sendDataPackage:gyroscopeDataPackage];
+    
+    
     [accelerometerDataPackage.data removeAllObjects];
     [gyroscopeDataPackage.data removeAllObjects];
 
     [self setUIControls];
     recordCount = 0;
     self.recordSecondsLable.text = [self getRecordTime:recordCount];
-    
-    [self sendDataPackage:accelerometerDataPackage];
-    [self sendDataPackage:gyroscopeDataPackage];
 }
 
 - (IBAction)sectionChanged:(id)sender {
@@ -321,7 +323,7 @@ PhoneType const phoneType = iPhone4;
 }
 
 - (bool)sendDataPackage:(DataPackage *)dataPackage {
-    NSString *json = [Utils convertObjectToJson:dataPackage];
+    NSString *json = [Utils convertObjectToJson:[dataPackage dictionary]];
 
     return false;
 }

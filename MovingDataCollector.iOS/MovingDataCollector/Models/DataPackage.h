@@ -10,7 +10,7 @@
 #import "ISensorData.h"
 #import "PhoneData.h"
 
-@interface DataPackage : NSObject
+@interface DataPackage : NSObject <IJSONSerialize>
 
 @property PhoneData *phoneData;
 @property NSMutableArray <ISensorData> *data;

@@ -10,4 +10,10 @@
 
 @implementation PhoneData
 
+- (NSDictionary *)dictionary {
+    return @{@"PhoneType" : @(self.phoneType),
+            @"PhoneStatus" : @(self.phoneStats),
+            @"UpdateInterval" : @(self.updateInterval)};
+}
+
 @end

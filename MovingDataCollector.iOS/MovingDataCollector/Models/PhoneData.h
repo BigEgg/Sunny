@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "IJSONSerialize.h"
 #import "Enums.h"
 
-@interface PhoneData : NSObject
+@interface PhoneData : NSObject <IJSONSerialize>
 
 @property PhoneType phoneType;
 @property PhoneStatus phoneStats;

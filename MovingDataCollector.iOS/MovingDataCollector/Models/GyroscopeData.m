@@ -41,4 +41,10 @@
     return result;
 }
 
+- (NSDictionary *)dictionary {
+    return @{@"DeltaX" : @(deltaX),
+            @"DeltaY" : @(deltaY),
+            @"DeltaZ" : @(deltaZ)};
+}
+
 @end

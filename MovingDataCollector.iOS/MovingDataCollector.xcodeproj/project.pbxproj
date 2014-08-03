@@ -81,6 +81,7 @@
 		1077523119811406009697B1 /* DataPackage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataPackage.m; path = Models/DataPackage.m; sourceTree = "<group>"; };
 		107752331981141F009697B1 /* PhoneData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhoneData.h; path = Models/PhoneData.h; sourceTree = "<group>"; };
 		107752341981141F009697B1 /* PhoneData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhoneData.m; path = Models/PhoneData.m; sourceTree = "<group>"; };
+		10B15227198DEB3B008FB77C /* IJSONSerialize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IJSONSerialize.h; path = Models/IJSONSerialize.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +224,7 @@
 				1077520E197FED28009697B1 /* ISensorData.h */,
 				107752331981141F009697B1 /* PhoneData.h */,
 				107752341981141F009697B1 /* PhoneData.m */,
+				10B15227198DEB3B008FB77C /* IJSONSerialize.h */,
 			);
 			name = Models;
 			sourceTree = "<group>";

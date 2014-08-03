@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "IJSONSerialize.h"
 
-@protocol ISensorData <NSObject>
+@protocol ISensorData <NSObject, IJSONSerialize>
 
 - (NSString *)toString;
 

@@ -41,4 +41,10 @@
     return result;
 }
 
+- (NSDictionary *)dictionary {
+    return @{@"X" : @(x),
+            @"Y" : @(y),
+            @"Z" : @(z)};
+}
+
 @end

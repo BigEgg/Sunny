@@ -68,4 +68,16 @@
     return result;
 }
 
++ (bool)postCall:(NSString *)urlPath withJSON:(NSString *)jsonData {
+    return false;
+}
+
++ (NSData *)getCall:(NSString *)urlPath {
+    NSURL *url = [NSURL URLWithString:urlPath];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setHTTPMethod:@"GET"];
+    
+    return [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+}
+
 @end

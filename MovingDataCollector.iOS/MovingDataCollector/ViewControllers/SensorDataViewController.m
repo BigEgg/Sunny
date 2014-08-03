@@ -7,6 +7,8 @@
 //
 
 #import "SensorDataViewController.h"
+#import "Utils.h"
+#import "Constants.h"
 
 @interface SensorDataViewController ()
 
@@ -41,8 +43,25 @@
             break;
         default:
             [NSException raise:@"Invalid Segment Selection"
-                        format:@"Section View Segment is invalid, index: %d",
-                               sectionControl.selectedSegmentIndex];
+                        format:@"Section View Segment is invalid, index: %ld",
+                               (long) sectionControl.selectedSegmentIndex];
+    }
+}
+
+- (IBAction)testConnection:(id)sender {
+    NSString *urlPath = [[NSString alloc] initWithFormat:@"%s%s", SUNNY_SERVER, SUNNY_TEST_CONNECTION];
+
+    NSData *respond = nil;
+    @try {
+        respond = [Utils getCall:urlPath];
+    }
+    @catch (NSException *exception) {
+    }
+
+    if (respond == nil) {
+        self.connectionResultLable.text = @"Cannot";
+    } else {
+        self.connectionResultLable.text = @"Success";
     }
 }
 

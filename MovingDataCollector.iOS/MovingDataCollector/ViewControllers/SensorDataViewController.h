@@ -32,8 +32,12 @@
 @property(weak, nonatomic) IBOutlet UIProgressView *yGyroscopeBar;
 @property(weak, nonatomic) IBOutlet UIProgressView *zGyroscopeBar;
 
+@property (strong, nonatomic) IBOutlet UILabel *connectionResultLable;
 
 - (IBAction)sectionChanged:(id)sender;
+
+- (IBAction)testConnection:(id)sender;
+
 
 - (void)accelerometerHandler:(AccelerometerData *)data;
 

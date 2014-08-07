@@ -273,6 +273,10 @@ PhoneType const phoneType = iPhone4;
 
     if (!haveData && !isStartRecord) {
         self.phoneMovingSegment.enabled = YES;
+        if (self.phoneMovingSegment.selectedSegmentIndex == 0) {
+            self.phonePositionSegment.enabled = NO;
+            self.phoneSideSegment.enabled = NO;
+        }
         return;
     } else {
         PhoneStatus phoneStatus = accelerometerDataPackage.phoneData.phoneStats;

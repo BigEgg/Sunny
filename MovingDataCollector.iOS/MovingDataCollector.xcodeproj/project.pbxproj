@@ -32,6 +32,7 @@
 		107752351981141F009697B1 /* PhoneData.m in Sources */ = {isa = PBXBuildFile; fileRef = 107752341981141F009697B1 /* PhoneData.m */; };
 		10B1522B1995B6BF008FB77C /* DiagramViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B152291995B6BF008FB77C /* DiagramViewController.m */; };
 		10B1522C1995B6BF008FB77C /* DiagramViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10B1522A1995B6BF008FB77C /* DiagramViewController.xib */; };
+		10B1522E1995BBB7008FB77C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10B1522D1995BBB7008FB77C /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,7 @@
 		10B152281995B6BF008FB77C /* DiagramViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DiagramViewController.h; path = ViewControllers/DiagramViewController.h; sourceTree = "<group>"; };
 		10B152291995B6BF008FB77C /* DiagramViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DiagramViewController.m; path = ViewControllers/DiagramViewController.m; sourceTree = "<group>"; };
 		10B1522A1995B6BF008FB77C /* DiagramViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DiagramViewController.xib; path = ViewControllers/DiagramViewController.xib; sourceTree = "<group>"; };
+		10B1522D1995BBB7008FB77C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		764387F5CC1CF10C4AEA1DE2 /* ISensorData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISensorData.h; path = Models/ISensorData.h; sourceTree = "<group>"; };
 		76438A0CBFC6ABEA14605A22 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -95,8 +97,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				10474A641945E5250069A92E /* CoreMotion.framework in Frameworks */,
+				10B1522E1995BBB7008FB77C /* QuartzCore.framework in Frameworks */,
 				10474A311945E51A0069A92E /* CoreGraphics.framework in Frameworks */,
+				10474A641945E5250069A92E /* CoreMotion.framework in Frameworks */,
 				10474A331945E51A0069A92E /* UIKit.framework in Frameworks */,
 				10474A2F1945E51A0069A92E /* Foundation.framework in Frameworks */,
 			);
@@ -137,6 +140,7 @@
 		10474A2D1945E51A0069A92E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				10B1522D1995BBB7008FB77C /* QuartzCore.framework */,
 				10474A631945E5250069A92E /* CoreMotion.framework */,
 				10474A2E1945E51A0069A92E /* Foundation.framework */,
 				10474A301945E51A0069A92E /* CoreGraphics.framework */,

@@ -30,6 +30,8 @@
 		1077522C1980FD3C009697B1 /* RecordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1077522A1980FD3C009697B1 /* RecordViewController.xib */; };
 		1077523219811406009697B1 /* DataPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1077523119811406009697B1 /* DataPackage.m */; };
 		107752351981141F009697B1 /* PhoneData.m in Sources */ = {isa = PBXBuildFile; fileRef = 107752341981141F009697B1 /* PhoneData.m */; };
+		10B1522B1995B6BF008FB77C /* DiagramViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B152291995B6BF008FB77C /* DiagramViewController.m */; };
+		10B1522C1995B6BF008FB77C /* DiagramViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10B1522A1995B6BF008FB77C /* DiagramViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +83,9 @@
 		107752331981141F009697B1 /* PhoneData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhoneData.h; path = Models/PhoneData.h; sourceTree = "<group>"; };
 		107752341981141F009697B1 /* PhoneData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhoneData.m; path = Models/PhoneData.m; sourceTree = "<group>"; };
 		10B15227198DEB3B008FB77C /* IJSONSerialize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IJSONSerialize.h; path = Models/IJSONSerialize.h; sourceTree = "<group>"; };
+		10B152281995B6BF008FB77C /* DiagramViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DiagramViewController.h; path = ViewControllers/DiagramViewController.h; sourceTree = "<group>"; };
+		10B152291995B6BF008FB77C /* DiagramViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DiagramViewController.m; path = ViewControllers/DiagramViewController.m; sourceTree = "<group>"; };
+		10B1522A1995B6BF008FB77C /* DiagramViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DiagramViewController.xib; path = ViewControllers/DiagramViewController.xib; sourceTree = "<group>"; };
 		764387F5CC1CF10C4AEA1DE2 /* ISensorData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISensorData.h; path = Models/ISensorData.h; sourceTree = "<group>"; };
 		76438A0CBFC6ABEA14605A22 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -240,6 +245,9 @@
 				10775214197FED3F009697B1 /* SensorDataViewController.h */,
 				10775215197FED3F009697B1 /* SensorDataViewController.m */,
 				10775216197FED3F009697B1 /* SensorDataViewController.xib */,
+				10B152281995B6BF008FB77C /* DiagramViewController.h */,
+				10B152291995B6BF008FB77C /* DiagramViewController.m */,
+				10B1522A1995B6BF008FB77C /* DiagramViewController.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -325,6 +333,7 @@
 			files = (
 				1077522C1980FD3C009697B1 /* RecordViewController.xib in Resources */,
 				1077521A197FED3F009697B1 /* SensorDataViewController.xib in Resources */,
+				10B1522C1995B6BF008FB77C /* DiagramViewController.xib in Resources */,
 				10474A471945E51A0069A92E /* Images.xcassets in Resources */,
 				10474A391945E51A0069A92E /* InfoPlist.strings in Resources */,
 			);
@@ -347,6 +356,7 @@
 			files = (
 				10474A3F1945E51A0069A92E /* AppDelegate.m in Sources */,
 				1077522B1980FD3C009697B1 /* RecordViewController.m in Sources */,
+				10B1522B1995B6BF008FB77C /* DiagramViewController.m in Sources */,
 				10474A3B1945E51A0069A92E /* main.m in Sources */,
 				1077523219811406009697B1 /* DataPackage.m in Sources */,
 				10775227197FF19F009697B1 /* Utils.m in Sources */,

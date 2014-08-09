@@ -23,25 +23,26 @@ PhoneType const phoneType = iPhone4;
 
 #pragma mark - View LifeCycle
 
-- (id)init {
-    self = [super init];
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         isInit = NO;
-
+        
         accelerometerDataPackage = [[DataPackage alloc] init];
         accelerometerDataPackage.phoneData = [[PhoneData alloc] init];
         accelerometerDataPackage.data = (NSMutableArray <ISensorData> *) [[NSMutableArray alloc] init];
         accelerometerDataPackage.phoneData.phoneStats = Stop;
         accelerometerDataPackage.phoneData.phoneType = phoneType;
         accelerometerDataPackage.phoneData.updateInterval = ACCELEROMETER_UPDATE_TIMES;
-
+        
         gyroscopeDataPackage = [[DataPackage alloc] init];
         gyroscopeDataPackage.phoneData = [[PhoneData alloc] init];
         gyroscopeDataPackage.data = (NSMutableArray <ISensorData> *) [[NSMutableArray alloc] init];
         gyroscopeDataPackage.phoneData.phoneStats = Stop;
         gyroscopeDataPackage.phoneData.phoneType = phoneType;
         gyroscopeDataPackage.phoneData.updateInterval = GYROSCOPE_UPDATE_TIMES;
-
+        
         isStartRecord = NO;
     }
     return self;

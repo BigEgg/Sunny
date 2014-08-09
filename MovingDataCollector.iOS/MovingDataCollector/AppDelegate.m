@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "SensorDataViewController.h"
 #import "RecordViewController.h"
+#import "DiagramViewController.h"
 
 @implementation AppDelegate
 
@@ -21,13 +22,15 @@
 
     SensorDataViewController *sensorDataVC = [[SensorDataViewController alloc] initWithNibName:@"SensorDataViewController" bundle:nil];
     sensorDataVC.title = @"Sensor Data";
-    RecordViewController *recordVC = [[RecordViewController alloc] init];
+    RecordViewController *recordVC = [[RecordViewController alloc] initWithNibName:@"RecordViewController" bundle:nil];
     recordVC.title = @"Record Data";
+    DiagramViewController *diagramVC = [[DiagramViewController alloc] initWithNibName:@"DiagramViewController" bundle:nil];
+    diagramVC.title = @"Sensor Diagram";
 
     [self initMotionServiceWithSensorDataVC:sensorDataVC recordViewController:recordVC];
 
     self.tabBarController = [[UITabBarController alloc] init];
-    self.tabBarController.viewControllers = [NSArray arrayWithObjects:sensorDataVC, recordVC, nil];
+    self.tabBarController.viewControllers = [NSArray arrayWithObjects:sensorDataVC, recordVC, diagramVC, nil];
 
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];

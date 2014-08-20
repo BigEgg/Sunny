@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "DrawPoint.h"
 
-@interface COSLogic : NSObject
+@interface COSDrawLogic : NSObject
 
 @property int height;
 @property int width;

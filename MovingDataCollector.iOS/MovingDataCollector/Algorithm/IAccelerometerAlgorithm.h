@@ -12,6 +12,6 @@
 
 @protocol IAccelerometerAlgorithm <NSObject, IAlgorithm>
 
-- (float)computeWithData:(AccelerometerData *)data andOldData:(AccelerometerData *)oldData；
+- (float)computeWithData:(AccelerometerData *)data andOldData:(AccelerometerData *)oldData;
 
 @end

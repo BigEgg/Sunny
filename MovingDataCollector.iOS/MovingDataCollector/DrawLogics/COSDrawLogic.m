@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 jianming.xiao. All rights reserved.
 //
 
-#import "COSLogic.h"
+#import "COSDrawLogic.h"
 
-@implementation COSLogic
+@implementation COSDrawLogic
 @synthesize height, width;
 
 float const DATA_WIDTH_PIXEL = 5;
@@ -32,13 +32,13 @@ UIColor * BACKGROUND_COLOR;
                     index:(int)index
                  startCOS:(float)startCOS
                    endCOS:(float)endCOS {
-    DrawPoint *backgroundStartPoint = [[DrawPoint alloc] initWithX:((index - 1) * DATA_WIDTH_PIXEL + 3) Y:startCOS];
-    DrawPoint *backgroundEndPoint = [[DrawPoint alloc] initWithX:((index - 1) * DATA_WIDTH_PIXEL + 3) Y:endCOS];
+    DrawPoint *backgroundStartPoint = [[DrawPoint alloc] initWithX:((index - 1) * DATA_WIDTH_PIXEL + 3) Y:0];
+    DrawPoint *backgroundEndPoint = [[DrawPoint alloc] initWithX:((index - 1) * DATA_WIDTH_PIXEL + 3) Y:height];
     
     [self drawStraightLinesInContext:context color:BACKGROUND_COLOR startPoint:backgroundStartPoint endPoint:backgroundEndPoint lineWidth:DATA_WIDTH_PIXEL];
     
-    DrawPoint *lineStartPoint = [[DrawPoint alloc] initWithX:((index - 1) * DATA_WIDTH_PIXEL + 1) Y:startCOS];
-    DrawPoint *lineEndPoint = [[DrawPoint alloc] initWithX:(index * DATA_WIDTH_PIXEL) Y:endCOS];
+    DrawPoint *lineStartPoint = [[DrawPoint alloc] initWithX:((index - 1) * DATA_WIDTH_PIXEL + 1) Y:startCOS * height];
+    DrawPoint *lineEndPoint = [[DrawPoint alloc] initWithX:(index * DATA_WIDTH_PIXEL) Y:endCOS * height];
     
     [self drawStraightLinesInContext:context color:DATA_LINE_COLOR startPoint:lineStartPoint endPoint:lineEndPoint lineWidth:LINE_WIDTH];
 }

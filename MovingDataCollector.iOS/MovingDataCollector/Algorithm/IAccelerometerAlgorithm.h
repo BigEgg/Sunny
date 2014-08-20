@@ -7,7 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "IAlgorithm.h"
+#import "AccelerometerData.h"
 
-@protocol IAccelemeterAlgorithm <NSObject>
+@protocol IAccelerometerAlgorithm <NSObject, IAlgorithm>
+
+- (float)computeWithData:(AccelerometerData *)data andOldData:(AccelerometerData *)oldData；
 
 @end

@@ -10,4 +10,11 @@
 
 @interface DiagramViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UIView *sectionView;
+@property (strong, nonatomic) IBOutlet UIView *cosView;
+
+@property (strong, nonatomic) IBOutlet UIView *cosDrawView;
+
+- (IBAction)sectionChanged:(id)sender;
+
 @end

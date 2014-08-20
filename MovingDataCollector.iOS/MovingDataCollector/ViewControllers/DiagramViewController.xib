@@ -6,6 +6,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DiagramViewController">
             <connections>
+                <outlet property="cosDrawView" destination="1ho-tk-PPG" id="Bdj-9i-fRb"/>
+                <outlet property="cosView" destination="oAy-fu-w9W" id="DoK-zU-793"/>
+                <outlet property="sectionView" destination="VV9-Xh-TRc" id="l1Q-9o-xWu"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,6 +24,9 @@
                         <segment title="COS(Θ)"/>
                         <segment title="COS(Θ) with Gyro" enabled="NO"/>
                     </segments>
+                    <connections>
+                        <action selector="sectionChanged:" destination="-1" eventType="valueChanged" id="ulc-R4-wKZ"/>
+                    </connections>
                 </segmentedControl>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VV9-Xh-TRc">
                     <rect key="frame" x="20" y="56" width="280" height="355"/>

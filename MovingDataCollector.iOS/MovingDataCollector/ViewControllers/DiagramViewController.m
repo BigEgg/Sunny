@@ -29,6 +29,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    [self.sectionView addSubview:self.cosView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -36,5 +38,22 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - Sections
+
+- (IBAction)sectionChanged:(id)sender {
+    UISegmentedControl *sectionControl = (UISegmentedControl *) sender;
+    switch (sectionControl.selectedSegmentIndex) {
+        case 0:
+            [self.sectionView addSubview:self.cosView];
+            break;
+        default:
+            [NSException raise:@"Invalid Segment Selection"
+                        format:@"Section View Segment is invalid, index: %ld", (long) sectionControl.selectedSegmentIndex];
+    }
+}
+
+#pragma mark - COS View
+
 
 @end

@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ISensorDataHandler.h"
+#import "COSDrawView.h"
 
-@interface DiagramViewController : UIViewController
+@interface DiagramViewController : UIViewController <ISensorDataHandler> {
+
+}
 
 @property (strong, nonatomic) IBOutlet UIView *sectionView;
 @property (strong, nonatomic) IBOutlet UIView *cosView;

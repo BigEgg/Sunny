@@ -7,9 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "IDrawView.h"
+#import "COSAlgorithm.h"
+#import "COSDrawLogic.h"
 
-@interface COSDrawView : UIView {
+@interface COSDrawView : UIView <IDrawView> {
+    int height, width;
     CGContextRef cgContext;
+    
+    COSAlgorithm *cosAlgorithm;
+    COSDrawLogic *cosDrawLogic;
+    
+    AccelerometerData *lastAccelerometerData;
+    float lastCOS;
+    int index;
 }
 
 @end

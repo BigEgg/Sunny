@@ -7,22 +7,36 @@
 //
 
 #import "COSDrawView.h"
-#import "DrawPoint.h"
 
 @implementation COSDrawView
 
-#define COS_DRAW_VIEW_WIDTH 240
-#define COS_DRAW_VIEW_HEIGHT 169
-
-- (id)initWithFrame:(CGRect)frame
-{
+- (id)initWithHeight:(int)theHeight Width:(int)theWidth {
+    CGRect frame = CGRectMake(0, 0, theWidth, theHeight);
     self = [super initWithFrame:frame];
     if (self) {
         cgContext = UIGraphicsGetCurrentContext();
+        height = theHeight;
+        width = theWidth;
+        
+        cosAlgorithm = [[COSAlgorithm alloc] init];
+        cosDrawLogic = [[COSDrawLogic alloc] initWithHeight:height Width:width];
+        index = 0;
     }
     return self;
 }
 
+- (void)drawAccelerometerData:(AccelerometerData *)data {
+    float newCOS = [cosAlgorithm computeWithData:data andOldData:lastAccelerometerData];
+    
+    [cosDrawLogic drawLineInContext:cgContext index:index++ startCOS:lastCOS endCOS:newCOS];
+    
+    lastAccelerometerData = data;
+    lastCOS = newCOS;
+}
+
+- (void)drawGyroscopeData:(GyroscopeData *)data {
+    
+}
 
 
 @end

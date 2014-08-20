@@ -15,12 +15,15 @@ float const DATA_WIDTH_PIXEL = 5;
 float const LINE_WIDTH = 1;
 UIColor * DATA_LINE_COLOR;
 UIColor * BACKGROUND_COLOR;
+int dataWidth;
 
 - (id)initWithHeight:(int)theHeight Width:(int)theWidth {
     self = [super init];
     if (self) {
         height = theHeight;
         width = theWidth;
+        
+        dataWidth = theWidth / DATA_WIDTH_PIXEL;
         
         DATA_LINE_COLOR = [UIColor yellowColor];
         BACKGROUND_COLOR = [UIColor darkGrayColor];
@@ -32,6 +35,8 @@ UIColor * BACKGROUND_COLOR;
                     index:(int)index
                  startCOS:(float)startCOS
                    endCOS:(float)endCOS {
+    index = index % dataWidth;
+    
     DrawPoint *backgroundStartPoint = [[DrawPoint alloc] initWithX:((index - 1) * DATA_WIDTH_PIXEL + 3) Y:0];
     DrawPoint *backgroundEndPoint = [[DrawPoint alloc] initWithX:((index - 1) * DATA_WIDTH_PIXEL + 3) Y:height];
     

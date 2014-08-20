@@ -30,9 +30,13 @@
 		1077522C1980FD3C009697B1 /* RecordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1077522A1980FD3C009697B1 /* RecordViewController.xib */; };
 		1077523219811406009697B1 /* DataPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1077523119811406009697B1 /* DataPackage.m */; };
 		107752351981141F009697B1 /* PhoneData.m in Sources */ = {isa = PBXBuildFile; fileRef = 107752341981141F009697B1 /* PhoneData.m */; };
+		1089269B19A3791800901050 /* COSLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 1089269A19A3791800901050 /* COSLogic.m */; };
+		1089269E19A379B000901050 /* DrawPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 1089269D19A379B000901050 /* DrawPoint.m */; };
+		108926A219A3A0C000901050 /* COSAlgorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = 108926A119A3A0C000901050 /* COSAlgorithm.m */; };
 		10B1522B1995B6BF008FB77C /* DiagramViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B152291995B6BF008FB77C /* DiagramViewController.m */; };
 		10B1522C1995B6BF008FB77C /* DiagramViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10B1522A1995B6BF008FB77C /* DiagramViewController.xib */; };
 		10B1522E1995BBB7008FB77C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10B1522D1995BBB7008FB77C /* QuartzCore.framework */; };
+		10B152331995C000008FB77C /* COSDrawView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B152321995C000008FB77C /* COSDrawView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,11 +87,21 @@
 		1077523119811406009697B1 /* DataPackage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataPackage.m; path = Models/DataPackage.m; sourceTree = "<group>"; };
 		107752331981141F009697B1 /* PhoneData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhoneData.h; path = Models/PhoneData.h; sourceTree = "<group>"; };
 		107752341981141F009697B1 /* PhoneData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhoneData.m; path = Models/PhoneData.m; sourceTree = "<group>"; };
-		10B15227198DEB3B008FB77C /* IJSONSerialize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IJSONSerialize.h; path = Models/IJSONSerialize.h; sourceTree = "<group>"; };
+		1089269919A3791800901050 /* COSLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = COSLogic.h; path = DrawLogics/COSLogic.h; sourceTree = "<group>"; };
+		1089269A19A3791800901050 /* COSLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = COSLogic.m; path = DrawLogics/COSLogic.m; sourceTree = "<group>"; };
+		1089269C19A379B000901050 /* DrawPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DrawPoint.h; path = DrawLogics/DrawPoint.h; sourceTree = "<group>"; };
+		1089269D19A379B000901050 /* DrawPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DrawPoint.m; path = DrawLogics/DrawPoint.m; sourceTree = "<group>"; };
+		108926A019A3A0C000901050 /* COSAlgorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = COSAlgorithm.h; path = Algorithm/COSAlgorithm.h; sourceTree = "<group>"; };
+		108926A119A3A0C000901050 /* COSAlgorithm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = COSAlgorithm.m; path = Algorithm/COSAlgorithm.m; sourceTree = "<group>"; };
+		108926A319A3A13600901050 /* IAlgorithm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IAlgorithm.h; path = Algorithm/IAlgorithm.h; sourceTree = "<group>"; };
+		108926A419A3A1AB00901050 /* IAccelerometerAlgorithm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IAccelerometerAlgorithm.h; path = Algorithm/IAccelerometerAlgorithm.h; sourceTree = "<group>"; };
+		108926A519A3A21700901050 /* IJSONSerialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IJSONSerialize.h; path = Common/IJSONSerialize.h; sourceTree = "<group>"; };
 		10B152281995B6BF008FB77C /* DiagramViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DiagramViewController.h; path = ViewControllers/DiagramViewController.h; sourceTree = "<group>"; };
 		10B152291995B6BF008FB77C /* DiagramViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DiagramViewController.m; path = ViewControllers/DiagramViewController.m; sourceTree = "<group>"; };
 		10B1522A1995B6BF008FB77C /* DiagramViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DiagramViewController.xib; path = ViewControllers/DiagramViewController.xib; sourceTree = "<group>"; };
 		10B1522D1995BBB7008FB77C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		10B152311995C000008FB77C /* COSDrawView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = COSDrawView.h; path = ViewControllers/DrawViews/COSDrawView.h; sourceTree = "<group>"; };
+		10B152321995C000008FB77C /* COSDrawView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = COSDrawView.m; path = ViewControllers/DrawViews/COSDrawView.m; sourceTree = "<group>"; };
 		764387F5CC1CF10C4AEA1DE2 /* ISensorData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISensorData.h; path = Models/ISensorData.h; sourceTree = "<group>"; };
 		76438A0CBFC6ABEA14605A22 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -153,9 +167,11 @@
 		10474A341945E51A0069A92E /* MovingDataCollector */ = {
 			isa = PBXGroup;
 			children = (
+				1089269F19A3A09100901050 /* Algorithm */,
 				10474A3D1945E51A0069A92E /* AppDelegate.h */,
 				10474A3E1945E51A0069A92E /* AppDelegate.m */,
 				10775202197FA28C009697B1 /* Common */,
+				1089269819A378D800901050 /* DrawLogics */,
 				10474A461945E51A0069A92E /* Images.xcassets */,
 				10A98FC5197E894F0078F445 /* Models */,
 				107751FE197F614A009697B1 /* Services */,
@@ -207,6 +223,7 @@
 		10775202197FA28C009697B1 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				108926A519A3A21700901050 /* IJSONSerialize.h */,
 				1077521E197FED54009697B1 /* ISensorDataHandler.h */,
 				764387F5CC1CF10C4AEA1DE2 /* ISensorData.h */,
 				76438A0CBFC6ABEA14605A22 /* Constants.h */,
@@ -223,6 +240,28 @@
 			name = Utils;
 			sourceTree = "<group>";
 		};
+		1089269819A378D800901050 /* DrawLogics */ = {
+			isa = PBXGroup;
+			children = (
+				1089269C19A379B000901050 /* DrawPoint.h */,
+				1089269D19A379B000901050 /* DrawPoint.m */,
+				1089269919A3791800901050 /* COSLogic.h */,
+				1089269A19A3791800901050 /* COSLogic.m */,
+			);
+			name = DrawLogics;
+			sourceTree = "<group>";
+		};
+		1089269F19A3A09100901050 /* Algorithm */ = {
+			isa = PBXGroup;
+			children = (
+				108926A019A3A0C000901050 /* COSAlgorithm.h */,
+				108926A119A3A0C000901050 /* COSAlgorithm.m */,
+				108926A319A3A13600901050 /* IAlgorithm.h */,
+				108926A419A3A1AB00901050 /* IAccelerometerAlgorithm.h */,
+			);
+			name = Algorithm;
+			sourceTree = "<group>";
+		};
 		10A98FC5197E894F0078F445 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -235,7 +274,6 @@
 				1077520D197FED28009697B1 /* GyroscopeData.m */,
 				107752331981141F009697B1 /* PhoneData.h */,
 				107752341981141F009697B1 /* PhoneData.m */,
-				10B15227198DEB3B008FB77C /* IJSONSerialize.h */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -243,6 +281,7 @@
 		10A98FCF197E8FB60078F445 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				10B152301995BFDE008FB77C /* DrawViews */,
 				107752281980FD3C009697B1 /* RecordViewController.h */,
 				107752291980FD3C009697B1 /* RecordViewController.m */,
 				1077522A1980FD3C009697B1 /* RecordViewController.xib */,
@@ -254,6 +293,15 @@
 				10B1522A1995B6BF008FB77C /* DiagramViewController.xib */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		10B152301995BFDE008FB77C /* DrawViews */ = {
+			isa = PBXGroup;
+			children = (
+				10B152311995C000008FB77C /* COSDrawView.h */,
+				10B152321995C000008FB77C /* COSDrawView.m */,
+			);
+			name = DrawViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -361,11 +409,15 @@
 				10474A3F1945E51A0069A92E /* AppDelegate.m in Sources */,
 				1077522B1980FD3C009697B1 /* RecordViewController.m in Sources */,
 				10B1522B1995B6BF008FB77C /* DiagramViewController.m in Sources */,
+				10B152331995C000008FB77C /* COSDrawView.m in Sources */,
+				108926A219A3A0C000901050 /* COSAlgorithm.m in Sources */,
+				1089269E19A379B000901050 /* DrawPoint.m in Sources */,
 				10474A3B1945E51A0069A92E /* main.m in Sources */,
 				1077523219811406009697B1 /* DataPackage.m in Sources */,
 				10775227197FF19F009697B1 /* Utils.m in Sources */,
 				1077520F197FED28009697B1 /* AccelerometerData.m in Sources */,
 				10775219197FED3F009697B1 /* SensorDataViewController.m in Sources */,
+				1089269B19A3791800901050 /* COSLogic.m in Sources */,
 				1077521D197FED4A009697B1 /* MotionService.m in Sources */,
 				10775210197FED28009697B1 /* GyroscopeData.m in Sources */,
 				107752351981141F009697B1 /* PhoneData.m in Sources */,

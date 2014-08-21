@@ -27,7 +27,7 @@
     DiagramViewController *diagramVC = [[DiagramViewController alloc] initWithNibName:@"DiagramViewController" bundle:nil];
     diagramVC.title = @"Sensor Diagram";
 
-    [self initMotionServiceWithSensorDataVC:sensorDataVC recordViewController:recordVC];
+    [self initMotionServiceWithSensorDataVC:sensorDataVC RecordVC:recordVC DiagramVC:diagramVC];
 
     self.tabBarController = [[UITabBarController alloc] init];
     self.tabBarController.viewControllers = [NSArray arrayWithObjects:sensorDataVC, recordVC, diagramVC, nil];
@@ -63,9 +63,12 @@
 
 #pragma mark - Private Methods
 
-- (void)initMotionServiceWithSensorDataVC:(SensorDataViewController *)sensorDataViewController recordViewController:(RecordViewController *)recordViewController {
+- (void)initMotionServiceWithSensorDataVC:(SensorDataViewController *)sensorDataViewController
+                                 RecordVC:(RecordViewController *)recordViewController
+                                DiagramVC:(DiagramViewController *)diagramViewController {
     motionService = [[MotionService alloc] init];
     [motionService addHandler:(id <ISensorDataHandler>) sensorDataViewController];
     [motionService addHandler:(id <ISensorDataHandler>) recordViewController];
+    [motionService addHandler:(id <ISensorDataHandler>) diagramViewController];
 }
 @end

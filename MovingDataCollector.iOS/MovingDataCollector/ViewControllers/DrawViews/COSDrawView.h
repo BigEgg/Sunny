@@ -13,7 +13,6 @@
 
 @interface COSDrawView : UIView <IDrawView> {
     int height, width;
-    CGContextRef cgContext;
     
     COSAlgorithm *cosAlgorithm;
     COSDrawLogic *cosDrawLogic;

@@ -14,7 +14,6 @@
     CGRect frame = CGRectMake(0, 0, theWidth, theHeight);
     self = [super initWithFrame:frame];
     if (self) {
-        cgContext = UIGraphicsGetCurrentContext();
         height = theHeight;
         width = theWidth;
         
@@ -26,9 +25,12 @@
 }
 
 - (void)drawAccelerometerData:(AccelerometerData *)data {
-    float newCOS = [cosAlgorithm computeWithData:data andOldData:lastAccelerometerData];
-    
-    [cosDrawLogic drawLineInContext:cgContext index:index++ startCOS:lastCOS endCOS:newCOS];
+    CGContextRef cgContext = UIGraphicsGetCurrentContext();
+    float newCOS = 0.0;
+    if (lastAccelerometerData != nil) {
+        newCOS = [cosAlgorithm computeWithData:data andOldData:lastAccelerometerData];
+        [cosDrawLogic drawLineInContext:cgContext index:index++ startCOS:lastCOS endCOS:newCOS];
+    }
     
     lastAccelerometerData = data;
     lastCOS = newCOS;

@@ -16,12 +16,14 @@ float const LINE_WIDTH = 1;
 UIColor * DATA_LINE_COLOR;
 UIColor * BACKGROUND_COLOR;
 int dataWidth;
+int halfHeight;
 
 - (id)initWithHeight:(int)theHeight Width:(int)theWidth {
     self = [super init];
     if (self) {
         height = theHeight;
         width = theWidth;
+        halfHeight = height / 2;
         
         dataWidth = theWidth / DATA_WIDTH_PIXEL;
         
@@ -41,9 +43,10 @@ int dataWidth;
     DrawPoint *backgroundEndPoint = [[DrawPoint alloc] initWithX:((index - 1) * DATA_WIDTH_PIXEL + 3) Y:height];
     
     [self drawStraightLinesInContext:context color:BACKGROUND_COLOR startPoint:backgroundStartPoint endPoint:backgroundEndPoint lineWidth:DATA_WIDTH_PIXEL];
+
     
-    DrawPoint *lineStartPoint = [[DrawPoint alloc] initWithX:((index - 1) * DATA_WIDTH_PIXEL + 1) Y:startCOS * height];
-    DrawPoint *lineEndPoint = [[DrawPoint alloc] initWithX:(index * DATA_WIDTH_PIXEL) Y:endCOS * height];
+    DrawPoint *lineStartPoint = [[DrawPoint alloc] initWithX:((index - 1) * DATA_WIDTH_PIXEL + 1) Y:halfHeight + startCOS * halfHeight];
+    DrawPoint *lineEndPoint = [[DrawPoint alloc] initWithX:(index * DATA_WIDTH_PIXEL) Y:halfHeight + endCOS * halfHeight];
     
     [self drawStraightLinesInContext:context color:DATA_LINE_COLOR startPoint:lineStartPoint endPoint:lineEndPoint lineWidth:LINE_WIDTH];
 }

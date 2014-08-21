@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "DataPackage.h"
 #import "ISensorDataHandler.h"
+#import "IDrawView.h"
 
 @interface RecordViewController : UIViewController <ISensorDataHandler> {
     bool isInit;
@@ -17,6 +18,8 @@
 
     DataPackage *accelerometerDataPackage;
     DataPackage *gyroscopeDataPackage;
+    
+    id<IDrawView> drawView;
 }
 
 @property(strong, nonatomic) IBOutlet UISegmentedControl *phoneMovingSegment;

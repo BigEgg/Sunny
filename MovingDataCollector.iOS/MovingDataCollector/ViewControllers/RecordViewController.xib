@@ -109,7 +109,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <segments>
                         <segment title="Info"/>
-                        <segment title="Diagram" enabled="NO"/>
+                        <segment title="COS"/>
                     </segments>
                     <connections>
                         <action selector="sectionChanged:" destination="-1" eventType="valueChanged" id="sws-rb-3GK"/>

@@ -9,11 +9,15 @@
 #import "RecordViewController.h"
 #import "MotionService.h"
 #import "Utils.h"
+#import "COSDrawView.h"
 #import "Constants.h"
 
 @interface RecordViewController ()
 
 @end
+
+#define RECORD_DRAW_VIEW_WIDTH 264
+#define RECORD_DRAW_VIEW_HEIGHT 136
 
 @implementation RecordViewController
 
@@ -207,15 +211,24 @@ PhoneType const phoneType = iPhone4;
 
 - (IBAction)sectionChanged:(id)sender {
     UISegmentedControl *sectionControl = (UISegmentedControl *) sender;
+    
+    id<IDrawView> theDrawView = nil;
+    
     switch (sectionControl.selectedSegmentIndex) {
         case 0:
             [self.sectionView addSubview:self.recordInfoView];
+            break;
+        case 1:
+            theDrawView = [[COSDrawView alloc] initWithHeight:RECORD_DRAW_VIEW_HEIGHT Width:RECORD_DRAW_VIEW_WIDTH];
+            [self.sectionView addSubview:(UIView *)theDrawView];
             break;
         default:
             [NSException raise:@"Invalid Segment Selection"
                         format:@"Section View Segement is invalid, index: %ld",
                                (long) sectionControl.selectedSegmentIndex];
     }
+    
+    drawView = theDrawView;
 }
 
 #pragma mark - Sensor Data Handlers
@@ -224,12 +237,20 @@ PhoneType const phoneType = iPhone4;
     if (isStartRecord) {
         [accelerometerDataPackage.data addObject:data];
         self.recordSecondsLable.text = [self getRecordTime:++recordCount];
+        
+        if (drawView) {
+            [drawView drawAccelerometerData:data];
+        }
     }
 }
 
 - (void)gyroscopeHandler:(GyroscopeData *)data {
     if (isStartRecord) {
         [gyroscopeDataPackage.data addObject:data];
+        
+        if (drawView) {
+            [drawView drawGyroscopeData:data];
+        }
     }
 }
 

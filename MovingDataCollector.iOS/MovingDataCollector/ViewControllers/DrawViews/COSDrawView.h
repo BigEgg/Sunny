@@ -20,8 +20,15 @@
     COSDrawLogic *cosDrawLogic;
     
     AccelerometerData *lastAccelerometerData;
+    float newCOS;
     float lastCOS;
     int index;
+    
+    UIColor * DATA_LINE_COLOR;
+    UIColor * BACKGROUND_COLOR;
+    
+    int dataWidth;
+    int halfHeight;
 }
 
 @end

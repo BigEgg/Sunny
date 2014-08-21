@@ -11,8 +11,8 @@
 @implementation COSDrawLogic
 @synthesize height, width;
 
-float const DATA_WIDTH_PIXEL = 5;
-float const LINE_WIDTH = 1;
+float const DATA_WIDTH_PIXEL = 10;
+float const LINE_WIDTH = 3;
 int const DIAGRAM_MARGIN = 10;
 
 
@@ -37,9 +37,9 @@ int const DIAGRAM_MARGIN = 10;
                    endCOS:(float)endCOS {
     index = index % dataWidth;
     
-    DrawPoint *lineStartPoint = [[DrawPoint alloc] initWithX:((index - 1) * DATA_WIDTH_PIXEL)
+    DrawPoint *lineStartPoint = [[DrawPoint alloc] initWithX:(index * DATA_WIDTH_PIXEL + 1)
                                                            Y:halfHeight + startCOS * halfHeight];
-    DrawPoint *lineEndPoint = [[DrawPoint alloc] initWithX:(index * DATA_WIDTH_PIXEL)
+    DrawPoint *lineEndPoint = [[DrawPoint alloc] initWithX:((index + 1) * DATA_WIDTH_PIXEL)
                                                          Y:halfHeight + endCOS * halfHeight];
     CGRect background = CGRectMake(lineStartPoint.X, 0, DATA_WIDTH_PIXEL, height);
     

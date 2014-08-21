@@ -11,7 +11,7 @@
 #import "COSDrawView.h"
 
 @interface DiagramViewController : UIViewController <ISensorDataHandler> {
-
+    id<IDrawView> drawView;
 }
 
 @property (strong, nonatomic) IBOutlet UIView *sectionView;

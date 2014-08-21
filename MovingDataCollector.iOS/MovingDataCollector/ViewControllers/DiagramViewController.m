@@ -17,8 +17,6 @@
 #define COS_DRAW_VIEW_WIDTH 240
 #define COS_DRAW_VIEW_HEIGHT 169
 
-id<IDrawView> drawView;
-
 #pragma mark - View LifeCycle
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

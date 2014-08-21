@@ -14,16 +14,13 @@
 float const DATA_WIDTH_PIXEL = 5;
 float const LINE_WIDTH = 1;
 int const DIAGRAM_MARGIN = 10;
-UIColor * DATA_LINE_COLOR;
-UIColor * BACKGROUND_COLOR;
-int dataWidth;
-int halfHeight;
+
 
 - (id)initWithHeight:(int)theHeight Width:(int)theWidth {
     self = [super init];
     if (self) {
-        height = theHeight;
-        width = theWidth;
+        height = theHeight * 2;
+        width = theWidth * 2;
         halfHeight = height / 2 - DIAGRAM_MARGIN * 2;
         
         dataWidth = theWidth / DATA_WIDTH_PIXEL;
@@ -34,7 +31,7 @@ int halfHeight;
     return self;
 }
 
-- (void)drawLineInContext:(CGContextRef)context
+- (CGRect)drawLineInContext:(CGContextRef)context
                     index:(int)index
                  startCOS:(float)startCOS
                    endCOS:(float)endCOS {
@@ -61,6 +58,8 @@ int halfHeight;
                           startPoint:lineStartPoint
                             endPoint:lineEndPoint
                            lineWidth:LINE_WIDTH];
+
+    return CGRectMake(((index - 1) * DATA_WIDTH_PIXEL + 1), 0, DATA_WIDTH_PIXEL, height);
 }
 
 #pragma mark - Private Methods

@@ -36,7 +36,8 @@
     float newCOS = 0.0;
     if (lastAccelerometerData != nil) {
         newCOS = [cosAlgorithm computeWithData:data andOldData:lastAccelerometerData];
-        [cosDrawLogic drawLineInContext:cgContext index:index++ startCOS:lastCOS endCOS:newCOS];
+        CGRect refreshRect = [cosDrawLogic drawLineInContext:cgContext index:index++ startCOS:lastCOS endCOS:newCOS];
+        [self setNeedsDisplayInRect:refreshRect];
     }
     
     lastAccelerometerData = data;

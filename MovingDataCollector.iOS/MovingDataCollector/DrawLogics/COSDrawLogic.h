@@ -9,14 +9,20 @@
 #import <Foundation/Foundation.h>
 #import "DrawPoint.h"
 
-@interface COSDrawLogic : NSObject
+@interface COSDrawLogic : NSObject {
+    UIColor * DATA_LINE_COLOR;
+    UIColor * BACKGROUND_COLOR;
+    
+    int dataWidth;
+    int halfHeight;
+}
 
 @property int height;
 @property int width;
 
 - (id)initWithHeight:(int)height Width:(int)width;
 
-- (void)drawLineInContext:(CGContextRef)context
+- (CGRect)drawLineInContext:(CGContextRef)context
                     index:(int)index
                  startCOS:(float)startCOS
                    endCOS:(float)endCOS;

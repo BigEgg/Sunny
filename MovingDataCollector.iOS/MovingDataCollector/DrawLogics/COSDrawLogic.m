@@ -21,9 +21,9 @@ int const DIAGRAM_MARGIN = 10;
     if (self) {
         height = theHeight * 2;
         width = theWidth * 2;
+
         halfHeight = height / 2 - DIAGRAM_MARGIN * 2;
-        
-        dataWidth = theWidth / DATA_WIDTH_PIXEL;
+        dataWidth = width / DATA_WIDTH_PIXEL;
         
         DATA_LINE_COLOR = [UIColor yellowColor];
         BACKGROUND_COLOR = [UIColor darkGrayColor];
@@ -37,29 +37,24 @@ int const DIAGRAM_MARGIN = 10;
                    endCOS:(float)endCOS {
     index = index % dataWidth;
     
-    DrawPoint *backgroundStartPoint = [[DrawPoint alloc] initWithX:((index - 1) * DATA_WIDTH_PIXEL + 3)
-                                                                 Y:0];
-    DrawPoint *backgroundEndPoint = [[DrawPoint alloc] initWithX:((index - 1) * DATA_WIDTH_PIXEL + 3)
-                                                               Y:height];
-    
-    [self drawStraightLinesInContext:context
-                               color:BACKGROUND_COLOR
-                          startPoint:backgroundStartPoint
-                            endPoint:backgroundEndPoint
-                           lineWidth:DATA_WIDTH_PIXEL];
-    
-    DrawPoint *lineStartPoint = [[DrawPoint alloc] initWithX:((index - 1) * DATA_WIDTH_PIXEL + 1)
+    DrawPoint *lineStartPoint = [[DrawPoint alloc] initWithX:((index - 1) * DATA_WIDTH_PIXEL)
                                                            Y:halfHeight + startCOS * halfHeight];
     DrawPoint *lineEndPoint = [[DrawPoint alloc] initWithX:(index * DATA_WIDTH_PIXEL)
                                                          Y:halfHeight + endCOS * halfHeight];
+    CGRect background = CGRectMake(lineStartPoint.X, 0, DATA_WIDTH_PIXEL, height);
     
+    UIGraphicsPushContext(context);
+    [self drawRectangle:context
+                  color:BACKGROUND_COLOR
+                   rect:background];
     [self drawStraightLinesInContext:context
                                color:DATA_LINE_COLOR
                           startPoint:lineStartPoint
                             endPoint:lineEndPoint
                            lineWidth:LINE_WIDTH];
+    UIGraphicsPopContext();
 
-    return CGRectMake(((index - 1) * DATA_WIDTH_PIXEL + 1), 0, DATA_WIDTH_PIXEL, height);
+    return background;
 }
 
 #pragma mark - Private Methods
@@ -68,16 +63,20 @@ int const DIAGRAM_MARGIN = 10;
                         startPoint:(DrawPoint *)startPoint
                           endPoint:(DrawPoint *)endPoint
                          lineWidth:(float)lineWidth  {
-    UIGraphicsPushContext(context);
-    
     CGContextBeginPath(context);
     CGContextMoveToPoint(context, startPoint.X, startPoint.Y);
     CGContextAddLineToPoint(context, endPoint.X, endPoint.Y);
     CGContextSetLineWidth(context, lineWidth);
     [color setStroke];
     CGContextStrokePath(context);
-    
-    UIGraphicsPopContext();
+    CGContextSetLineCap(context, kCGLineCapRound);
+}
+
+- (void)drawRectangle:(CGContextRef)context color:(UIColor *)color rect:(CGRect)rect {
+    CGContextBeginPath(context);
+	CGContextAddRect(context, rect);
+	[color setFill];
+	CGContextDrawPath(context, kCGPathFill);
 }
 
 @end

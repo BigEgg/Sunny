@@ -40,16 +40,27 @@ int halfHeight;
                    endCOS:(float)endCOS {
     index = index % dataWidth;
     
-    DrawPoint *backgroundStartPoint = [[DrawPoint alloc] initWithX:((index - 1) * DATA_WIDTH_PIXEL + 3) Y:0];
-    DrawPoint *backgroundEndPoint = [[DrawPoint alloc] initWithX:((index - 1) * DATA_WIDTH_PIXEL + 3) Y:height];
+    DrawPoint *backgroundStartPoint = [[DrawPoint alloc] initWithX:((index - 1) * DATA_WIDTH_PIXEL + 3)
+                                                                 Y:0];
+    DrawPoint *backgroundEndPoint = [[DrawPoint alloc] initWithX:((index - 1) * DATA_WIDTH_PIXEL + 3)
+                                                               Y:height];
     
-    [self drawStraightLinesInContext:context color:BACKGROUND_COLOR startPoint:backgroundStartPoint endPoint:backgroundEndPoint lineWidth:DATA_WIDTH_PIXEL];
-
+    [self drawStraightLinesInContext:context
+                               color:BACKGROUND_COLOR
+                          startPoint:backgroundStartPoint
+                            endPoint:backgroundEndPoint
+                           lineWidth:DATA_WIDTH_PIXEL];
     
-    DrawPoint *lineStartPoint = [[DrawPoint alloc] initWithX:((index - 1) * DATA_WIDTH_PIXEL + 1) Y:halfHeight + startCOS * halfHeight];
-    DrawPoint *lineEndPoint = [[DrawPoint alloc] initWithX:(index * DATA_WIDTH_PIXEL) Y:halfHeight + endCOS * halfHeight];
+    DrawPoint *lineStartPoint = [[DrawPoint alloc] initWithX:((index - 1) * DATA_WIDTH_PIXEL + 1)
+                                                           Y:halfHeight + startCOS * halfHeight];
+    DrawPoint *lineEndPoint = [[DrawPoint alloc] initWithX:(index * DATA_WIDTH_PIXEL)
+                                                         Y:halfHeight + endCOS * halfHeight];
     
-    [self drawStraightLinesInContext:context color:DATA_LINE_COLOR startPoint:lineStartPoint endPoint:lineEndPoint lineWidth:LINE_WIDTH];
+    [self drawStraightLinesInContext:context
+                               color:DATA_LINE_COLOR
+                          startPoint:lineStartPoint
+                            endPoint:lineEndPoint
+                           lineWidth:LINE_WIDTH];
 }
 
 #pragma mark - Private Methods

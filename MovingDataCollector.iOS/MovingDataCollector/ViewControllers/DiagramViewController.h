@@ -17,7 +17,7 @@
 @property (strong, nonatomic) IBOutlet UIView *sectionView;
 @property (strong, nonatomic) IBOutlet UIView *cosView;
 
-@property (strong, nonatomic) IBOutlet UIView *cosDrawView;
+@property (strong, nonatomic) IBOutlet COSDrawView *cosDrawView;
 
 - (IBAction)sectionChanged:(id)sender;
 

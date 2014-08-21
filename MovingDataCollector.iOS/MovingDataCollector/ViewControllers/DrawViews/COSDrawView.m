@@ -20,12 +20,19 @@
         cosAlgorithm = [[COSAlgorithm alloc] init];
         cosDrawLogic = [[COSDrawLogic alloc] initWithHeight:height Width:width];
         index = 0;
+        
+        self.backgroundColor = [UIColor darkGrayColor];
     }
     return self;
 }
 
+#pragma mark - Drawing Methods
+
+- (void)drawRect:(CGRect)rect {
+    cgContext = UIGraphicsGetCurrentContext();
+}
+
 - (void)drawAccelerometerData:(AccelerometerData *)data {
-    CGContextRef cgContext = UIGraphicsGetCurrentContext();
     float newCOS = 0.0;
     if (lastAccelerometerData != nil) {
         newCOS = [cosAlgorithm computeWithData:data andOldData:lastAccelerometerData];

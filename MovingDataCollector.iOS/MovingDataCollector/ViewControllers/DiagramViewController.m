@@ -17,6 +17,8 @@
 #define COS_DRAW_VIEW_WIDTH 240
 #define COS_DRAW_VIEW_HEIGHT 169
 
+id<IDrawView> drawView;
+
 #pragma mark - View LifeCycle
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -34,9 +36,9 @@
     // Do any additional setup after loading the view from its nib.
     
     [self.sectionView addSubview:self.cosView];
-    
     COSDrawView *cosDrawView = [[COSDrawView alloc] initWithHeight:COS_DRAW_VIEW_HEIGHT Width:COS_DRAW_VIEW_WIDTH];
-    self.cosDrawView = cosDrawView;
+    [self.cosDrawView addSubview:cosDrawView];
+    drawView = cosDrawView;
 }
 
 - (void)didReceiveMemoryWarning
@@ -49,14 +51,21 @@
 
 - (IBAction)sectionChanged:(id)sender {
     UISegmentedControl *sectionControl = (UISegmentedControl *) sender;
+    
+    id<IDrawView> theDrawView = nil;
+    
     switch (sectionControl.selectedSegmentIndex) {
         case 0:
             [self.sectionView addSubview:self.cosView];
+            theDrawView = [[COSDrawView alloc] initWithHeight:COS_DRAW_VIEW_HEIGHT Width:COS_DRAW_VIEW_WIDTH];
             break;
         default:
             [NSException raise:@"Invalid Segment Selection"
                         format:@"Section View Segment is invalid, index: %ld", (long) sectionControl.selectedSegmentIndex];
     }
+    
+    [self.cosDrawView addSubview:(UIView *)theDrawView];
+    drawView = theDrawView;
 }
 
 #pragma mark - Sensor Data Handlers
@@ -72,11 +81,15 @@
 
 #pragma mark - COS View
 - (void)cosViewAccelerometerHandler:(AccelerometerData *)data {
-    [(COSDrawView *)self.cosDrawView drawAccelerometerData:data];
+    if (self.cosDrawView) {
+        [drawView drawAccelerometerData:data];
+    }
 }
 
 - (void)cosViewGyroscopeHandler:(GyroscopeData *)data {
-    [(COSDrawView *)self.cosDrawView drawGyroscopeData:data];
+    if (self.cosDrawView) {
+        [drawView drawGyroscopeData:data];
+    }
 }
 
 @end

@@ -13,6 +13,7 @@
 
 float const DATA_WIDTH_PIXEL = 5;
 float const LINE_WIDTH = 1;
+int const DIAGRAM_MARGIN = 10;
 UIColor * DATA_LINE_COLOR;
 UIColor * BACKGROUND_COLOR;
 int dataWidth;
@@ -23,7 +24,7 @@ int halfHeight;
     if (self) {
         height = theHeight;
         width = theWidth;
-        halfHeight = height / 2;
+        halfHeight = height / 2 - DIAGRAM_MARGIN * 2;
         
         dataWidth = theWidth / DATA_WIDTH_PIXEL;
         

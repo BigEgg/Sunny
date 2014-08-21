@@ -79,13 +79,13 @@
 
 #pragma mark - COS View
 - (void)cosViewAccelerometerHandler:(AccelerometerData *)data {
-    if (self.cosDrawView) {
+    if (drawView) {
         [drawView drawAccelerometerData:data];
     }
 }
 
 - (void)cosViewGyroscopeHandler:(GyroscopeData *)data {
-    if (self.cosDrawView) {
+    if (drawView) {
         [drawView drawGyroscopeData:data];
     }
 }

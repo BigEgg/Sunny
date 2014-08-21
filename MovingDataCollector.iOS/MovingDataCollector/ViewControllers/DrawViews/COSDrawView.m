@@ -7,6 +7,7 @@
 //
 
 #import "COSDrawView.h"
+#import "DrawPoint.h"
 
 @implementation COSDrawView
 
@@ -22,11 +23,8 @@ int const DIAGRAM_MARGIN = 10;
         width = theWidth;
         
         cosAlgorithm = [[COSAlgorithm alloc] init];
-        cosDrawLogic = [[COSDrawLogic alloc] initWithHeight:height Width:width];
         index = 0;
         lastCOS = 0;
-        
-        //self.backgroundColor = [UIColor darkGrayColor];
         
         halfHeight = height / 2 - DIAGRAM_MARGIN * 2;
         dataWidth = width / DATA_WIDTH_PIXEL;

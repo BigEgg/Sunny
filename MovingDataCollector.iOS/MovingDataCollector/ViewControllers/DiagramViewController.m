@@ -14,7 +14,7 @@
 
 @implementation DiagramViewController
 
-#define COS_DRAW_VIEW_WIDTH 240
+#define COS_DRAW_VIEW_WIDTH 212
 #define COS_DRAW_VIEW_HEIGHT 169
 
 #pragma mark - View LifeCycle

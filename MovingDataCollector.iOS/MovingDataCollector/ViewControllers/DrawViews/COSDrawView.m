@@ -13,6 +13,7 @@
 
 float const DATA_WIDTH_PIXEL = 3;
 float const LINE_WIDTH = 1.5;
+float const GRID_WIDTH = 0.5;
 int const DIAGRAM_MARGIN = 10;
 
 - (id)initWithHeight:(int)theHeight Width:(int)theWidth {
@@ -91,24 +92,24 @@ int const DIAGRAM_MARGIN = 10;
     //  Draw grid
     lineStartPoint.y = lineEndPoint.y = halfHeight + halfHeight - DIAGRAM_MARGIN;
     [self drawStraightLinesInContext:context
-                               color:DATA_LINE_COLOR
+                               color:GRID_COLOR
                           startPoint:lineStartPoint
                             endPoint:lineEndPoint
-                           lineWidth:LINE_WIDTH];
+                           lineWidth:GRID_WIDTH];
 
     lineStartPoint.y = lineEndPoint.y = halfHeight;
     [self drawStraightLinesInContext:context
-                               color:DATA_LINE_COLOR
+                               color:GRID_COLOR
                           startPoint:lineStartPoint
                             endPoint:lineEndPoint
-                           lineWidth:LINE_WIDTH];
+                           lineWidth:GRID_WIDTH];
     
     lineStartPoint.y = lineEndPoint.y = DIAGRAM_MARGIN;
     [self drawStraightLinesInContext:context
-                               color:DATA_LINE_COLOR
+                               color:GRID_COLOR
                           startPoint:lineStartPoint
                             endPoint:lineEndPoint
-                           lineWidth:LINE_WIDTH];
+                           lineWidth:GRID_WIDTH];
 
     UIGraphicsPopContext();
     

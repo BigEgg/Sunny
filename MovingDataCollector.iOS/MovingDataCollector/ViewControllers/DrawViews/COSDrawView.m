@@ -26,11 +26,12 @@ int const DIAGRAM_MARGIN = 10;
         index = 0;
         lastCOS = 0;
         
-        halfHeight = height / 2 - DIAGRAM_MARGIN * 2;
+        halfHeight = height / 2;
         dataWidth = width / DATA_WIDTH_PIXEL;
         
         DATA_LINE_COLOR = [UIColor yellowColor];
         BACKGROUND_COLOR = [UIColor darkGrayColor];
+        GRID_COLOR = [UIColor lightGrayColor];
     }
     return self;
 }
@@ -68,20 +69,47 @@ int const DIAGRAM_MARGIN = 10;
                    startCOS:(float)startCOS
                      endCOS:(float)endCOS {
     DrawPoint *lineStartPoint = [[DrawPoint alloc] initWithX:(index * DATA_WIDTH_PIXEL)
-                                                           Y:halfHeight + startCOS * halfHeight];
+                                                           Y:halfHeight + startCOS * (halfHeight - DIAGRAM_MARGIN) ];
     DrawPoint *lineEndPoint = [[DrawPoint alloc] initWithX:((index + 1) * DATA_WIDTH_PIXEL)
-                                                         Y:halfHeight + endCOS * halfHeight];
+                                                         Y:halfHeight + endCOS * (halfHeight - DIAGRAM_MARGIN)];
     CGRect background = CGRectMake(lineStartPoint.X, 0, DATA_WIDTH_PIXEL, height);
     
     UIGraphicsPushContext(context);
+    
+    //  Draw background
     [self drawRectangle:context
                   color:BACKGROUND_COLOR
                    rect:background];
+    
+    //  Draw data
     [self drawStraightLinesInContext:context
                                color:DATA_LINE_COLOR
                           startPoint:lineStartPoint
                             endPoint:lineEndPoint
                            lineWidth:LINE_WIDTH];
+    
+    //  Draw grid
+    lineStartPoint.y = lineEndPoint.y = halfHeight + halfHeight - DIAGRAM_MARGIN;
+    [self drawStraightLinesInContext:context
+                               color:DATA_LINE_COLOR
+                          startPoint:lineStartPoint
+                            endPoint:lineEndPoint
+                           lineWidth:LINE_WIDTH];
+
+    lineStartPoint.y = lineEndPoint.y = halfHeight;
+    [self drawStraightLinesInContext:context
+                               color:DATA_LINE_COLOR
+                          startPoint:lineStartPoint
+                            endPoint:lineEndPoint
+                           lineWidth:LINE_WIDTH];
+    
+    lineStartPoint.y = lineEndPoint.y = DIAGRAM_MARGIN;
+    [self drawStraightLinesInContext:context
+                               color:DATA_LINE_COLOR
+                          startPoint:lineStartPoint
+                            endPoint:lineEndPoint
+                           lineWidth:LINE_WIDTH];
+
     UIGraphicsPopContext();
     
     return background;

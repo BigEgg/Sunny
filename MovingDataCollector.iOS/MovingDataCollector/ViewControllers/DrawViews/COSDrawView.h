@@ -22,8 +22,9 @@
     float lastCOS;
     int index;
     
-    UIColor * DATA_LINE_COLOR;
-    UIColor * BACKGROUND_COLOR;
+    UIColor *DATA_LINE_COLOR;
+    UIColor *BACKGROUND_COLOR;
+    UIColor *GRID_COLOR;
     
     int dataWidth;
     int halfHeight;

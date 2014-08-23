@@ -1,4 +1,6 @@
-﻿using Noodum.Wokamon.Sunny.Core.Models;
+﻿using System.Data;
+using System.Threading;
+using Noodum.Wokamon.Sunny.Core.Models;
 using System;
 using System.IO;
 
@@ -63,6 +65,37 @@ namespace Noodum.Wokamon.Sunny.Core.Documents
         public static SensorDataDocument<T> New<T>() where T : ISensorData
         {
             return new SensorDataDocument<T>();
+        }
+
+        public static SensorDataDocument<ISensorData> Open<T>(String filePath) where T : ISensorData
+        {
+            SensorType sensorType;
+            if (typeof(T) == typeof(GyrosensorData)) { sensorType = SensorType.Gyrosensor; }
+            else if (typeof(T) == typeof(AccelerometerData)) { sensorType = SensorType.Accelerometer; }
+            else { throw new NotSupportedException("Unknown sensor type."); }
+
+            if (!filePath.Contains(sensorType.ToString())) { throw new NotSupportedException("filePath not valid."); }
+
+            var document = new SensorDataDocument<ISensorData>();
+            using (var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+            {
+                using (var sr = new StreamReader(fs))
+                {
+                    string data = String.Empty;
+                    while (!string.IsNullOrEmpty(data = sr.ReadLine()))
+                    {
+                        if (sensorType == SensorType.Accelerometer)
+                        {
+                            document.Data.Add(new AccelerometerData(data));
+                        }
+                        else
+                        {
+                            document.Data.Add(new GyrosensorData(data));
+                        }
+                    }
+                }
+            }
+            return document;
         }
 
         /// <summary>

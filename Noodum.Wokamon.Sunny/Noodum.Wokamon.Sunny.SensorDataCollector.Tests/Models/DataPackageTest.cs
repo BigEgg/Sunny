@@ -38,22 +38,22 @@ namespace Noodum.Wokamon.Sunny.SensorDataCollector.Tests.Models
         [TestMethod]
         public void SerializeTest_DataPackage_Gyrosensor()
         {
-            var dataPackage = new DataPackage<GyrosensorData>();
+            var dataPackage = new DataPackage<GyroscopeData>();
             dataPackage.PhoneData = new PhoneData()
             {
                 PhoneStats = PhoneStatus.Handheld | PhoneStatus.Left | PhoneStatus.Walk,
                 PhoneType = PhoneType.iPhone4,
                 UpdateInterval = 20
             };
-            dataPackage.Data = new List<GyrosensorData>();
-            dataPackage.Data.Add(new GyrosensorData() { DeltaX = 0.111F, DeltaY = 0.555F, DeltaZ = 0.666F });
-            dataPackage.Data.Add(new GyrosensorData() { DeltaX = 0.611F, DeltaY = 0.855F, DeltaZ = 0.766F });
+            dataPackage.Data = new List<GyroscopeData>();
+            dataPackage.Data.Add(new GyroscopeData() { DeltaX = 0.111F, DeltaY = 0.555F, DeltaZ = 0.666F });
+            dataPackage.Data.Add(new GyroscopeData() { DeltaX = 0.611F, DeltaY = 0.855F, DeltaZ = 0.766F });
 
             var jsonString = Newtonsoft.Json.JsonConvert.SerializeObject(dataPackage);
             Assert.IsFalse(string.IsNullOrWhiteSpace(jsonString));
             //  {"PhoneData":{"PhoneType":1001,"PhoneStats":280,"UpdateInterval":20},"Data":[{"DeltaX":0.111,"DeltaY":0.555,"DeltaZ":0.666},{"DeltaX":0.611,"DeltaY":0.855,"DeltaZ":0.766}]}
 
-            var newDataPackage = Newtonsoft.Json.JsonConvert.DeserializeObject(jsonString, typeof(DataPackage<GyrosensorData>)) as DataPackage<GyrosensorData>;
+            var newDataPackage = Newtonsoft.Json.JsonConvert.DeserializeObject(jsonString, typeof(DataPackage<GyroscopeData>)) as DataPackage<GyroscopeData>;
             Assert.IsNotNull(newDataPackage);
             Assert.AreEqual(dataPackage.PhoneData.PhoneStats, newDataPackage.PhoneData.PhoneStats);
             Assert.AreEqual(dataPackage.PhoneData.PhoneType, newDataPackage.PhoneData.PhoneType);

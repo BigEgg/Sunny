@@ -12,20 +12,20 @@ namespace Noodum.Wokamon.Sunny.Core.Test.Models
         [ExpectedException(typeof(ArgumentException))]
         public void ConstructorTest_ParameterNull()
         {
-            new GyrosensorData(null);
+            new GyroscopeData(null);
         }
 
         [TestMethod]
         [ExpectedException(typeof(InvalidDataException))]
         public void ConstructorTest_UnknownData()
         {
-            new GyrosensorData("1,2,3");
+            new GyroscopeData("1,2,3");
         }
 
         [TestMethod]
         public void ConstructorTest_ValidData()
         {
-            var data = new GyrosensorData("0.11, 0.55, 0.66");
+            var data = new GyroscopeData("0.11, 0.55, 0.66");
             Assert.IsTrue(Math.Abs(0.11 - data.DeltaX) < 0.000001);
             Assert.IsTrue(Math.Abs(0.55 - data.DeltaY) < 0.000001);
             Assert.IsTrue(Math.Abs(0.66 - data.DeltaZ) < 0.000001);
@@ -34,7 +34,7 @@ namespace Noodum.Wokamon.Sunny.Core.Test.Models
         [TestMethod]
         public void ToStringTest()
         {
-            var data = new GyrosensorData()
+            var data = new GyroscopeData()
             {
                 DeltaX = 0.11F,
                 DeltaY = 0.55F,

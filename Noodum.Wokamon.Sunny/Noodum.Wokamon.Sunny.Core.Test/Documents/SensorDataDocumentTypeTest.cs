@@ -12,11 +12,11 @@ namespace Noodum.Wokamon.Sunny.Core.Test.Documents
     {
         private void TestCleanup(SensorType sensorType)
         {
-            if (sensorType == SensorType.Gyrosensor)
+            if (sensorType == SensorType.Gyroscope)
             {
-                if (Directory.Exists(Path.Combine(SensorDataDocumentType.FileRootPath, SensorType.Gyrosensor.ToString())))
+                if (Directory.Exists(Path.Combine(SensorDataDocumentType.FileRootPath, SensorType.Gyroscope.ToString())))
                 {
-                    Directory.Delete(Path.Combine(SensorDataDocumentType.FileRootPath, SensorType.Gyrosensor.ToString()), true);
+                    Directory.Delete(Path.Combine(SensorDataDocumentType.FileRootPath, SensorType.Gyroscope.ToString()), true);
                 }
             }
             else if (sensorType == SensorType.Accelerometer)
@@ -61,7 +61,7 @@ namespace Noodum.Wokamon.Sunny.Core.Test.Documents
         [TestMethod]
         public void NewTest_Gyrosensor()
         {
-            var document = SensorDataDocumentType.New<GyrosensorData>();
+            var document = SensorDataDocumentType.New<GyroscopeData>();
             Assert.IsNotNull(document);
         }
 
@@ -91,10 +91,10 @@ namespace Noodum.Wokamon.Sunny.Core.Test.Documents
         [TestMethod]
         public void SaveTest_Gyrosensor()
         {
-            TestCleanup(SensorType.Gyrosensor);
+            TestCleanup(SensorType.Gyroscope);
             var phoneStatus = PhoneStatus.Handheld | PhoneStatus.Left | PhoneStatus.Walk;
 
-            var document = SensorDataDocumentType.New<GyrosensorData>();
+            var document = SensorDataDocumentType.New<GyroscopeData>();
             SensorDataDocumentType.Save(document, 20, PhoneType.iPhone4, phoneStatus);
 
             var folder = SensorDataDocumentType.GetFolderName(SensorType.Accelerometer, 20, PhoneType.iPhone4, phoneStatus);
@@ -109,7 +109,7 @@ namespace Noodum.Wokamon.Sunny.Core.Test.Documents
         public void OpenTest_UnvalidFilePath_Accelerometer()
         {
             var phoneStatus = PhoneStatus.Handheld | PhoneStatus.Left | PhoneStatus.Walk;
-            var folderName = SensorDataDocumentType.GetFolderName(SensorType.Gyrosensor, 20, PhoneType.iPhone4, phoneStatus);
+            var folderName = SensorDataDocumentType.GetFolderName(SensorType.Gyroscope, 20, PhoneType.iPhone4, phoneStatus);
 
             SensorDataDocumentType.Open<AccelerometerData>(folderName);
         }
@@ -121,7 +121,7 @@ namespace Noodum.Wokamon.Sunny.Core.Test.Documents
             var phoneStatus = PhoneStatus.Handheld | PhoneStatus.Left | PhoneStatus.Walk;
             var folderName = SensorDataDocumentType.GetFolderName(SensorType.Accelerometer, 20, PhoneType.iPhone4, phoneStatus);
 
-            SensorDataDocumentType.Open<GyrosensorData>(folderName);
+            SensorDataDocumentType.Open<GyroscopeData>(folderName);
         }
 
         [TestMethod]
@@ -139,9 +139,9 @@ namespace Noodum.Wokamon.Sunny.Core.Test.Documents
         public void OpenTest_FileNotExist_Gyroscope()
         {
             var phoneStatus = PhoneStatus.Handheld | PhoneStatus.Left | PhoneStatus.Walk;
-            var folderName = SensorDataDocumentType.GetFolderName(SensorType.Gyrosensor, 20, PhoneType.iPhone4, phoneStatus);
+            var folderName = SensorDataDocumentType.GetFolderName(SensorType.Gyroscope, 20, PhoneType.iPhone4, phoneStatus);
 
-            SensorDataDocumentType.Open<GyrosensorData>(folderName);
+            SensorDataDocumentType.Open<GyroscopeData>(folderName);
         }
     }
 }

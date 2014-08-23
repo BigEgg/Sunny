@@ -30,11 +30,11 @@ namespace Noodum.Wokamon.Sunny.SensorDataCollector.Controllers
 
         // POST api/sensordata/gyroscope
         [HttpPost]
-        public HttpResponseMessage Gyroscope([FromBody] DataPackage<GyrosensorData> data)
+        public HttpResponseMessage Gyroscope([FromBody] DataPackage<GyroscopeData> data)
         {
             if (data == null) { throw new ArgumentNullException("data cannot be null"); }
 
-            var document = SensorDataDocumentType.New<GyrosensorData>();
+            var document = SensorDataDocumentType.New<GyroscopeData>();
             foreach (var entry in data.Data)
             {
                 document.Data.Add(entry);

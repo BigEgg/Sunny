@@ -68,7 +68,7 @@ namespace Noodum.Wokamon.Sunny.Core.Documents
         public static SensorDataDocument<ISensorData> Open<T>(String filePath) where T : ISensorData
         {
             SensorType sensorType;
-            if (typeof(T) == typeof(GyrosensorData)) { sensorType = SensorType.Gyrosensor; }
+            if (typeof(T) == typeof(GyroscopeData)) { sensorType = SensorType.Gyroscope; }
             else if (typeof(T) == typeof(AccelerometerData)) { sensorType = SensorType.Accelerometer; }
             else { throw new NotSupportedException("Unknown sensor type."); }
 
@@ -89,7 +89,7 @@ namespace Noodum.Wokamon.Sunny.Core.Documents
                         }
                         else
                         {
-                            document.Data.Add(new GyrosensorData(data));
+                            document.Data.Add(new GyroscopeData(data));
                         }
                     }
                 }
@@ -109,7 +109,7 @@ namespace Noodum.Wokamon.Sunny.Core.Documents
             where T : ISensorData
         {
             SensorType sensorType;
-            if (typeof(T) == typeof(GyrosensorData)) { sensorType = SensorType.Gyrosensor; }
+            if (typeof(T) == typeof(GyroscopeData)) { sensorType = SensorType.Gyroscope; }
             else if (typeof(T) == typeof(AccelerometerData)) { sensorType = SensorType.Accelerometer; }
             else { throw new NotSupportedException("Unknown sensor type."); }
 

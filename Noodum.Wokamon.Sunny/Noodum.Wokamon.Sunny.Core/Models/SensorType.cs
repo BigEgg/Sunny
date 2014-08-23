@@ -3,6 +3,6 @@
     public enum SensorType
     {
         Accelerometer = 1,
-        Gyrosensor = 2
+        Gyroscope = 2
     }
 }

@@ -1,7 +1,7 @@
-﻿using System;
-using System.IO;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Noodum.Wokamon.Sunny.Core.Models;
+using System;
+using System.IO;
 
 namespace Noodum.Wokamon.Sunny.Core.Test.Models
 {

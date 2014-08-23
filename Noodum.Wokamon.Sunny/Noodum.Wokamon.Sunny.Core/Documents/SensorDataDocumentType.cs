@@ -1,6 +1,4 @@
-﻿using System.Data;
-using System.Threading;
-using Noodum.Wokamon.Sunny.Core.Models;
+﻿using Noodum.Wokamon.Sunny.Core.Models;
 using System;
 using System.IO;
 
@@ -75,6 +73,7 @@ namespace Noodum.Wokamon.Sunny.Core.Documents
             else { throw new NotSupportedException("Unknown sensor type."); }
 
             if (!filePath.Contains(sensorType.ToString())) { throw new NotSupportedException("filePath not valid."); }
+            if (!File.Exists(filePath)) { throw new FileNotFoundException(string.Format("file cannot be found by path: {0}", fileExtension)); }
 
             var document = new SensorDataDocument<ISensorData>();
             using (var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read))

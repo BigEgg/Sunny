@@ -38,6 +38,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Algorithms\COSAlgorithm.cs" />
+    <Compile Include="Algorithms\IAccelerometerAlgorithm.cs" />
+    <Compile Include="Algorithms\IAlgorithm.cs" />
     <Compile Include="Constants\Constants.cs" />
     <Compile Include="Documents\ANNDocumentHelper.cs" />
     <Compile Include="Documents\SensorDataDocument.cs" />

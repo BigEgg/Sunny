@@ -59,7 +59,7 @@ namespace Noodum.Wokamon.Sunny.Core.Test.Documents
         }
 
         [TestMethod]
-        public void NewTest_Gyrosensor()
+        public void NewTest_Gyroscope()
         {
             var document = SensorDataDocumentType.New<GyroscopeData>();
             Assert.IsNotNull(document);
@@ -89,7 +89,7 @@ namespace Noodum.Wokamon.Sunny.Core.Test.Documents
         }
 
         [TestMethod]
-        public void SaveTest_Gyrosensor()
+        public void SaveTest_Gyroscope()
         {
             TestCleanup(SensorType.Gyroscope);
             var phoneStatus = PhoneStatus.Handheld | PhoneStatus.Left | PhoneStatus.Walk;
@@ -128,6 +128,8 @@ namespace Noodum.Wokamon.Sunny.Core.Test.Documents
         [ExpectedException(typeof(FileNotFoundException))]
         public void OpenTest_FileNotExist_Accelerometer()
         {
+            TestCleanup(SensorType.Accelerometer);
+
             var phoneStatus = PhoneStatus.Handheld | PhoneStatus.Left | PhoneStatus.Walk;
             var folderName = SensorDataDocumentType.GetFolderName(SensorType.Accelerometer, 20, PhoneType.iPhone4, phoneStatus);
 
@@ -138,10 +140,62 @@ namespace Noodum.Wokamon.Sunny.Core.Test.Documents
         [ExpectedException(typeof(FileNotFoundException))]
         public void OpenTest_FileNotExist_Gyroscope()
         {
+            TestCleanup(SensorType.Gyroscope);
+
             var phoneStatus = PhoneStatus.Handheld | PhoneStatus.Left | PhoneStatus.Walk;
             var folderName = SensorDataDocumentType.GetFolderName(SensorType.Gyroscope, 20, PhoneType.iPhone4, phoneStatus);
 
             SensorDataDocumentType.Open<GyroscopeData>(folderName);
+        }
+
+        [TestMethod]
+        public void OpenTest_FileExist_Accelerometer()
+        {
+            TestCleanup(SensorType.Accelerometer);
+            var phoneStatus = PhoneStatus.Handheld | PhoneStatus.Left | PhoneStatus.Walk;
+
+            var document = SensorDataDocumentType.New<AccelerometerData>();
+            document.Data.Add(new AccelerometerData("0.11, 0.11, 0.11"));
+            document.Data.Add(new AccelerometerData("0.22, 0.22, 0.22"));
+            document.Data.Add(new AccelerometerData("0.33, 0.33, 0.33"));
+            SensorDataDocumentType.Save(document, 20, PhoneType.iPhone4, phoneStatus);
+
+            var folder = SensorDataDocumentType.GetFolderName(SensorType.Accelerometer, 20, PhoneType.iPhone4, phoneStatus);
+            var files = Directory.EnumerateFiles(folder);
+            Assert.AreEqual(1, files.Count());
+
+            var newDocument = SensorDataDocumentType.Open<AccelerometerData>(files.First());
+            Assert.IsNotNull(newDocument);
+            Assert.IsNotNull(newDocument.Data);
+            Assert.AreEqual(3, newDocument.Data.Count);
+            Assert.AreEqual("0.11, 0.11, 0.11", newDocument.Data[0].ToString());
+            Assert.AreEqual("0.22, 0.22, 0.22", newDocument.Data[1].ToString());
+            Assert.AreEqual("0.33, 0.33, 0.33", newDocument.Data[2].ToString());
+        }
+
+        [TestMethod]
+        public void OpenTest_FileExist_Gyroscope()
+        {
+            TestCleanup(SensorType.Gyroscope);
+            var phoneStatus = PhoneStatus.Handheld | PhoneStatus.Left | PhoneStatus.Walk;
+
+            var document = SensorDataDocumentType.New<GyroscopeData>();
+            document.Data.Add(new GyroscopeData("0.11, 0.11, 0.11"));
+            document.Data.Add(new GyroscopeData("0.22, 0.22, 0.22"));
+            document.Data.Add(new GyroscopeData("0.33, 0.33, 0.33"));
+            SensorDataDocumentType.Save(document, 20, PhoneType.iPhone4, phoneStatus);
+
+            var folder = SensorDataDocumentType.GetFolderName(SensorType.Gyroscope, 20, PhoneType.iPhone4, phoneStatus);
+            var files = Directory.EnumerateFiles(folder);
+            Assert.AreEqual(1, files.Count());
+
+            var newDocument = SensorDataDocumentType.Open<GyroscopeData>(files.First());
+            Assert.IsNotNull(newDocument);
+            Assert.IsNotNull(newDocument.Data);
+            Assert.AreEqual(3, newDocument.Data.Count);
+            Assert.AreEqual("0.11, 0.11, 0.11", newDocument.Data[0].ToString());
+            Assert.AreEqual("0.22, 0.22, 0.22", newDocument.Data[1].ToString());
+            Assert.AreEqual("0.33, 0.33, 0.33", newDocument.Data[2].ToString());
         }
     }
 }

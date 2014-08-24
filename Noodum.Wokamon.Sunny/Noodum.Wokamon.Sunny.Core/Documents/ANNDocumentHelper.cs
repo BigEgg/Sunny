@@ -1,4 +1,5 @@
-﻿using Noodum.Wokamon.Sunny.Core.Models;
+﻿using Noodum.Wokamon.Sunny.Core.Algorithms;
+using Noodum.Wokamon.Sunny.Core.Models;
 
 namespace Noodum.Wokamon.Sunny.Core.Documents
 {

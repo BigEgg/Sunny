@@ -33,13 +33,32 @@ namespace Noodum.Wokamon.Sunny.Core.Documents
         #endregion
 
         #region Methods
-        public static string GetFolderName(PhoneType phoneType, AlgorithmType algorithmType, ANNLogicType annLogicType)
+        /// <summary>
+        /// Gets the file path.
+        /// </summary>
+        /// <param name="phoneType">Type of the phone.</param>
+        /// <param name="algorithmType">Type of the algorithm.</param>
+        /// <param name="annLogicType">Type of the ANN logic.</param>
+        /// <returns>The file path.</returns>
+        public static string GetFilePath(PhoneType phoneType, AlgorithmType algorithmType, ANNLogicType annLogicType)
         {
             return Path.Combine(
                 fileRootPath,
-                phoneType.ToString(),
-                algorithmType.ToString(),
-                annLogicType.ToString());
+                phoneType.ToString() + algorithmType.ToString() + annLogicType.ToString() + fileExtension);
+        }
+
+        /// <summary>
+        /// Gets the file path.
+        /// </summary>
+        /// <param name="phoneType">Type of the phone.</param>
+        /// <param name="algorithmType">Type of the algorithm.</param>
+        /// <param name="annLogicType">Type of the ANN logic.</param>
+        /// <returns>The file path.</returns>
+        public static string GetFilePath(AlgorithmType algorithmType, ANNLogicType annLogicType)
+        {
+            return Path.Combine(
+                fileRootPath,
+                algorithmType.ToString() + annLogicType.ToString() + fileExtension);
         }
 
         /// <summary>
@@ -51,14 +70,55 @@ namespace Noodum.Wokamon.Sunny.Core.Documents
             return new LearningDataDocument();
         }
 
-        public static LearningDataDocument Open(string filePaht)
+        /// <summary>
+        /// Saves the specified document.
+        /// </summary>
+        /// <param name="document">The document.</param>
+        /// <param name="phoneType">Type of the phone.</param>
+        /// <param name="algorithmType">Type of the algorithm.</param>
+        /// <param name="annLogicType">Type of the ANN logic.</param>
+        public static void Save(LearningDataDocument document, PhoneType phoneType, AlgorithmType algorithmType, ANNLogicType annLogicType)
         {
-            throw new NotImplementedException();
+            if (document == null) { throw new ArgumentNullException("document cannot be null."); }
+
+            var filePath = GetFilePath(phoneType, algorithmType, annLogicType);
+            SaveCore(document, filePath);
         }
 
+        /// <summary>
+        /// Saves the specified document.
+        /// </summary>
+        /// <param name="document">The document.</param>
+        /// <param name="phoneType">Type of the phone.</param>
+        /// <param name="algorithmType">Type of the algorithm.</param>
+        /// <param name="annLogicType">Type of the ANN logic.</param>
         public static void Save(LearningDataDocument document, AlgorithmType algorithmType, ANNLogicType annLogicType)
         {
+            if (document == null) { throw new ArgumentNullException("document cannot be null."); }
 
+            var filePath = GetFilePath(algorithmType, annLogicType);
+            SaveCore(document, filePath);
+        }
+
+        private static void SaveCore(LearningDataDocument document, string filePath)
+        {
+            using (var fs = new FileStream(filePath, FileMode.CreateNew))
+            {
+                using (var sw = new StreamWriter(fs))
+                {
+                    sw.Write(document.Data.Count.ToString() + " ");
+                    sw.Write(document.Data[0].InputData.Count.ToString() + " ");
+                    sw.Write(document.Data[0].OutputData.Count.ToString() + Environment.NewLine);
+
+                    foreach (var learningData in document.Data)
+                    {
+                        string inputSring = string.Join(", ", learningData.InputData);
+                        sw.WriteLine(inputSring);
+                        string outputString = string.Join(", ", learningData.OutputData);
+                        sw.WriteLine(outputString);
+                    }
+                }
+            }
         }
         #endregion
     }

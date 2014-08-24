@@ -12,12 +12,6 @@ namespace Noodum.Wokamon.Sunny.Core.Documents
             data = new List<LearningData>();
         }
 
-        public int TranningPairCount { get; set; }
-
-        public int InputNumbers { get; set; }
-
-        public int OutputNumbers { get; set; }
-
         public List<LearningData> Data { get { return data; } }
     }
 }

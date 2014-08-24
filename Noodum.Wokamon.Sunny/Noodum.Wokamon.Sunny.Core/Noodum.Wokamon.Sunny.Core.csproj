@@ -38,17 +38,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Algorithms\AlgorithmType.cs" />
     <Compile Include="Algorithms\COSAlgorithm.cs" />
     <Compile Include="Algorithms\IAccelerometerAlgorithm.cs" />
     <Compile Include="Algorithms\IAlgorithm.cs" />
     <Compile Include="Constants\Constants.cs" />
     <Compile Include="Documents\ANNDocumentHelper.cs" />
+    <Compile Include="Documents\LearningDataDocument.cs" />
     <Compile Include="Documents\LearningDataDocumentType.cs" />
     <Compile Include="Documents\SensorDataDocument.cs" />
     <Compile Include="Documents\SensorDataDocumentType.cs" />
-    <Compile Include="Models\ANNLogicType.cs" />
+    <Compile Include="Algorithms\ANNLogicType.cs" />
     <Compile Include="Models\GyroscopeData.cs" />
     <Compile Include="Models\ISensorData.cs" />
+    <Compile Include="Models\LearningData.cs" />
     <Compile Include="Models\PhoneStatus.cs" />
     <Compile Include="Models\PhoneType.cs" />
     <Compile Include="Models\SensorType.cs" />

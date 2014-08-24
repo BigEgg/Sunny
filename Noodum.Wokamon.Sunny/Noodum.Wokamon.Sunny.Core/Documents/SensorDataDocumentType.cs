@@ -33,7 +33,7 @@ namespace Noodum.Wokamon.Sunny.Core.Documents
 
         #region Methods
         /// <summary>
-        /// Gets the name of the folder.
+        /// Gets the folder name by specific types.
         /// </summary>
         /// <param name="sensorType">Type of the sensor.</param>
         /// <param name="updateInterval">The update interval.</param>
@@ -56,15 +56,27 @@ namespace Noodum.Wokamon.Sunny.Core.Documents
         }
 
         /// <summary>
-        /// News this instance.
+        /// Create a new instance of <see cref="SensorDataDocument<T>"/> class.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
+        /// <typeparam name="T">The Sensor data type.</typeparam>
+        /// <returns>New instance of <see cref="SensorDataDocument<t>"/> class</returns>
         public static SensorDataDocument<T> New<T>() where T : ISensorData
         {
             return new SensorDataDocument<T>();
         }
 
+        /// <summary>
+        /// Opens the Sensor Data document via file path.
+        /// </summary>
+        /// <typeparam name="T">The Sensor data type.</typeparam>
+        /// <param name="filePath">The file path.</param>
+        /// <returns>The Sensor Data document.</returns>
+        /// <exception cref="System.NotSupportedException">
+        /// Unknown sensor type.
+        /// or
+        /// filePath not valid.
+        /// </exception>
+        /// <exception cref="System.IO.FileNotFoundException"></exception>
         public static SensorDataDocument<ISensorData> Open<T>(String filePath) where T : ISensorData
         {
             SensorType sensorType;
@@ -105,6 +117,7 @@ namespace Noodum.Wokamon.Sunny.Core.Documents
         /// <param name="updateInterval">The update interval.</param>
         /// <param name="phoneType">Type of the phone.</param>
         /// <param name="phoneStats">The phone stats.</param>
+        /// <exception cref="System.NotSupportedException">Unknown sensor type.</exception>
         public static void Save<T>(SensorDataDocument<T> document, int updateInterval, PhoneType phoneType, PhoneStatus phoneStats)
             where T : ISensorData
         {

@@ -1,5 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Noodum.Wokamon.Sunny.Core.Algorithms;
+using Noodum.Wokamon.Sunny.Core.Models;
+using System;
 using System.IO;
 
 namespace Noodum.Wokamon.Sunny.Core.Documents
@@ -31,6 +32,34 @@ namespace Noodum.Wokamon.Sunny.Core.Documents
         public static string FileRootPath { get { return fileRootPath; } }
         #endregion
 
+        #region Methods
+        public static string GetFolderName(PhoneType phoneType, AlgorithmType algorithmType, ANNLogicType annLogicType)
+        {
+            return Path.Combine(
+                fileRootPath,
+                phoneType.ToString(),
+                algorithmType.ToString(),
+                annLogicType.ToString());
+        }
 
+        /// <summary>
+        /// Create a new instance of <see cref="SensorDataDocument"/> class.
+        /// </summary>
+        /// <returns>New instance of <see cref="SensorDataDocument"/> class</returns>
+        public static LearningDataDocument New()
+        {
+            return new LearningDataDocument();
+        }
+
+        public static LearningDataDocument Open(string filePaht)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static void Save(LearningDataDocument document, AlgorithmType algorithmType, ANNLogicType annLogicType)
+        {
+
+        }
+        #endregion
     }
 }

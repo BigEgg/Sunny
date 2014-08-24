@@ -1,4 +1,4 @@
-﻿namespace Noodum.Wokamon.Sunny.Core.Models
+﻿namespace Noodum.Wokamon.Sunny.Core.Algorithms
 {
     public enum ANNLogicType
     {

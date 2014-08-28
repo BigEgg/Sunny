@@ -204,9 +204,9 @@ PhoneType const phoneType = iPhone4;
     [accelerometerDataPackage.data removeAllObjects];
     [gyroscopeDataPackage.data removeAllObjects];
 
-    [self setUIControls];
     recordCount = 0;
     self.recordSecondsLable.text = [self getRecordTime:recordCount];
+    [self setUIControls];
 }
 
 - (IBAction)sectionChanged:(id)sender {

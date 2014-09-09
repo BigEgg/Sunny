@@ -40,9 +40,9 @@ namespace Noodum.Wokamon.Sunny.Core.Test.Documents
         [TestMethod]
         public void GetFolderNameTest_Stop()
         {
-            var phoneStatus = PhoneStatus.Handheld | PhoneStatus.Left | PhoneStatus.Stop;
+            var phoneStatus = PhoneState.Handheld | PhoneState.Left | PhoneState.Stop;
             var folderName = SensorDataDocumentType.GetFolderName(SensorType.Accelerometer, 20, PhoneType.iPhone4, phoneStatus);
-            var expected = Path.Combine(SensorDataDocumentType.FileRootPath, "Accelerometer", "20", "iPhone4", PhoneStatus.Stop.ToString());
+            var expected = Path.Combine(SensorDataDocumentType.FileRootPath, "Accelerometer", "20", "iPhone4", PhoneState.Stop.ToString());
 
             Assert.AreEqual(expected, folderName);
 
@@ -51,7 +51,7 @@ namespace Noodum.Wokamon.Sunny.Core.Test.Documents
         [TestMethod]
         public void GetFolderNameTest_General()
         {
-            var phoneStatus = PhoneStatus.Handheld | PhoneStatus.Left | PhoneStatus.Walk;
+            var phoneStatus = PhoneState.Handheld | PhoneState.Left | PhoneState.Walk;
             var folderName = SensorDataDocumentType.GetFolderName(SensorType.Accelerometer, 20, PhoneType.iPhone4, phoneStatus);
             var expected = Path.Combine(SensorDataDocumentType.FileRootPath, "Accelerometer", "20", "iPhone4", phoneStatus.ToString());
 
@@ -76,7 +76,7 @@ namespace Noodum.Wokamon.Sunny.Core.Test.Documents
         public void SaveTest_Accelerometer()
         {
             TestCleanup(SensorType.Accelerometer);
-            var phoneStatus = PhoneStatus.Handheld | PhoneStatus.Left | PhoneStatus.Walk;
+            var phoneStatus = PhoneState.Handheld | PhoneState.Left | PhoneState.Walk;
 
             var document = SensorDataDocumentType.New<AccelerometerData>();
             SensorDataDocumentType.Save(document, 20, PhoneType.iPhone4, phoneStatus);
@@ -92,7 +92,7 @@ namespace Noodum.Wokamon.Sunny.Core.Test.Documents
         public void SaveTest_Gyrosensor()
         {
             TestCleanup(SensorType.Gyrosensor);
-            var phoneStatus = PhoneStatus.Handheld | PhoneStatus.Left | PhoneStatus.Walk;
+            var phoneStatus = PhoneState.Handheld | PhoneState.Left | PhoneState.Walk;
 
             var document = SensorDataDocumentType.New<GyrosensorData>();
             SensorDataDocumentType.Save(document, 20, PhoneType.iPhone4, phoneStatus);

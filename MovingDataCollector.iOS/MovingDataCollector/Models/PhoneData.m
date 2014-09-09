@@ -12,7 +12,7 @@
 
 - (NSDictionary *)dictionary {
     return @{@"PhoneType" : @(self.phoneType),
-            @"PhoneStatus" : @(self.phoneStats),
+            @"PhoneState" : @(self.phoneState),
             @"UpdateInterval" : @(self.updateInterval)};
 }
 

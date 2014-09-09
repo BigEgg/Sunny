@@ -11,7 +11,7 @@
 
 @interface Utils : NSObject
 
-+ (NSString *)phoneStatusToString:(PhoneStatus)phoneStatus;
++ (NSString *)phoneStatusToString:(PhoneState)phoneStatus;
 
 + (NSString *)convertObjectToJson:(NSObject *)object;
 

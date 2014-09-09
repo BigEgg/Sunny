@@ -12,7 +12,7 @@
 
 #pragma mark - Enum
 
-+ (NSString *)phoneStatusToString:(PhoneStatus)phoneStatus {
++ (NSString *)phoneStatusToString:(PhoneState)phoneStatus {
     NSMutableString *result = [NSMutableString stringWithCapacity:32];
 
     if (phoneStatus == Stop) {

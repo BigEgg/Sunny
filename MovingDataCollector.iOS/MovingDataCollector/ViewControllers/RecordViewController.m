@@ -199,7 +199,7 @@ PhoneType const phoneType = iPhone4;
     NSString *gyroscopeUrlPath = [[NSString alloc] initWithFormat:@"%s%s", SUNNY_SERVER, SUNNY_API_GYROSCOPE];
 
     [self sendDataPackage:accelerometerDataPackage to:accelerometerUrlPath];
-    //[self sendDataPackage:gyroscopeDataPackage to:gyroscopeUrlPath];
+    [self sendDataPackage:gyroscopeDataPackage to:gyroscopeUrlPath];
 
     [accelerometerDataPackage.data removeAllObjects];
     [gyroscopeDataPackage.data removeAllObjects];

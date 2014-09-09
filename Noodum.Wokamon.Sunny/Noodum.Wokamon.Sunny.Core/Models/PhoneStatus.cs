@@ -3,7 +3,7 @@
 namespace Noodum.Wokamon.Sunny.Core.Models
 {
     [Flags]
-    public enum PhoneStatus
+    public enum PhoneState
     {
         None = 0x0,
 

@@ -40,11 +40,11 @@ namespace Noodum.Wokamon.Sunny.Core.Documents
         /// <param name="phoneType">Type of the phone.</param>
         /// <param name="phoneStats">The phone stats.</param>
         /// <returns></returns>
-        public static string GetFolderName(SensorType sensorType, int updateInterval, PhoneType phoneType, PhoneStatus phoneStats)
+        public static string GetFolderName(SensorType sensorType, int updateInterval, PhoneType phoneType, PhoneState phoneStats)
         {
-            if ((phoneStats & PhoneStatus.Stop) == PhoneStatus.Stop)
+            if ((phoneStats & PhoneState.Stop) == PhoneState.Stop)
             {
-                phoneStats = PhoneStatus.Stop;
+                phoneStats = PhoneState.Stop;
             }
 
             return Path.Combine(
@@ -73,7 +73,7 @@ namespace Noodum.Wokamon.Sunny.Core.Documents
         /// <param name="updateInterval">The update interval.</param>
         /// <param name="phoneType">Type of the phone.</param>
         /// <param name="phoneStats">The phone stats.</param>
-        public static void Save<T>(SensorDataDocument<T> document, int updateInterval, PhoneType phoneType, PhoneStatus phoneStats)
+        public static void Save<T>(SensorDataDocument<T> document, int updateInterval, PhoneType phoneType, PhoneState phoneStats)
             where T : ISensorData
         {
             SensorType sensorType;

@@ -44,13 +44,12 @@ namespace Noodum.Wokamon.Sunny.Core.Documents
         {
             return Path.Combine(
                 fileRootPath,
-                phoneType.ToString() + algorithmType.ToString() + annLogicType.ToString() + fileExtension);
+                phoneType.ToString() + "_" + algorithmType.ToString() + "_" + annLogicType.ToString() + fileExtension);
         }
 
         /// <summary>
         /// Gets the file path.
         /// </summary>
-        /// <param name="phoneType">Type of the phone.</param>
         /// <param name="algorithmType">Type of the algorithm.</param>
         /// <param name="annLogicType">Type of the ANN logic.</param>
         /// <returns>The file path.</returns>
@@ -58,7 +57,7 @@ namespace Noodum.Wokamon.Sunny.Core.Documents
         {
             return Path.Combine(
                 fileRootPath,
-                algorithmType.ToString() + annLogicType.ToString() + fileExtension);
+                algorithmType.ToString() + "_" + annLogicType.ToString() + fileExtension);
         }
 
         /// <summary>
@@ -80,6 +79,7 @@ namespace Noodum.Wokamon.Sunny.Core.Documents
         public static void Save(LearningDataDocument document, PhoneType phoneType, AlgorithmType algorithmType, ANNLogicType annLogicType)
         {
             if (document == null) { throw new ArgumentNullException("document cannot be null."); }
+            if (document.Data.Count == 0) { throw new ArgumentException("document's data cannot be empty."); }
 
             var filePath = GetFilePath(phoneType, algorithmType, annLogicType);
             SaveCore(document, filePath);
@@ -95,6 +95,7 @@ namespace Noodum.Wokamon.Sunny.Core.Documents
         public static void Save(LearningDataDocument document, AlgorithmType algorithmType, ANNLogicType annLogicType)
         {
             if (document == null) { throw new ArgumentNullException("document cannot be null."); }
+            if (document.Data.Count == 0) { throw new ArgumentException("document's data cannot be empty."); }
 
             var filePath = GetFilePath(algorithmType, annLogicType);
             SaveCore(document, filePath);
@@ -102,6 +103,11 @@ namespace Noodum.Wokamon.Sunny.Core.Documents
 
         private static void SaveCore(LearningDataDocument document, string filePath)
         {
+            if (!Directory.Exists(fileRootPath))
+            {
+                Directory.CreateDirectory(fileRootPath);
+            }
+
             using (var fs = new FileStream(filePath, FileMode.CreateNew))
             {
                 using (var sw = new StreamWriter(fs))

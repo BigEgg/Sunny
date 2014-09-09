@@ -20,7 +20,7 @@ typedef NS_ENUM(NSUInteger, SensorData) {
     Gyroscope = 2
 };
 
-typedef NS_ENUM(NSUInteger, PhoneStatus) {
+typedef NS_ENUM(NSUInteger, PhoneState) {
     None = 0x0,
 
     Stop = 0x1,

@@ -33,18 +33,18 @@ namespace Noodum.Wokamon.Sunny.Core.Documents
 
         #region Methods
         /// <summary>
-        /// Gets the folder name by specific types.
+        /// Gets the name of the folder.
         /// </summary>
         /// <param name="sensorType">Type of the sensor.</param>
         /// <param name="updateInterval">The update interval.</param>
         /// <param name="phoneType">Type of the phone.</param>
         /// <param name="phoneStats">The phone stats.</param>
         /// <returns></returns>
-        public static string GetFolderName(SensorType sensorType, int updateInterval, PhoneType phoneType, PhoneStatus phoneStats)
+        public static string GetFolderName(SensorType sensorType, int updateInterval, PhoneType phoneType, PhoneState phoneStats)
         {
-            if ((phoneStats & PhoneStatus.Stop) == PhoneStatus.Stop)
+            if ((phoneStats & PhoneState.Stop) == PhoneState.Stop)
             {
-                phoneStats = PhoneStatus.Stop;
+                phoneStats = PhoneState.Stop;
             }
 
             return Path.Combine(
@@ -56,57 +56,13 @@ namespace Noodum.Wokamon.Sunny.Core.Documents
         }
 
         /// <summary>
-        /// Create a new instance of <see cref="SensorDataDocument<T>"/> class.
+        /// News this instance.
         /// </summary>
-        /// <typeparam name="T">The Sensor data type.</typeparam>
-        /// <returns>New instance of <see cref="SensorDataDocument<t>"/> class</returns>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
         public static SensorDataDocument<T> New<T>() where T : ISensorData
         {
             return new SensorDataDocument<T>();
-        }
-
-        /// <summary>
-        /// Opens the Sensor Data document via file path.
-        /// </summary>
-        /// <typeparam name="T">The Sensor data type.</typeparam>
-        /// <param name="filePath">The file path.</param>
-        /// <returns>The Sensor Data document.</returns>
-        /// <exception cref="System.NotSupportedException">
-        /// Unknown sensor type.
-        /// or
-        /// filePath not valid.
-        /// </exception>
-        /// <exception cref="System.IO.FileNotFoundException"></exception>
-        public static SensorDataDocument<ISensorData> Open<T>(String filePath) where T : ISensorData
-        {
-            SensorType sensorType;
-            if (typeof(T) == typeof(GyroscopeData)) { sensorType = SensorType.Gyroscope; }
-            else if (typeof(T) == typeof(AccelerometerData)) { sensorType = SensorType.Accelerometer; }
-            else { throw new NotSupportedException("Unknown sensor type."); }
-
-            if (!filePath.Contains(sensorType.ToString())) { throw new NotSupportedException("filePath not valid."); }
-            if (!File.Exists(filePath)) { throw new FileNotFoundException(string.Format("file cannot be found by path: {0}", fileExtension)); }
-
-            var document = new SensorDataDocument<ISensorData>();
-            using (var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read))
-            {
-                using (var sr = new StreamReader(fs))
-                {
-                    string data = String.Empty;
-                    while (!string.IsNullOrEmpty(data = sr.ReadLine()))
-                    {
-                        if (sensorType == SensorType.Accelerometer)
-                        {
-                            document.Data.Add(new AccelerometerData(data));
-                        }
-                        else
-                        {
-                            document.Data.Add(new GyroscopeData(data));
-                        }
-                    }
-                }
-            }
-            return document;
         }
 
         /// <summary>
@@ -117,12 +73,11 @@ namespace Noodum.Wokamon.Sunny.Core.Documents
         /// <param name="updateInterval">The update interval.</param>
         /// <param name="phoneType">Type of the phone.</param>
         /// <param name="phoneStats">The phone stats.</param>
-        /// <exception cref="System.NotSupportedException">Unknown sensor type.</exception>
-        public static void Save<T>(SensorDataDocument<T> document, int updateInterval, PhoneType phoneType, PhoneStatus phoneStats)
+        public static void Save<T>(SensorDataDocument<T> document, int updateInterval, PhoneType phoneType, PhoneState phoneStats)
             where T : ISensorData
         {
             SensorType sensorType;
-            if (typeof(T) == typeof(GyroscopeData)) { sensorType = SensorType.Gyroscope; }
+            if (typeof(T) == typeof(GyrosensorData)) { sensorType = SensorType.Gyrosensor; }
             else if (typeof(T) == typeof(AccelerometerData)) { sensorType = SensorType.Accelerometer; }
             else { throw new NotSupportedException("Unknown sensor type."); }
 

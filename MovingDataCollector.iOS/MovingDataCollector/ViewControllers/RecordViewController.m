@@ -36,14 +36,14 @@ PhoneType const phoneType = iPhone4;
         accelerometerDataPackage = [[DataPackage alloc] init];
         accelerometerDataPackage.phoneData = [[PhoneData alloc] init];
         accelerometerDataPackage.data = (NSMutableArray <ISensorData> *) [[NSMutableArray alloc] init];
-        accelerometerDataPackage.phoneData.phoneStats = Stop;
+        accelerometerDataPackage.phoneData.phoneState = Stop;
         accelerometerDataPackage.phoneData.phoneType = phoneType;
         accelerometerDataPackage.phoneData.updateInterval = ACCELEROMETER_UPDATE_TIMES;
         
         gyroscopeDataPackage = [[DataPackage alloc] init];
         gyroscopeDataPackage.phoneData = [[PhoneData alloc] init];
         gyroscopeDataPackage.data = (NSMutableArray <ISensorData> *) [[NSMutableArray alloc] init];
-        gyroscopeDataPackage.phoneData.phoneStats = Stop;
+        gyroscopeDataPackage.phoneData.phoneState = Stop;
         gyroscopeDataPackage.phoneData.phoneType = phoneType;
         gyroscopeDataPackage.phoneData.updateInterval = GYROSCOPE_UPDATE_TIMES;
         
@@ -84,21 +84,21 @@ PhoneType const phoneType = iPhone4;
     self.phonePositionSegment.enabled = YES;
     self.phoneSideSegment.enabled = YES;
 
-    PhoneStatus phoneStatus;
+    PhoneState phoneState;
     switch (self.phoneMovingSegment.selectedSegmentIndex) {
         case 0:
-            phoneStatus = Stop;
+            phoneState = Stop;
             self.phonePositionSegment.enabled = NO;
             self.phoneSideSegment.enabled = NO;
             break;
         case 1:
-            phoneStatus = Shake;
+            phoneState = Shake;
             break;
         case 2:
-            phoneStatus = Run;
+            phoneState = Run;
             break;
         case 3:
-            phoneStatus = Walk;
+            phoneState = Walk;
             break;
         default:
             [NSException raise:@"Invalid Segment Selection"
@@ -108,10 +108,10 @@ PhoneType const phoneType = iPhone4;
 
     switch (self.phoneSideSegment.selectedSegmentIndex) {
         case 0:
-            phoneStatus = phoneStatus | Left;
+            phoneState = phoneState | Left;
             break;
         case 1:
-            phoneStatus = phoneStatus | Right;
+            phoneState = phoneState | Right;
             break;
         default:
             [NSException raise:@"Invalid Segment Selection"
@@ -121,22 +121,22 @@ PhoneType const phoneType = iPhone4;
 
     switch (self.phonePositionSegment.selectedSegmentIndex) {
         case 0:
-            phoneStatus = phoneStatus | Handheld;
+            phoneState = phoneState | Handheld;
             break;
         case 1:
-            phoneStatus = phoneStatus | Using;
+            phoneState = phoneState | Using;
             break;
         case 2:
-            phoneStatus = phoneStatus | Pocket;
+            phoneState = phoneState | Pocket;
             break;
         case 3:
-            phoneStatus = phoneStatus | Handbag;
+            phoneState = phoneState | Handbag;
             break;
         case 4:
-            phoneStatus = phoneStatus | TrousersFrontPocket;
+            phoneState = phoneState | TrousersFrontPocket;
             break;
         case 5:
-            phoneStatus = phoneStatus | TrousersBackPocket;
+            phoneState = phoneState | TrousersBackPocket;
             break;
         default:
             [NSException raise:@"Invalid Segment Selection"
@@ -145,8 +145,8 @@ PhoneType const phoneType = iPhone4;
 
     }
 
-    accelerometerDataPackage.phoneData.phoneStats = phoneStatus;
-    gyroscopeDataPackage.phoneData.phoneStats = phoneStatus;
+    accelerometerDataPackage.phoneData.phoneState = phoneState;
+    gyroscopeDataPackage.phoneData.phoneState = phoneState;
 }
 
 - (IBAction)stopRecord:(id)sender {
@@ -204,9 +204,9 @@ PhoneType const phoneType = iPhone4;
     [accelerometerDataPackage.data removeAllObjects];
     [gyroscopeDataPackage.data removeAllObjects];
 
-    [self setUIControls];
     recordCount = 0;
     self.recordSecondsLable.text = [self getRecordTime:recordCount];
+    [self setUIControls];
 }
 
 - (IBAction)sectionChanged:(id)sender {
@@ -301,42 +301,42 @@ PhoneType const phoneType = iPhone4;
         }
         return;
     } else {
-        PhoneStatus phoneStatus = accelerometerDataPackage.phoneData.phoneStats;
+        PhoneState phoneState = accelerometerDataPackage.phoneData.phoneState;
         NSInteger selectIndex = 0;
 
-        if (phoneStatus & Stop) {
+        if (phoneState & Stop) {
             selectIndex = 0;
             self.phonePositionSegment.enabled = NO;
             self.phoneSideSegment.enabled = NO;
-        } else if (phoneStatus & Shake) {
+        } else if (phoneState & Shake) {
             selectIndex = 1;
-        } else if (phoneStatus & Run) {
+        } else if (phoneState & Run) {
             selectIndex = 2;
-        } else if (phoneStatus & Walk) {
+        } else if (phoneState & Walk) {
             selectIndex = 3;
         }
         self.phoneMovingSegment.selectedSegmentIndex = selectIndex;
 
         selectIndex = 0;
-        if (phoneStatus & Left) {
+        if (phoneState & Left) {
             selectIndex = 0;
-        } else if (phoneStatus & Right) {
+        } else if (phoneState & Right) {
             selectIndex = 1;
         }
         self.phoneSideSegment.selectedSegmentIndex = selectIndex;
 
         selectIndex = 0;
-        if (phoneStatus & Handheld) {
+        if (phoneState & Handheld) {
             selectIndex = 0;
-        } else if (phoneStatus & Using) {
+        } else if (phoneState & Using) {
             selectIndex = 1;
-        } else if (phoneStatus & Pocket) {
+        } else if (phoneState & Pocket) {
             selectIndex = 2;
-        } else if (phoneStatus & Handbag) {
+        } else if (phoneState & Handbag) {
             selectIndex = 3;
-        } else if (phoneStatus & TrousersFrontPocket) {
+        } else if (phoneState & TrousersFrontPocket) {
             selectIndex = 4;
-        } else if (phoneStatus & TrousersBackPocket) {
+        } else if (phoneState & TrousersBackPocket) {
             selectIndex = 5;
         }
         self.phonePositionSegment.selectedSegmentIndex = selectIndex;

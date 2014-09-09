@@ -13,7 +13,7 @@
 @interface PhoneData : NSObject <IJSONSerialize>
 
 @property PhoneType phoneType;
-@property PhoneStatus phoneStats;
+@property PhoneState phoneState;
 @property int updateInterval;
 
 @end

@@ -38,13 +38,13 @@ namespace Noodum.Wokamon.Sunny.Core.Documents
         /// <param name="sensorType">Type of the sensor.</param>
         /// <param name="updateInterval">The update interval.</param>
         /// <param name="phoneType">Type of the phone.</param>
-        /// <param name="phoneStats">The phone stats.</param>
+        /// <param name="phoneState">The phone State.</param>
         /// <returns></returns>
-        public static string GetFolderName(SensorType sensorType, int updateInterval, PhoneType phoneType, PhoneState phoneStats)
+        public static string GetFolderName(SensorType sensorType, int updateInterval, PhoneType phoneType, PhoneState phoneState)
         {
-            if ((phoneStats & PhoneState.Stop) == PhoneState.Stop)
+            if ((phoneState & PhoneState.Stop) == PhoneState.Stop)
             {
-                phoneStats = PhoneState.Stop;
+                phoneState = PhoneState.Stop;
             }
 
             return Path.Combine(
@@ -52,7 +52,7 @@ namespace Noodum.Wokamon.Sunny.Core.Documents
                 sensorType.ToString(),
                 updateInterval.ToString(),
                 phoneType.ToString(),
-                phoneStats.ToString());
+                phoneState.ToString());
         }
 
         /// <summary>
@@ -72,16 +72,16 @@ namespace Noodum.Wokamon.Sunny.Core.Documents
         /// <param name="document">The document.</param>
         /// <param name="updateInterval">The update interval.</param>
         /// <param name="phoneType">Type of the phone.</param>
-        /// <param name="phoneStats">The phone stats.</param>
-        public static void Save<T>(SensorDataDocument<T> document, int updateInterval, PhoneType phoneType, PhoneState phoneStats)
+        /// <param name="phoneState">The phone State.</param>
+        public static void Save<T>(SensorDataDocument<T> document, int updateInterval, PhoneType phoneType, PhoneState phoneState)
             where T : ISensorData
         {
             SensorType sensorType;
-            if (typeof(T) == typeof(GyrosensorData)) { sensorType = SensorType.Gyrosensor; }
+            if (typeof(T) == typeof(GyroscopeData)) { sensorType = SensorType.Gyroscope; }
             else if (typeof(T) == typeof(AccelerometerData)) { sensorType = SensorType.Accelerometer; }
             else { throw new NotSupportedException("Unknown sensor type."); }
 
-            var folderName = GetFolderName(sensorType, updateInterval, phoneType, phoneStats);
+            var folderName = GetFolderName(sensorType, updateInterval, phoneType, phoneState);
             if (!Directory.Exists(folderName))
             {
                 Directory.CreateDirectory(folderName);

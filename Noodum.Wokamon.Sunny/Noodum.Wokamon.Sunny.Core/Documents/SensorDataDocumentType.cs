@@ -33,12 +33,12 @@ namespace Noodum.Wokamon.Sunny.Core.Documents
 
         #region Methods
         /// <summary>
-        /// Gets the name of the folder.
+        /// Gets the folder name by specific types.
         /// </summary>
         /// <param name="sensorType">Type of the sensor.</param>
         /// <param name="updateInterval">The update interval.</param>
         /// <param name="phoneType">Type of the phone.</param>
-        /// <param name="phoneState">The phone State.</param>
+        /// <param name="phoneState">The phone stats.</param>
         /// <returns></returns>
         public static string GetFolderName(SensorType sensorType, int updateInterval, PhoneType phoneType, PhoneState phoneState)
         {
@@ -56,13 +56,57 @@ namespace Noodum.Wokamon.Sunny.Core.Documents
         }
 
         /// <summary>
-        /// News this instance.
+        /// Create a new instance of <see cref="SensorDataDocument<T>"/> class.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
+        /// <typeparam name="T">The Sensor data type.</typeparam>
+        /// <returns>New instance of <see cref="SensorDataDocument<t>"/> class</returns>
         public static SensorDataDocument<T> New<T>() where T : ISensorData
         {
             return new SensorDataDocument<T>();
+        }
+
+        /// <summary>
+        /// Opens the Sensor Data document via file path.
+        /// </summary>
+        /// <typeparam name="T">The Sensor data type.</typeparam>
+        /// <param name="filePath">The file path.</param>
+        /// <returns>The Sensor Data document.</returns>
+        /// <exception cref="System.NotSupportedException">
+        /// Unknown sensor type.
+        /// or
+        /// filePath not valid.
+        /// </exception>
+        /// <exception cref="System.IO.FileNotFoundException"></exception>
+        public static SensorDataDocument<ISensorData> Open<T>(String filePath) where T : ISensorData
+        {
+            SensorType sensorType;
+            if (typeof(T) == typeof(GyroscopeData)) { sensorType = SensorType.Gyroscope; }
+            else if (typeof(T) == typeof(AccelerometerData)) { sensorType = SensorType.Accelerometer; }
+            else { throw new NotSupportedException("Unknown sensor type."); }
+
+            if (!filePath.Contains(sensorType.ToString())) { throw new NotSupportedException("filePath not valid."); }
+            if (!File.Exists(filePath)) { throw new FileNotFoundException(string.Format("file cannot be found by path: {0}", fileExtension)); }
+
+            var document = new SensorDataDocument<ISensorData>();
+            using (var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+            {
+                using (var sr = new StreamReader(fs))
+                {
+                    string data = String.Empty;
+                    while (!string.IsNullOrEmpty(data = sr.ReadLine()))
+                    {
+                        if (sensorType == SensorType.Accelerometer)
+                        {
+                            document.Data.Add(new AccelerometerData(data));
+                        }
+                        else
+                        {
+                            document.Data.Add(new GyroscopeData(data));
+                        }
+                    }
+                }
+            }
+            return document;
         }
 
         /// <summary>
@@ -72,7 +116,8 @@ namespace Noodum.Wokamon.Sunny.Core.Documents
         /// <param name="document">The document.</param>
         /// <param name="updateInterval">The update interval.</param>
         /// <param name="phoneType">Type of the phone.</param>
-        /// <param name="phoneState">The phone State.</param>
+        /// <param name="phoneState">The phone stats.</param>
+        /// <exception cref="System.NotSupportedException">Unknown sensor type.</exception>
         public static void Save<T>(SensorDataDocument<T> document, int updateInterval, PhoneType phoneType, PhoneState phoneState)
             where T : ISensorData
         {

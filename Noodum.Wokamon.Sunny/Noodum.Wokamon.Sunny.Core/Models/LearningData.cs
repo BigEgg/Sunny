@@ -4,17 +4,17 @@ namespace Noodum.Wokamon.Sunny.Core.Models
 {
     public class LearningData
     {
-        private List<int> inputData;
-        private List<int> outputData;
+        private List<double> inputData;
+        private List<double> outputData;
 
         public LearningData()
         {
-            inputData = new List<int>();
-            outputData = new List<int>();
+            inputData = new List<double>();
+            outputData = new List<double>();
         }
 
-        public List<int> InputData { get { return this.inputData; } }
+        public List<double> InputData { get { return this.inputData; } }
 
-        public List<int> OutputData { get { return this.outputData; } }
+        public List<double> OutputData { get { return this.outputData; } }
     }
 }

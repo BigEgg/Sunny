@@ -46,6 +46,17 @@ namespace Noodum.Wokamon.Sunny.Core.Documents
             {
                 phoneState = PhoneState.Stop;
             }
+            if ((phoneState & PhoneState.Shake) == PhoneState.Shake)
+            {
+                if ((phoneState & PhoneState.Left) == PhoneState.Left)
+                {
+                    phoneState = PhoneState.Shake | PhoneState.Left;
+                }
+                else
+                {
+                    phoneState = PhoneState.Shake | PhoneState.Right;
+                }
+            }
 
             return Path.Combine(
                 fileRootPath,

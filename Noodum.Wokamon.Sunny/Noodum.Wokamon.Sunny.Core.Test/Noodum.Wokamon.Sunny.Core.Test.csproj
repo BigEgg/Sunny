@@ -50,6 +50,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Documents\LearningDataDocumentTypeTest.cs" />
     <Compile Include="Documents\SensorDataDocumentTypeTest.cs" />
     <Compile Include="Models\AccelerometerDataTest.cs" />
     <Compile Include="Models\GyrosensorDataTest.cs" />

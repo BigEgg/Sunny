@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{163340C5-AB68-4EE4-BDF7-8E541CB64DDC}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{B6ADFB25-8397-4EF2-A87E-A1F7E0BAA6EB}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Noodum.Wokamon.Sunny.Core</RootNamespace>
-    <AssemblyName>Noodum.Wokamon.Sunny.Core</AssemblyName>
+    <RootNamespace>Noodum.Wokamon.Sunny.Learning</RootNamespace>
+    <AssemblyName>Noodum.Wokamon.Sunny.Learning</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -38,25 +40,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Algorithms\AlgorithmType.cs" />
-    <Compile Include="Algorithms\COSAlgorithm.cs" />
-    <Compile Include="Algorithms\IAccelerometerAlgorithm.cs" />
-    <Compile Include="Algorithms\IAlgorithm.cs" />
-    <Compile Include="Constants\Constants.cs" />
-    <Compile Include="Documents\ANNDocumentHelper.cs" />
-    <Compile Include="Documents\LearningDataDocument.cs" />
-    <Compile Include="Documents\LearningDataDocumentType.cs" />
-    <Compile Include="Documents\SensorDataDocument.cs" />
-    <Compile Include="Documents\SensorDataDocumentType.cs" />
-    <Compile Include="Algorithms\ANNLogicType.cs" />
-    <Compile Include="Models\GyroscopeData.cs" />
-    <Compile Include="Models\ISensorData.cs" />
-    <Compile Include="Models\LearningData.cs" />
-    <Compile Include="Models\PhoneStatus.cs" />
-    <Compile Include="Models\PhoneType.cs" />
-    <Compile Include="Models\SensorType.cs" />
+    <Compile Include="Commons\ANNLogicResult.cs" />
+    <Compile Include="Models\DocumentInfo.cs" />
+    <Compile Include="Preproduces\AccelerometerPreproduce.cs" />
+    <Compile Include="Preproduces\GyroscopePreproduce.cs" />
+    <Compile Include="Preproduces\MoveDetailAccelerometerPreproduce.cs" />
+    <Compile Include="Preproduces\PreproduceBase.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Models\AccelerometerData.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Noodum.Wokamon.Sunny.Core\Noodum.Wokamon.Sunny.Core.csproj">
+      <Project>{163340c5-ab68-4ee4-bdf7-8e541cb64ddc}</Project>
+      <Name>Noodum.Wokamon.Sunny.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Noodum.Wokamon.Sunny.Sensor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Noodum.Wokamon.Sunny.Core.Test", "Noodum.Wokamon.Sunny.Core.Test\Noodum.Wokamon.Sunny.Core.Test.csproj", "{57ABC255-1C2F-4536-8741-068DA9E0F59D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Noodum.Wokamon.Sunny.Learning", "Noodum.Wokamon.Sunny.Learning\Noodum.Wokamon.Sunny.Learning.csproj", "{B6ADFB25-8397-4EF2-A87E-A1F7E0BAA6EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{57ABC255-1C2F-4536-8741-068DA9E0F59D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{57ABC255-1C2F-4536-8741-068DA9E0F59D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{57ABC255-1C2F-4536-8741-068DA9E0F59D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6ADFB25-8397-4EF2-A87E-A1F7E0BAA6EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6ADFB25-8397-4EF2-A87E-A1F7E0BAA6EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6ADFB25-8397-4EF2-A87E-A1F7E0BAA6EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6ADFB25-8397-4EF2-A87E-A1F7E0BAA6EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

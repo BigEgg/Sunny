@@ -7,15 +7,3 @@
 #define SUNNY_API_TEST_CONNECTION "api/debug/testconnection"
 #define SUNNY_API_ACCELEROMETER "api/sensordata/accelerometer"
 #define SUNNY_API_GYROSCOPE "api/sensordata/gyroscope"
-
-typedef enum {
-    QuartzContentStraightLines,
-    QuartzContentCurves,
-    QuartzContentShapes,
-    QuartzContentSolidFills,
-    QuartzContentGradientFills,
-    QuartzContentImageFills,
-    QuartzContentSimpleAnimations,
-    QuartzContentBounce,
-    QuartzContentOther,
-} QuartzContentMode;

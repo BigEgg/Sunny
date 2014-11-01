@@ -3,7 +3,7 @@
 namespace Noodum.Wokamon.Sunny.Core.Models
 {
     [Flags]
-    public enum PhoneStatus
+    public enum PhoneState
     {
         None = 0x0,
 
@@ -17,7 +17,7 @@ namespace Noodum.Wokamon.Sunny.Core.Models
 
         Handheld = 0x0100,
         Using = 0x0200,
-        BackPocket = 0x0400,
+        Pocket = 0x0400,
         Handbag = 0x0800,
         TrousersFrontPocket = 0x1000,
         TrousersBackPocket = 0x1100

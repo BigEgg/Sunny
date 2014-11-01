@@ -1,11 +1,13 @@
 ﻿using Noodum.Wokamon.Sunny.Core.Models;
 
-namespace Noodum.Wokamon.Sunny.SensorDataCollector.Models
+namespace Noodum.Wokamon.Sunny.Learning.Models
 {
-    public class PhoneData
+    public class DocumentInfo
     {
-        public PhoneType PhoneType { get; set; }
-        public PhoneState PhoneState { get; set; }
         public int UpdateInterval { get; set; }
+
+        public PhoneType PhoneType { get; set; }
+
+        public PhoneState PhoneState { get; set; }
     }
 }

@@ -23,7 +23,7 @@ namespace Noodum.Wokamon.Sunny.SensorDataCollector.Controllers
             {
                 document.Data.Add(entry);
             }
-            SensorDataDocumentType.Save(document, data.PhoneData.UpdateInterval, data.PhoneData.PhoneType, data.PhoneData.PhoneStats);
+            SensorDataDocumentType.Save(document, data.PhoneData.UpdateInterval, data.PhoneData.PhoneType, data.PhoneData.PhoneState);
 
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
@@ -39,7 +39,7 @@ namespace Noodum.Wokamon.Sunny.SensorDataCollector.Controllers
             {
                 document.Data.Add(entry);
             }
-            SensorDataDocumentType.Save(document, data.PhoneData.UpdateInterval, data.PhoneData.PhoneType, data.PhoneData.PhoneStats);
+            SensorDataDocumentType.Save(document, data.PhoneData.UpdateInterval, data.PhoneData.PhoneType, data.PhoneData.PhoneState);
 
             return new HttpResponseMessage(HttpStatusCode.OK);
         }

@@ -1,12 +1,17 @@
-﻿using System;
+﻿using Noodum.Wokamon.Sunny.Core.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Noodum.Wokamon.Sunny.Core.Documents
 {
-    class LearningDataDocument
+    public class LearningDataDocument
     {
+        private List<LearningData> data;
+
+        public LearningDataDocument()
+        {
+            data = new List<LearningData>();
+        }
+
+        public List<LearningData> Data { get { return data; } }
     }
 }

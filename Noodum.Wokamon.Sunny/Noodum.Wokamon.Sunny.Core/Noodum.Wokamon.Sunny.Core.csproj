@@ -43,6 +43,7 @@
     <Compile Include="Algorithms\IAlgorithm.cs" />
     <Compile Include="Constants\Constants.cs" />
     <Compile Include="Documents\ANNDocumentHelper.cs" />
+    <Compile Include="Documents\LearningDataDocument.cs" />
     <Compile Include="Documents\LearningDataDocumentType.cs" />
     <Compile Include="Documents\SensorDataDocument.cs" />
     <Compile Include="Documents\SensorDataDocumentType.cs" />
